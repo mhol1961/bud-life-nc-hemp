@@ -69,8 +69,8 @@ const HomePage = () => {
           className=""
         />
         
-        {/* Hero CTAs Overlay */}
-        <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-30">
+        {/* Hero CTAs Overlay - Adjusted positioning for better visibility */}
+        <div className="absolute bottom-32 left-1/2 transform -translate-x-1/2 z-30">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
