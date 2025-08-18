@@ -115,14 +115,24 @@ export function ContactPage() {
   return (
     <div className="min-h-screen">
       {/* Hero Section - Enhanced */}
-      <section className="relative py-20 bg-gradient-to-br from-emerald-600 via-forest-700 to-black text-white overflow-hidden">
+      <section className="relative py-20 overflow-hidden">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          <img 
+            src="/images/hero/contact_bg.jpg" 
+            alt="Professional Business Environment"
+            className="w-full h-full object-cover"
+          />
+          <div className="absolute inset-0 bg-gradient-to-br from-emerald-600/80 via-forest-700/80 to-black/80" />
+        </div>
+        
         {/* Animated background pattern */}
-        <div className="absolute inset-0 opacity-10">
+        <div className="absolute inset-0 opacity-10 z-5">
           <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse" />
           <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-forest-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse" style={{animationDelay: '2s'}} />
         </div>
         
-        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-white">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}

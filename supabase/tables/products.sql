@@ -1,0 +1,23 @@
+CREATE TABLE products (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    name VARCHAR(255) NOT NULL,
+    slug VARCHAR(255) UNIQUE NOT NULL,
+    description TEXT,
+    short_description TEXT,
+    image_url TEXT,
+    category VARCHAR(100),
+    strain_type VARCHAR(50),
+    thc_content DECIMAL(5,2),
+    cbd_content DECIMAL(5,2),
+    price DECIMAL(10,2) NOT NULL,
+    compare_at_price DECIMAL(10,2),
+    rating DECIMAL(3,2) DEFAULT 0,
+    review_count INTEGER DEFAULT 0,
+    featured BOOLEAN DEFAULT false,
+    in_stock BOOLEAN DEFAULT true,
+    quantity INTEGER DEFAULT 0,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text,
+    NOW()) NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT TIMEZONE('utc'::text,
+    NOW()) NOT NULL
+);

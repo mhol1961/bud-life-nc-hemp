@@ -5,35 +5,35 @@ import { ArrowRight, Leaf, Shield, Star, Award, ChevronDown, Play, Pause, Truck,
 import { ImageCarousel, ScrollingBanner } from '@/components/ImageCarousel'
 
 const HomePage = () => {
-  // Hero carousel data with professional backgrounds
+  // Hero carousel data with business-relevant backgrounds
   const heroSlides = [
     {
       id: 'premium-thca',
       title: 'Premium THCA From North Carolina',
       subtitle: 'Experience the difference that artisanal cultivation makes',
       description: 'Hand-selected genetics, climate precision cultivation, and 30+ day curing for unmatched quality.',
-      backgroundImage: '/images/hero/nc_mountains_branding_7.jpg'
+      backgroundImage: '/images/hero/hemp_cultivation.jpg'
     },
     {
       id: 'lab-tested',
       title: 'Lab-Tested Excellence',
       subtitle: 'Every batch rigorously tested for purity and potency',
       description: 'Third-party COAs available for complete transparency and peace of mind.',
-      backgroundImage: '/images/facilities/lab_testing_facility.jpg'
+      backgroundImage: '/images/hero/lab_testing.jpg'
     },
     {
       id: 'craft-cultivation',
       title: 'Craft Cultivation Mastery',
       subtitle: 'Small-batch, hand-trimmed perfection',
       description: '15,000 sq ft indoor facility with 16-week cycles and artisanal care.',
-      backgroundImage: '/images/facilities/indoor_grow_facility_1.webp'
+      backgroundImage: '/images/hero/indoor_growing.jpg'
     },
     {
-      id: 'organic-purity',
-      title: '100% Organic Purity',
-      subtitle: 'Certified organic, pesticide-free excellence',
-      description: 'Radical transparency through uncompromising organic cultivation methods.',
-      backgroundImage: '/images/hero/hemp_field_nc_farming_7.jpg'
+      id: 'premium-products',
+      title: 'Premium THCA Products',
+      subtitle: 'Exceptional quality in every flower',
+      description: 'From Jealousy to Gushers - discover our curated collection of top-shelf strains.',
+      backgroundImage: '/images/hero/premium_flower.jpg'
     }
   ]
 
