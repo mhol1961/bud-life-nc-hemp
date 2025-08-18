@@ -33,16 +33,32 @@ export function ImageCarousel({
 }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
+  const [isAutoPlaying, setIsAutoPlaying] = useState(autoPlay)
 
+  // Enhanced auto-play with better timer management
   useEffect(() => {
-    if (!autoPlay || isPaused) return
+    if (!isAutoPlaying || isPaused || items.length <= 1) return
     
     const timer = setInterval(() => {
-      setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length)
+      setCurrentIndex((prevIndex) => {
+        const nextIndex = (prevIndex + 1) % items.length
+        console.log(`Auto-advancing carousel: ${prevIndex} -> ${nextIndex}`)
+        return nextIndex
+      })
     }, interval)
 
-    return () => clearInterval(timer)
-  }, [autoPlay, isPaused, interval, items.length])
+    console.log(`Carousel auto-play started with ${interval}ms interval`)
+    return () => {
+      clearInterval(timer)
+      console.log('Carousel auto-play timer cleaned up')
+    }
+  }, [isAutoPlaying, isPaused, interval, items.length])
+
+  // Initialize auto-play
+  useEffect(() => {
+    setIsAutoPlaying(autoPlay)
+    console.log(`Carousel auto-play ${autoPlay ? 'enabled' : 'disabled'}`)
+  }, [autoPlay])
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index)

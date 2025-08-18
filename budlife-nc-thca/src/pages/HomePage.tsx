@@ -5,35 +5,35 @@ import { ArrowRight, Leaf, Shield, Star, Award, ChevronDown, Play, Pause, Truck,
 import { ImageCarousel, ScrollingBanner } from '@/components/ImageCarousel'
 
 const HomePage = () => {
-  // Hero carousel data with business-relevant backgrounds
+  // Hero carousel data with professional THCA hemp imagery
   const heroSlides = [
     {
-      id: 'premium-thca',
-      title: 'Premium THCA From North Carolina',
-      subtitle: 'Experience the difference that artisanal cultivation makes',
-      description: 'Hand-selected genetics, climate precision cultivation, and 30+ day curing for unmatched quality.',
-      backgroundImage: '/images/hero/hemp_cultivation.jpg'
+      id: 'premium-thca-flowers',
+      title: 'Premium THCA Flowers',
+      subtitle: 'Hand-selected genetics with exceptional potency',
+      description: 'Our premium THCA flowers showcase visible trichomes and complex terpene profiles for the ultimate experience.',
+      backgroundImage: '/images/hero/thca_flower_premium.jpg'
     },
     {
-      id: 'lab-tested',
+      id: 'indoor-led-cultivation',
+      title: 'State-of-the-Art Indoor Cultivation',
+      subtitle: 'Climate-controlled LED growing facilities',
+      description: '15,000 sq ft indoor facility with precision LED lighting and environmental control for optimal growth.',
+      backgroundImage: '/images/hero/cultivation_facility_professional.jpg'
+    },
+    {
+      id: 'lab-tested-excellence',
       title: 'Lab-Tested Excellence',
-      subtitle: 'Every batch rigorously tested for purity and potency',
-      description: 'Third-party COAs available for complete transparency and peace of mind.',
-      backgroundImage: '/images/hero/lab_testing.jpg'
+      subtitle: 'Every batch rigorously tested by professionals',
+      description: 'Third-party lab testing ensures purity, potency, and safety for complete peace of mind.',
+      backgroundImage: '/images/hero/laboratory_testing_facility.jpg'
     },
     {
-      id: 'craft-cultivation',
-      title: 'Craft Cultivation Mastery',
-      subtitle: 'Small-batch, hand-trimmed perfection',
-      description: '15,000 sq ft indoor facility with 16-week cycles and artisanal care.',
-      backgroundImage: '/images/hero/indoor_growing.jpg'
-    },
-    {
-      id: 'premium-products',
-      title: 'Premium THCA Products',
-      subtitle: 'Exceptional quality in every flower',
-      description: 'From Jealousy to Gushers - discover our curated collection of top-shelf strains.',
-      backgroundImage: '/images/hero/premium_flower.jpg'
+      id: 'north-carolina-heritage',
+      title: 'North Carolina Hemp Heritage',
+      subtitle: 'Proudly grown in the Blue Ridge Mountains',
+      description: 'Combining traditional hemp farming knowledge with modern cultivation techniques in beautiful NC.',
+      backgroundImage: '/images/hero/nc_hemp_mountains.jpg'
     }
   ]
 
@@ -62,7 +62,7 @@ const HomePage = () => {
         <ImageCarousel
           items={heroSlides}
           autoPlay={true}
-          interval={7000}
+          interval={4500}
           showIndicators={true}
           showArrows={true}
           height="h-screen"

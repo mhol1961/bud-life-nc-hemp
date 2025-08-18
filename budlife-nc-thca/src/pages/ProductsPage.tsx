@@ -130,8 +130,8 @@ export function ProductsPage() {
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           <img 
-            src="/images/hero/products_bg.jpg" 
-            alt="Premium THCA Products"
+            src="/images/hero/products_hemp_showcase.jpg" 
+            alt="Premium THCA Hemp Products"
             className="w-full h-full object-cover"
           />
           <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/70 to-forest-900/80" />
