@@ -1,169 +1,146 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Leaf, Shield, Award, Users, MapPin, Phone, Mail, ArrowRight } from 'lucide-react'
+import { Leaf, Shield, Award, Users, MapPin, Phone, Mail, ArrowRight, Microscope, TreePine, Heart } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export function AboutPage() {
-  const values = [
+  const principles = [
     {
       icon: Shield,
-      title: 'Quality First',
-      description: 'Every product undergoes rigorous third-party lab testing to ensure purity, potency, and safety.',
+      title: 'Purity',
+      subtitle: '100% Organic',
+      description: 'We utilize only the finest organic growing methods, ensuring our plants are free from harmful pesticides, herbicides, and synthetic fertilizers. Our commitment to purity extends from seed to shelf.',
     },
     {
       icon: Leaf,
-      title: 'Natural Excellence',
-      description: 'We source only the finest hemp from trusted North Carolina growers committed to sustainable practices.',
+      title: 'Potency',
+      subtitle: 'Hand-Selected Genetics',
+      description: 'Our master cultivators carefully select premium genetics, focusing on strains that deliver consistent potency and exceptional cannabinoid profiles. Every plant is nurtured with precision and care.',
     },
     {
-      icon: Award,
-      title: 'Compliance & Trust',
-      description: 'Full adherence to state and federal regulations ensures legal, reliable products you can trust.',
-    },
-    {
-      icon: Users,
-      title: 'Customer Focused',
-      description: 'Your wellness journey is our priority. We provide education, support, and exceptional service.',
+      icon: Microscope,
+      title: 'Proof',
+      subtitle: 'Third-Party Tested',
+      description: 'Radical transparency through comprehensive third-party lab testing. Every batch is rigorously tested for potency, pesticides, heavy metals, and contaminants. Your safety is our priority.',
     },
   ]
 
   const stats = [
-    { number: '10,000+', label: 'Happy Customers' },
-    { number: '99.9%', label: 'Purity Guaranteed' },
-    { number: '48 hrs', label: 'Average Shipping' },
-    { number: '5 Stars', label: 'Customer Rating' },
+    { number: '15,000', label: 'Sq Ft Facility', suffix: '+' },
+    { number: '16', label: 'Week Cycles' },
+    { number: '30', label: 'Day Curing', suffix: '+' },
+    { number: '2021', label: 'Founded' },
   ]
 
-  const team = [
-    {
-      name: 'Sarah Johnson',
-      role: 'Founder & CEO',
-      description: 'Former pharmaceutical researcher with 15 years of experience in cannabinoid science.',
-    },
-    {
-      name: 'Michael Chen',
-      role: 'Head of Quality',
-      description: 'Certified lab technician ensuring every batch meets our rigorous quality standards.',
-    },
-    {
-      name: 'Emily Rodriguez',
-      role: 'Customer Success',
-      description: 'Dedicated to helping customers find the right products for their wellness needs.',
-    },
+  const certifications = [
+    { name: 'Certified Organic', icon: Leaf },
+    { name: 'Lab Verified', icon: Microscope },
+    { name: 'Satisfaction Guaranteed', icon: Heart },
   ]
 
   return (
     <div className="min-h-screen">
       {/* Hero Section */}
-      <section className="premium-gradient py-20">
-        <div className="container-premium">
+      <section className="relative min-h-[70vh] flex items-center justify-center overflow-hidden">
+        {/* Background Image */}
+        <div 
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{
+            backgroundImage: 'linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.4)), url("/images/nc_hemp_farm_5.jpg")'
+          }}
+        />
+        
+        <div className="relative z-10 text-center text-white px-4">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            className="max-w-4xl mx-auto text-center"
+            className="max-w-4xl mx-auto"
           >
-            <h1 className="text-4xl lg:text-5xl font-bold text-stone-900 mb-6">
-              About <span className="text-gradient">BudLife NC</span>
+            <h1 className="text-5xl lg:text-6xl font-bold mb-6">
+              Revolutionizing Hemp Through
+              <span className="block text-emerald-400">Uncompromising Quality</span>
             </h1>
-            <p className="text-xl lg:text-2xl text-stone-600 leading-relaxed">
-              We're North Carolina's premier source for lab-tested, premium THCA products, 
-              committed to your wellness journey through quality, transparency, and trust.
+            <p className="text-xl lg:text-2xl mb-8 opacity-90 leading-relaxed">
+              Founded in 2021 by master cultivators and wellness advocates, 
+              we're pioneering a new standard of radical transparency in the hemp industry.
             </p>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/products"
+                className="bg-emerald-500 hover:bg-emerald-600 text-white px-8 py-4 rounded-lg font-semibold transition-colors inline-flex items-center justify-center"
+              >
+                Shop Premium Hemp
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+              <Link
+                to="/lab-results"
+                className="bg-transparent border-2 border-white hover:bg-white hover:text-black text-white px-8 py-4 rounded-lg font-semibold transition-colors inline-flex items-center justify-center"
+              >
+                View Lab Results
+                <Microscope className="ml-2 w-5 h-5" />
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>
 
-      {/* Story Section */}
-      <section className="py-20 bg-white">
-        <div className="container-premium">
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-3xl lg:text-4xl font-bold text-stone-900 mb-6">
-                Our Story
-              </h2>
-            </motion.div>
-            
-            <div className="prose prose-lg mx-auto text-stone-600">
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.1 }}
-              >
-                Founded in the heart of North Carolina, BudLife NC began with a simple mission: to provide access to 
-                premium, lab-tested THCA products that support wellness and elevate daily life. Our founders, 
-                passionate about the therapeutic potential of hemp-derived cannabinoids, recognized the need for 
-                a trusted source of high-quality products in the rapidly evolving cannabis industry.
-              </motion.p>
-              
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.2 }}
-              >
-                What started as a small operation has grown into North Carolina's leading THCA retailer, serving 
-                thousands of customers who trust us for consistency, quality, and compliance. We work exclusively 
-                with licensed North Carolina hemp farmers who share our commitment to sustainable growing practices 
-                and product excellence.
-              </motion.p>
-              
-              <motion.p
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: 0.3 }}
-              >
-                Every product in our catalog undergoes rigorous third-party lab testing, and we make Certificate 
-                of Analysis (COA) documents readily available to our customers. This transparency isn't just good 
-                business—it's essential for building the trust that the cannabis industry needs to thrive.
-              </motion.p>
-            </div>
-          </div>
+      {/* Mission Statement */}
+      <section className="py-20 bg-gradient-to-br from-emerald-50 to-forest-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center"
+          >
+            <h2 className="text-4xl lg:text-5xl font-bold text-black-900 mb-8">
+              Our Mission
+            </h2>
+            <blockquote className="text-2xl lg:text-3xl text-forest-700 italic font-medium max-w-4xl mx-auto leading-relaxed">
+              "Revolutionize the hemp industry through uncompromising quality and radical transparency"
+            </blockquote>
+          </motion.div>
         </div>
       </section>
 
-      {/* Values Section */}
-      <section className="py-20 premium-gradient">
-        <div className="container-premium">
+      {/* Core Principles */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl lg:text-4xl font-bold text-stone-900 mb-6">
-              Our Values
+            <h2 className="text-4xl lg:text-5xl font-bold text-black-900 mb-6">
+              Our Three Pillars
             </h2>
-            <p className="text-xl text-stone-600 max-w-3xl mx-auto">
-              These core principles guide everything we do, from sourcing and testing 
-              to customer service and community engagement.
+            <p className="text-xl text-forest-600 max-w-3xl mx-auto">
+              Every decision we make, every product we craft, is guided by these fundamental principles
             </p>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            {values.map((value, index) => (
+          <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
+            {principles.map((principle, index) => (
               <motion.div
-                key={value.title}
+                key={principle.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-                className="card-premium p-8"
+                transition={{ delay: index * 0.2 }}
+                className="bg-gradient-to-br from-white to-emerald-50 rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-shadow border border-emerald-100"
               >
-                <div className="w-12 h-12 sage-gradient rounded-lg flex items-center justify-center mb-6">
-                  <value.icon className="w-6 h-6 text-white" />
+                <div className="w-16 h-16 bg-gradient-to-br from-emerald-500 to-forest-600 rounded-xl flex items-center justify-center mb-6 mx-auto">
+                  <principle.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-stone-900 mb-3">
-                  {value.title}
+                <h3 className="text-2xl font-bold text-black-900 mb-2 text-center">
+                  {principle.title}
                 </h3>
-                <p className="text-stone-600 leading-relaxed">
-                  {value.description}
+                <p className="text-emerald-600 font-semibold text-center mb-4">
+                  {principle.subtitle}
+                </p>
+                <p className="text-forest-600 leading-relaxed text-center">
+                  {principle.description}
                 </p>
               </motion.div>
             ))}
@@ -171,181 +148,200 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* Stats Section */}
-      <section className="py-20 bg-white">
-        <div className="container-premium">
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
-            {stats.map((stat, index) => (
-              <motion.div
-                key={stat.label}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ delay: index * 0.1 }}
-              >
-                <div className="text-3xl lg:text-4xl font-bold text-sage-600 mb-2">
-                  {stat.number}
+      {/* Cultivation Process */}
+      <section className="py-20 bg-gradient-to-br from-forest-900 to-black-900 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <h2 className="text-4xl lg:text-5xl font-bold mb-8">
+                Precision Cultivation
+              </h2>
+              <div className="space-y-6">
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-emerald-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <TreePine className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2">15,000 Sq Ft Indoor Facility</h3>
+                    <p className="text-cream-200 leading-relaxed">
+                      Our state-of-the-art indoor cultivation facility in California provides complete environmental control, 
+                      ensuring optimal growing conditions year-round.
+                    </p>
+                  </div>
                 </div>
-                <div className="text-stone-600 font-medium">
-                  {stat.label}
+                
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-emerald-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <Shield className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2">Climate Precision Technology</h3>
+                    <p className="text-cream-200 leading-relaxed">
+                      Advanced climate control systems monitor temperature, humidity, and airflow 24/7, 
+                      creating the perfect environment for premium hemp cultivation.
+                    </p>
+                  </div>
                 </div>
-              </motion.div>
-            ))}
+                
+                <div className="flex items-start space-x-4">
+                  <div className="w-12 h-12 bg-emerald-500 rounded-lg flex items-center justify-center flex-shrink-0 mt-1">
+                    <Award className="w-6 h-6" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2">Small-Batch Artisanal Production</h3>
+                    <p className="text-cream-200 leading-relaxed">
+                      We prioritize quality over quantity, producing small batches that receive individual attention 
+                      from our master cultivators throughout the entire growth cycle.
+                    </p>
+                  </div>
+                </div>
+              </div>
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="grid grid-cols-2 gap-6"
+            >
+              {stats.map((stat, index) => (
+                <div
+                  key={stat.label}
+                  className="bg-white/10 backdrop-blur-sm rounded-xl p-6 text-center border border-white/20"
+                >
+                  <div className="text-3xl lg:text-4xl font-bold text-emerald-400 mb-2">
+                    {stat.number}{stat.suffix}
+                  </div>
+                  <div className="text-cream-200 font-medium">
+                    {stat.label}
+                  </div>
+                </div>
+              ))}
+            </motion.div>
           </div>
         </div>
       </section>
 
-      {/* Team Section */}
-      <section className="py-20 premium-gradient">
-        <div className="container-premium">
+      {/* Curing Process */}
+      <section className="py-20 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-2 lg:order-1"
+            >
+              <img 
+                src="/images/lab_images_6.jpg" 
+                alt="Hemp curing process"
+                className="rounded-2xl shadow-2xl w-full h-[400px] object-cover"
+              />
+            </motion.div>
+            
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="order-1 lg:order-2"
+            >
+              <h2 className="text-4xl lg:text-5xl font-bold text-black-900 mb-6">
+                16-Week Cycles,<br />
+                <span className="text-emerald-600">30+ Day Curing</span>
+              </h2>
+              <div className="space-y-6">
+                <p className="text-lg text-forest-600 leading-relaxed">
+                  Our extended 16-week growth cycles allow plants to fully develop their cannabinoid and terpene profiles, 
+                  resulting in more potent and flavorful products.
+                </p>
+                <p className="text-lg text-forest-600 leading-relaxed">
+                  Following harvest, we implement a minimum 30-day curing process in controlled environments. 
+                  This patient approach preserves the delicate compounds while enhancing flavor, aroma, and overall quality.
+                </p>
+                <p className="text-lg text-forest-600 leading-relaxed">
+                  The result? Premium hemp flower with exceptional cannabinoid retention and terpene expression 
+                  that sets our products apart in the market.
+                </p>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Certifications */}
+      <section className="py-20 bg-gradient-to-br from-emerald-50 to-forest-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-center mb-16"
           >
-            <h2 className="text-3xl lg:text-4xl font-bold text-stone-900 mb-6">
-              Meet Our Team
+            <h2 className="text-4xl lg:text-5xl font-bold text-black-900 mb-6">
+              Your Trust, Our Promise
             </h2>
-            <p className="text-xl text-stone-600 max-w-3xl mx-auto">
-              The passionate experts behind BudLife NC, dedicated to bringing you 
-              the finest THCA products with unmatched quality and service.
+            <p className="text-xl text-forest-600 max-w-3xl mx-auto">
+              Every product carries our commitment to excellence, backed by industry certifications and guarantees
             </p>
           </motion.div>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {team.map((member, index) => (
+            {certifications.map((cert, index) => (
               <motion.div
-                key={member.name}
+                key={cert.name}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ delay: index * 0.1 }}
-                className="card-premium p-8 text-center"
+                className="bg-white rounded-2xl p-8 text-center shadow-xl hover:shadow-2xl transition-shadow border border-emerald-100"
               >
-                <div className="w-20 h-20 mx-auto mb-6 bg-sage-100 rounded-full flex items-center justify-center">
-                  <Users className="w-10 h-10 text-sage-600" />
+                <div className="w-20 h-20 bg-gradient-to-br from-emerald-500 to-forest-600 rounded-full flex items-center justify-center mx-auto mb-6">
+                  <cert.icon className="w-10 h-10 text-white" />
                 </div>
-                <h3 className="text-xl font-semibold text-stone-900 mb-2">
-                  {member.name}
+                <h3 className="text-2xl font-bold text-black-900 mb-4">
+                  {cert.name}
                 </h3>
-                <p className="text-sage-600 font-medium mb-4">
-                  {member.role}
-                </p>
-                <p className="text-stone-600">
-                  {member.description}
-                </p>
               </motion.div>
             ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Location Section */}
-      <section className="py-20 bg-white">
-        <div className="container-premium">
-          <div className="max-w-4xl mx-auto">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              className="text-center mb-16"
-            >
-              <h2 className="text-3xl lg:text-4xl font-bold text-stone-900 mb-6">
-                Rooted in North Carolina
-              </h2>
-              <p className="text-xl text-stone-600">
-                Proudly serving customers nationwide from our home in the beautiful 
-                mountains of Asheville, North Carolina.
-              </p>
-            </motion.div>
-            
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-              <motion.div
-                initial={{ opacity: 0, x: -20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-              >
-                <h3 className="text-2xl font-semibold text-stone-900 mb-6">
-                  Visit Us
-                </h3>
-                <div className="space-y-4">
-                  <div className="flex items-center space-x-3">
-                    <MapPin className="w-5 h-5 text-sage-600" />
-                    <span className="text-stone-700">
-                      123 Mountain View Drive<br />
-                      Asheville, NC 28801
-                    </span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Phone className="w-5 h-5 text-sage-600" />
-                    <span className="text-stone-700">(828) 555-0123</span>
-                  </div>
-                  <div className="flex items-center space-x-3">
-                    <Mail className="w-5 h-5 text-sage-600" />
-                    <span className="text-stone-700">hello@budlifenc.com</span>
-                  </div>
-                </div>
-                
-                <div className="mt-8">
-                  <Link
-                    to="/contact"
-                    className="inline-flex items-center text-sage-600 hover:text-sage-700 font-medium transition-colors"
-                  >
-                    Get in touch
-                    <ArrowRight className="ml-2 w-4 h-4" />
-                  </Link>
-                </div>
-              </motion.div>
-              
-              <motion.div
-                initial={{ opacity: 0, x: 20 }}
-                whileInView={{ opacity: 1, x: 0 }}
-                viewport={{ once: true }}
-                className="card-premium p-8"
-              >
-                <h3 className="text-xl font-semibold text-stone-900 mb-4">
-                  Why North Carolina?
-                </h3>
-                <p className="text-stone-600 leading-relaxed mb-4">
-                  North Carolina's ideal climate and rich agricultural heritage make it 
-                  perfect for cultivating premium hemp. Our state's commitment to 
-                  agricultural innovation and sustainable farming practices ensures 
-                  we can source the finest raw materials.
-                </p>
-                <p className="text-stone-600 leading-relaxed">
-                  From the mountains to the coast, we're proud to support local 
-                  farmers and contribute to North Carolina's growing hemp industry.
-                </p>
-              </motion.div>
-            </div>
           </div>
         </div>
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 sage-gradient text-white">
-        <div className="container-premium text-center">
+      <section className="py-20 bg-gradient-to-r from-emerald-600 to-forest-700 text-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
           >
-            <h2 className="text-3xl lg:text-4xl font-bold mb-6">
-              Experience the BudLife NC Difference
+            <h2 className="text-4xl lg:text-5xl font-bold mb-6">
+              Experience Bud Life NC Hemp Co
             </h2>
-            <p className="text-xl opacity-90 mb-8 max-w-2xl mx-auto">
-              Join thousands of satisfied customers who trust us for their 
-              premium THCA needs. Quality, transparency, and your wellness 
-              are our top priorities.
+            <p className="text-xl opacity-90 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Join the revolution in hemp quality. Every product tells a story of dedication, 
+              precision, and unwavering commitment to your wellness journey.
             </p>
-            <Link
-              to="/products"
-              className="bg-white text-sage-700 hover:bg-stone-100 px-8 py-4 rounded-lg font-semibold transition-colors inline-flex items-center"
-            >
-              Shop Premium Products
-              <ArrowRight className="ml-2 w-5 h-5" />
-            </Link>
+            <div className="flex flex-col sm:flex-row gap-4 justify-center">
+              <Link
+                to="/products"
+                className="bg-white text-emerald-700 hover:bg-cream-100 px-8 py-4 rounded-lg font-semibold transition-colors inline-flex items-center justify-center"
+              >
+                Shop Premium Products
+                <ArrowRight className="ml-2 w-5 h-5" />
+              </Link>
+              <Link
+                to="/lab-results"
+                className="bg-transparent border-2 border-white hover:bg-white hover:text-emerald-700 text-white px-8 py-4 rounded-lg font-semibold transition-colors inline-flex items-center justify-center"
+              >
+                View All Lab Results
+                <Microscope className="ml-2 w-5 h-5" />
+              </Link>
+            </div>
           </motion.div>
         </div>
       </section>

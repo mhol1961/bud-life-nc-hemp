@@ -37,13 +37,9 @@ export function Header() {
           <Link to="/" className="flex items-center group">
             <img 
               src="/images/new-budlife-logo.png" 
-              alt="BudLife Hemp NC" 
-              className="h-14 w-14 filter drop-shadow-lg group-hover:scale-105 transition-transform duration-300"
+              alt="Bud Life NC Hemp Co" 
+              className="h-18 w-18 filter drop-shadow-lg group-hover:scale-105 transition-transform duration-300"
             />
-            <div className="ml-3 hidden sm:block">
-              <div className="text-cream-100 font-bold text-xl tracking-tight">BudLife</div>
-              <div className="text-emerald-400 text-sm font-medium">Hemp NC</div>
-            </div>
           </Link>
 
           {/* Desktop Navigation */}
