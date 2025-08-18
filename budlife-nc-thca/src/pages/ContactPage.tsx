@@ -1,0 +1,354 @@
+import React, { useState } from 'react'
+import { Mail, Phone, MapPin, Clock, Send, MessageCircle } from 'lucide-react'
+import { motion } from 'framer-motion'
+import toast from 'react-hot-toast'
+
+export function ContactPage() {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    phone: '',
+    subject: '',
+    message: '',
+  })
+  const [isSubmitting, setIsSubmitting] = useState(false)
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault()
+    setIsSubmitting(true)
+
+    // Simulate form submission
+    await new Promise(resolve => setTimeout(resolve, 1000))
+    
+    toast.success('Message sent successfully! We\'ll get back to you soon.')
+    setFormData({
+      name: '',
+      email: '',
+      phone: '',
+      subject: '',
+      message: '',
+    })
+    setIsSubmitting(false)
+  }
+
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    setFormData({
+      ...formData,
+      [e.target.name]: e.target.value,
+    })
+  }
+
+  const contactInfo = [
+    {
+      icon: Mail,
+      title: 'Email Us',
+      details: 'hello@budlifenc.com',
+      description: 'Send us an email anytime',
+    },
+    {
+      icon: Phone,
+      title: 'Call Us',
+      details: '(828) 555-0123',
+      description: 'Mon-Fri, 9AM-6PM EST',
+    },
+    {
+      icon: MapPin,
+      title: 'Visit Us',
+      details: '123 Mountain View Drive\nAsheville, NC 28801',
+      description: 'By appointment only',
+    },
+    {
+      icon: Clock,
+      title: 'Business Hours',
+      details: 'Mon-Fri: 9AM-6PM\nSat: 10AM-4PM\nSun: Closed',
+      description: 'Eastern Standard Time',
+    },
+  ]
+
+  const faqs = [
+    {
+      question: 'What is THCA?',
+      answer: 'THCA (Tetrahydrocannabinolic Acid) is the non-psychoactive precursor to THC found in raw cannabis plants. When heated, THCA converts to THC.',
+    },
+    {
+      question: 'Are your products legal?',
+      answer: 'Yes, all our products contain less than 0.3% Delta-9 THC by dry weight and are federally legal under the 2018 Farm Bill.',
+    },
+    {
+      question: 'Do you ship nationwide?',
+      answer: 'We ship to most states where hemp-derived products are legal. Some restrictions apply based on state regulations.',
+    },
+    {
+      question: 'How do I read lab results?',
+      answer: 'Each product includes a QR code linking to its Certificate of Analysis (COA) showing cannabinoid content and safety testing results.',
+    },
+  ]
+
+  return (
+    <div className="min-h-screen">
+      {/* Hero Section */}
+      <section className="premium-gradient py-20">
+        <div className="container-premium">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            className="max-w-4xl mx-auto text-center"
+          >
+            <h1 className="text-4xl lg:text-5xl font-bold text-stone-900 mb-6">
+              Get in <span className="text-gradient">Touch</span>
+            </h1>
+            <p className="text-xl lg:text-2xl text-stone-600 leading-relaxed">
+              Have questions about our products? Need assistance with your order? 
+              We're here to help you on your wellness journey.
+            </p>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Contact Info Grid */}
+      <section className="py-20 bg-white">
+        <div className="container-premium">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
+            {contactInfo.map((info, index) => (
+              <motion.div
+                key={info.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1 }}
+                className="text-center"
+              >
+                <div className="w-16 h-16 mx-auto mb-4 sage-gradient rounded-full flex items-center justify-center">
+                  <info.icon className="w-8 h-8 text-white" />
+                </div>
+                <h3 className="text-lg font-semibold text-stone-900 mb-2">
+                  {info.title}
+                </h3>
+                <div className="text-stone-700 font-medium mb-2 whitespace-pre-line">
+                  {info.details}
+                </div>
+                <p className="text-sm text-stone-500">
+                  {info.description}
+                </p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Contact Form & FAQ */}
+      <section className="py-20 premium-gradient">
+        <div className="container-premium">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
+            {/* Contact Form */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              className="card-premium p-8"
+            >
+              <div className="mb-8">
+                <h2 className="text-2xl font-bold text-stone-900 mb-4">
+                  Send us a Message
+                </h2>
+                <p className="text-stone-600">
+                  Fill out the form below and we'll get back to you as soon as possible.
+                </p>
+              </div>
+
+              <form onSubmit={handleSubmit} className="space-y-6">
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="name" className="block text-sm font-medium text-stone-700 mb-2">
+                      Full Name *
+                    </label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      required
+                      value={formData.name}
+                      onChange={handleChange}
+                      className="input-premium w-full"
+                      placeholder="Your full name"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="email" className="block text-sm font-medium text-stone-700 mb-2">
+                      Email Address *
+                    </label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      required
+                      value={formData.email}
+                      onChange={handleChange}
+                      className="input-premium w-full"
+                      placeholder="your@email.com"
+                    />
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                  <div>
+                    <label htmlFor="phone" className="block text-sm font-medium text-stone-700 mb-2">
+                      Phone Number
+                    </label>
+                    <input
+                      type="tel"
+                      id="phone"
+                      name="phone"
+                      value={formData.phone}
+                      onChange={handleChange}
+                      className="input-premium w-full"
+                      placeholder="(555) 123-4567"
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="subject" className="block text-sm font-medium text-stone-700 mb-2">
+                      Subject *
+                    </label>
+                    <select
+                      id="subject"
+                      name="subject"
+                      required
+                      value={formData.subject}
+                      onChange={handleChange}
+                      className="input-premium w-full"
+                    >
+                      <option value="">Select a topic</option>
+                      <option value="product-question">Product Question</option>
+                      <option value="order-support">Order Support</option>
+                      <option value="shipping">Shipping Inquiry</option>
+                      <option value="wholesale">Wholesale Inquiry</option>
+                      <option value="other">Other</option>
+                    </select>
+                  </div>
+                </div>
+
+                <div>
+                  <label htmlFor="message" className="block text-sm font-medium text-stone-700 mb-2">
+                    Message *
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    required
+                    rows={6}
+                    value={formData.message}
+                    onChange={handleChange}
+                    className="input-premium w-full resize-none"
+                    placeholder="Tell us how we can help you..."
+                  />
+                </div>
+
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className="btn-primary w-full disabled:opacity-50 disabled:cursor-not-allowed flex items-center justify-center"
+                >
+                  {isSubmitting ? (
+                    <div className="spinner" />
+                  ) : (
+                    <>
+                      <Send className="mr-2 w-4 h-4" />
+                      Send Message
+                    </>
+                  )}
+                </button>
+              </form>
+            </motion.div>
+
+            {/* FAQ Section */}
+            <motion.div
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+            >
+              <div className="mb-8">
+                <h2 className="text-2xl font-bold text-stone-900 mb-4">
+                  Frequently Asked Questions
+                </h2>
+                <p className="text-stone-600">
+                  Find quick answers to common questions about our products and services.
+                </p>
+              </div>
+
+              <div className="space-y-6">
+                {faqs.map((faq, index) => (
+                  <motion.div
+                    key={index}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: index * 0.1 }}
+                    className="card-premium p-6"
+                  >
+                    <h3 className="font-semibold text-stone-900 mb-3 flex items-start">
+                      <MessageCircle className="w-5 h-5 text-sage-600 mr-2 mt-0.5 flex-shrink-0" />
+                      {faq.question}
+                    </h3>
+                    <p className="text-stone-600 leading-relaxed pl-7">
+                      {faq.answer}
+                    </p>
+                  </motion.div>
+                ))}
+              </div>
+
+              <div className="mt-8 text-center">
+                <p className="text-stone-600 mb-4">
+                  Don't see your question? We're here to help!
+                </p>
+                <a
+                  href="mailto:hello@budlifenc.com"
+                  className="inline-flex items-center text-sage-600 hover:text-sage-700 font-medium transition-colors"
+                >
+                  <Mail className="mr-2 w-4 h-4" />
+                  Email us directly
+                </a>
+              </div>
+            </motion.div>
+          </div>
+        </div>
+      </section>
+
+      {/* Map Section Placeholder */}
+      <section className="py-20 bg-white">
+        <div className="container-premium">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="text-center mb-12"
+          >
+            <h2 className="text-3xl font-bold text-stone-900 mb-4">
+              Find Us in Asheville
+            </h2>
+            <p className="text-stone-600 max-w-2xl mx-auto">
+              Located in the beautiful Blue Ridge Mountains of North Carolina, 
+              we're proud to serve our community and customers nationwide.
+            </p>
+          </motion.div>
+          
+          <div className="card-premium p-8 text-center">
+            <div className="w-24 h-24 mx-auto mb-6 bg-sage-100 rounded-full flex items-center justify-center">
+              <MapPin className="w-12 h-12 text-sage-600" />
+            </div>
+            <h3 className="text-xl font-semibold text-stone-900 mb-2">
+              Interactive Map Coming Soon
+            </h3>
+            <p className="text-stone-600 mb-6">
+              We're working on adding an interactive map to help you find us easily.
+            </p>
+            <div className="text-stone-700">
+              <strong>Address:</strong><br />
+              123 Mountain View Drive<br />
+              Asheville, NC 28801
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+  )
+}

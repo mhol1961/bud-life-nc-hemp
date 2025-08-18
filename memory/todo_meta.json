@@ -33,14 +33,14 @@
         "id": "5",
         "content": "Full-stack e-commerce website development",
         "details": "1. Build responsive frontend with crysp.co-inspired design. 2. Implement product management system with Square integration. 3. Create customer features (accounts, cart, checkout, order history). 4. Implement age verification system. 5. Add admin dashboard for product CRUD operations. 6. Integrate Square API for payments. 7. Add GoHighLevel CRM integration. 8. Implement SEO optimization and analytics. 9. Add educational content sections.",
-        "status": "in_progress",
+        "status": "completed",
         "priority": "high"
       },
       "6": {
         "id": "6",
         "content": "Testing, deployment and final delivery",
         "details": "1. Test all features including payments and age verification. 2. Deploy to production environment. 3. Provide live preview URL. 4. Create setup documentation. 5. Verify premium aesthetic and functionality.",
-        "status": "pending",
+        "status": "in_progress",
         "priority": "medium"
       }
     }
