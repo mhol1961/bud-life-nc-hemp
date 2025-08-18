@@ -1,7 +1,8 @@
 import React, { useState } from 'react'
-import { Mail, Phone, MapPin, Clock, Send, MessageCircle } from 'lucide-react'
+import { Mail, Phone, Clock, Send, MessageCircle } from 'lucide-react'
 import { motion } from 'framer-motion'
 import toast from 'react-hot-toast'
+import { supabase } from '@/lib/supabase'
 
 export function ContactPage() {
   const [formData, setFormData] = useState({
@@ -17,18 +18,45 @@ export function ContactPage() {
     e.preventDefault()
     setIsSubmitting(true)
 
-    // Simulate form submission
-    await new Promise(resolve => setTimeout(resolve, 1000))
-    
-    toast.success('Message sent successfully! We\'ll get back to you soon.')
-    setFormData({
-      name: '',
-      email: '',
-      phone: '',
-      subject: '',
-      message: '',
-    })
-    setIsSubmitting(false)
+    try {
+      // Submit form to Supabase Edge Function
+      const { data, error } = await supabase.functions.invoke('contact-form', {
+        body: {
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          subject: formData.subject,
+          message: formData.message,
+        },
+        headers: {
+          'Content-Type': 'application/json'
+        }
+      })
+
+      if (error) {
+        console.error('Contact form error:', error)
+        throw new Error(error.message || 'Failed to send message')
+      }
+
+      if (data?.data?.success) {
+        toast.success(data.data.message || 'Message sent successfully! We\'ll get back to you soon.')
+        // Reset form
+        setFormData({
+          name: '',
+          email: '',
+          phone: '',
+          subject: '',
+          message: '',
+        })
+      } else {
+        throw new Error('Unexpected response from server')
+      }
+    } catch (error: any) {
+      console.error('Form submission error:', error)
+      toast.error(error.message || 'Failed to send message. Please try again or contact us directly.')
+    } finally {
+      setIsSubmitting(false)
+    }
   }
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -52,16 +80,16 @@ export function ContactPage() {
       description: 'Mon-Fri, 9AM-6PM EST',
     },
     {
-      icon: MapPin,
-      title: 'Visit Us',
-      details: '123 Mountain View Drive\nAsheville, NC 28801',
-      description: 'By appointment only',
-    },
-    {
       icon: Clock,
       title: 'Business Hours',
       details: 'Mon-Fri: 9AM-6PM\nSat: 10AM-4PM\nSun: Closed',
       description: 'Eastern Standard Time',
+    },
+    {
+      icon: MessageCircle,
+      title: 'Support',
+      details: 'Expert guidance available',
+      description: 'Product questions welcome',
     },
   ]
 
@@ -326,43 +354,6 @@ export function ContactPage() {
                 </a>
               </div>
             </motion.div>
-          </div>
-        </div>
-      </section>
-
-      {/* Map Section Placeholder */}
-      <section className="py-20 bg-white">
-        <div className="container-premium">
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            className="text-center mb-12"
-          >
-            <h2 className="text-3xl font-bold text-stone-900 mb-4">
-              Find Us in Asheville
-            </h2>
-            <p className="text-stone-600 max-w-2xl mx-auto">
-              Located in the beautiful Blue Ridge Mountains of North Carolina, 
-              we're proud to serve our community and customers nationwide.
-            </p>
-          </motion.div>
-          
-          <div className="card-premium p-8 text-center">
-            <div className="w-24 h-24 mx-auto mb-6 bg-sage-100 rounded-full flex items-center justify-center">
-              <MapPin className="w-12 h-12 text-sage-600" />
-            </div>
-            <h3 className="text-xl font-semibold text-stone-900 mb-2">
-              Interactive Map Coming Soon
-            </h3>
-            <p className="text-stone-600 mb-6">
-              We're working on adding an interactive map to help you find us easily.
-            </p>
-            <div className="text-stone-700">
-              <strong>Address:</strong><br />
-              123 Mountain View Drive<br />
-              Asheville, NC 28801
-            </div>
           </div>
         </div>
       </section>

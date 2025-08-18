@@ -429,7 +429,7 @@ const HomePage = () => {
               {/* Enhanced Professional Lab Image */}
               <div className="relative rounded-2xl shadow-2xl overflow-hidden h-[500px]">
                 <img 
-                  src="/images/facilities/lab_facility_professional_7.jpg" 
+                  src="/images/facilities/lab_facility_professional_1.jpg" 
                   alt="Professional Hemp Testing Laboratory"
                   className="w-full h-full object-cover"
                 />
