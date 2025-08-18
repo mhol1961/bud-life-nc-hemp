@@ -1,0 +1,31 @@
+📄 Extracted from page: Buddy: The Cannabis App
+URL: https://www.buddybrand.us/
+
+Extracted content:
+```json
+{
+    "title": "Buddy: The Cannabis App",
+    "url": "https://www.buddybrand.us/",
+    "summary": "The Buddy Cannabis App, launched in May 2022 by a group of friends from Sacramento, aims to provide a superior and personalized cannabis experience. It addresses the perceived shortcomings of existing apps by offering modern tools for cannabis explorers, including AI-powered features for product identification and information, a platform for community engagement and sharing experiences, and a system for trusted, real-user reviews.",
+    "key_points": [
+        "**App Purpose & Origin:** Built in May 2022 by friends in Sacramento, California, with the goal to offer a better cannabis app experience than currently available.",
+        "**Personalization:** Provides cannabis information 'personalized to YOU' to help users understand effects and genuine opinions.",
+        "**AI-Powered Features:** Integrates 'Meaningful AI' through features such as: \n    - **Image Recognition:** Users can take a picture of any product to find out everything about it in seconds.\n    - **Knowledge Machine:** A tool to get meaningful and trusted information about cannabis.",
+        "**Community & Social Interaction:** Encourages users to make friends, share cannabis experiences, and celebrate the cannabis community together.",
+        "**Real Reviews:** Offers a platform for 'Real Cannabis Reviews' that users can trust, allowing them to post about favorite products and see how others are using them.",
+        "**Navigation Elements:** Includes links for Features, Partners, Products, and Blog.",
+        "**Call to Action:** Features prominent 'Download Now' buttons.",
+        "**Footer Information:** Includes copyright © 2024 Buddy Org, Inc., links to Terms of Service, and a contact email (team@buddybrand.us)."
+    ],
+    "relevant_links": [
+        "#features",
+        "/partners",
+        "/products",
+        "/buddy-blog",
+        "#",
+        "/terms-of-service",
+        "mailto:team@buddybrand.us"
+    ],
+    "file_name": "buddy_cannabis_app_content.json"
+}
+```

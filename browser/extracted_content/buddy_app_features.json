@@ -1,0 +1,53 @@
+📄 Extracted from page: Buddy: The Cannabis App
+URL: https://www.buddybrand.us/#features
+
+Extracted content:
+```json
+{
+  "title": "Buddy: The Cannabis App",
+  "url": "https://www.buddybrand.us/#features",
+  "summary": "The Buddy app focuses on providing a modern and personalized cannabis exploration experience through AI-driven features, a comprehensive knowledge base, and interactive community tools. Key functionalities include AI for instant product identification from images, a system for personalized cannabis information, and social features like sharing experiences and real user reviews.",
+  "key_points": [
+    {
+      "feature_name": "AI-Powered Product Identification",
+      "description": "Users can take a picture of any cannabis product. The AI system processes the image to instantly (in seconds) identify the product and retrieve comprehensive information about it.",
+      "technical_capability": "Image recognition and integration with a 'knowledge machine' for data retrieval.",
+      "user_benefits": [
+        "Instant product identification.",
+        "Access to everything about the product in seconds.",
+        "Obtaining meaningful and trusted information about cannabis."
+      ]
+    },
+    {
+      "feature_name": "Personalized Cannabis Information System",
+      "description": "The app tailors cannabis information specifically to the individual user, aiming to enhance their understanding of products.",
+      "technical_capability": "Personalization algorithms (implied by 'personalized to YOU').",
+      "user_benefits": [
+        "Better understanding of one's cannabis.",
+        "Insight into how products might make them feel.",
+        "Access to genuine opinions from others about products."
+      ]
+    },
+    {
+      "feature_name": "Knowledge Machine",
+      "description": "An underlying tool mentioned as a source for reliable information.",
+      "technical_capability": "Information retrieval and data management system (likely AI-enhanced given its context under 'Meaningful AI').",
+      "user_benefits": [
+        "Access to meaningful and trusted information about cannabis."
+      ]
+    },
+    {
+      "feature_name": "Interactive Social Features",
+      "description": "The app fosters community engagement and shared experiences among cannabis users.",
+      "technical_capability": "Social networking functionalities, review submission and display systems.",
+      "user_benefits": [
+        "Ability to make friends and share cannabis experiences together.",
+        "Post reviews about favorite products.",
+        "View real reviews from other users for trustworthy insights."
+      ]
+    }
+  ],
+  "relevant_links": [],
+  "file_name": "buddy_app_features.json"
+}
+```

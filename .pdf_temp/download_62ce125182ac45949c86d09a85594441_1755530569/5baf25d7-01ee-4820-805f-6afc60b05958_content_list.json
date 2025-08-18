@@ -1,0 +1,122 @@
+[
+    {
+        "type": "text",
+        "text": "FIN-2020-G001 ",
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Issued:  June 29, 2020 ",
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Subject: FinCEN Guidance Regarding Due Diligence Requirements under the Bank Secrecy Act for Hemp-Related Business Customers ",
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "The Financial Crimes Enforcement Network (FinCEN) is issuing this guidance to address questions related to Bank Secrecy Act/Anti-Money Laundering (BSA/AML) regulatory requirements for hemp-related business customers.  This guidance explains how financial institutions1 can conduct due diligence for hemp-related businesses, and identifies the type of information and documentation financial institutions can collect from hemp-related businesses to comply with BSA regulatory requirements.  This clarification is intended to enhance the availability of financial services for, and the financial transparency of, hemp-related businesses in compliance with federal law.  This guidance supplements the December 3, 2019 interagency statement on providing financial services to customers engaged in hemp-related businesses (December Hemp Statement).2 ",
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "This guidance provides financial institutions BSA/AML risk considerations only for hemprelated businesses (i.e., businesses or individuals that grow hemp, and processors and manufacturers who purchase hemp directly from such growers).  This guidance does not replace or supersede FinCEN’s previous guidance on the BSA expectations regarding marijuana-related businesses (2014 Marijuana Guidance).3 ",
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Background ",
+        "text_level": 1,
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "The Agriculture Improvement Act of 2018 (the 2018 Farm Bill)4 removed hemp from the definition of marijuana in the Controlled Substances Act $(\\mathrm{CSA})^{5}$ and directed the establishment of a regulatory framework for the legal production of hemp.  The 2018 Farm ",
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "Bill defines “hemp” as the plant Cannabis sativa L. and any part of that plant, including the seeds thereof and all derivatives, extracts, cannabinoids, isomers, acids, salts, and salts of isomers, whether growing or not, with a delta-9 tetrahydrocannabinol (THC) concentration of not more than 0.3 percent on a dry weight basis.6 ",
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "On October 31, 2019, the U.S. Department of Agriculture (USDA) issued an interim final rule (Interim Final Rule) establishing the domestic hemp production regulatory program to facilitate the legal production of hemp, as set forth in the 2018 Farm Bill.7  Under the Interim Final Rule, state and tribal governments may submit plans to the USDA for approval to monitor and regulate the domestic production of hemp.  The Interim Final Rule: (i) establishes a federal licensing plan for regulating hemp producers in states and tribal territories that do not have their own USDA-approved plans, and that do not prohibit hemp production; and (ii) includes requirements for maintaining information on the land where hemp is produced, testing hemp for THC levels, disposing of plants with more than 0.3 percent THC concentration, and licensing hemp producers.8 ",
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "The 2018 Farm Bill explicitly preserved the authority of the U.S. Food and Drug Administration (FDA) to regulate products containing cannabis or cannabis-derived compounds, including hemp, under the Federal Food, Drug, and Cosmetic Act and section 351 of the Public Health Service Act. ",
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "BSA/AML Program Expectations ",
+        "text_level": 1,
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "Financial institutions must conduct customer due diligence (CDD) for all customers, including hemp-related businesses.  Financial institutions should obtain basic identifying information about hemp-related businesses through the application of the financial institutions’ customer identification programs and risk-based CDD processes, including beneficial ownership collection and verification, as they would for all customers.9  Financial institutions must also establish appropriate risk-based procedures for conducting ongoing CDD. ",
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "For customers who are hemp growers, financial institutions may confirm the hemp grower’s compliance with state, tribal government, or the USDA licensing requirements, as applicable, by either obtaining (1) a written attestation by the hemp grower that they are validly licensed, or (2) a copy of such license.  The extent to which a financial institution will seek additional information beyond the steps outlined above will depend on the financial institution’s assessment of the level of risk posed by each customer.  Additional information might include crop inspection or testing reports, license renewals, updated attestations from the business, or correspondence with the state, tribal government, or USDA.  In order to identify the risks posed, financial institutions must understand the nature and purpose of customer relationships for the purpose of developing a customer risk profile, and conduct ongoing monitoring to identify and report suspicious transactions, including, on a risk basis, to maintain and update customer information.10  As with any customer, FinCEN expects financial institutions to tailor their BSA/AML programs to reflect the risks associated with the customer’s particular risk profile and file reports required under the BSA. ",
+        "page_idx": 1
+    },
+    {
+        "type": "text",
+        "text": "",
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "Suspicious Activity Reporting ",
+        "text_level": 1,
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "As noted in the December Hemp Statement, because hemp is no longer a Schedule I controlled substance under the CSA, financial institutions are not required to file a Suspicious Activity Report (SAR) on customers solely because they are engaged in the growth or cultivation of hemp in accordance with applicable laws and regulations.  For hemp-related business customers, financial institutions are expected to follow standard SAR procedures and file a SAR if the financial institution becomes aware, in the normal course of business, of suspicious activity.  Such suspicious activity could include, among other things, the following: ",
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "•  A customer appears to be engaged in hemp production in a state or jurisdiction in which hemp production remains illegal.   \n•  A customer appears to be using a state-licensed hemp business as a front or pretext to launder money derived from other criminal activity or derived from marijuana-related activity that may not be permitted under applicable law.   \n•  A customer engaged in hemp production seeks to conceal or disguise involvement in marijuana-related business activity. The customer is unable or unwilling to certify or provide sufficient information to demonstrate that it is duly licensed and operating consistent with applicable law, or the financial institution becomes aware that the customer continues to operate (i) after a license revocation, or (ii) inconsistently with applicable law. ",
+        "page_idx": 2
+    },
+    {
+        "type": "text",
+        "text": "FinCEN expects financial institutions to monitor the transactions of hemp-related businesses for signs of suspicious or unlawful activity, just as with other customers.  To the extent the financial transactions of a hemp-related business are comingled with marijuana-related activities, a financial institution should apply FinCEN’s 2014 Marijuana Guidance, which provides clarity on how to file SARs on marijuana-related activities.  However, if the proceeds of the businesses are kept separate, or the customer and its financial institution are able to identify which proceeds are marijuana-related and which are hemp-related, then the 2014 Marijuana Guidance, including specific SAR filing, applies only to the marijuanarelated part of the business. ",
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Currency Transaction Reports and FinCEN Form 8300 ",
+        "text_level": 1,
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Financial institutions must report currency transactions in connection with hemp-related businesses in the same manner they would for any other customers (i.e., report all currency transactions above $^\\mathrm{\\Phi10,000}$ in aggregate on a single business day).  Similarly, any person or entity engaged in a non-financial trade or business would need to report on FinCEN Form 8300 (Report of Cash Payments Over $^\\mathrm{\\Phi10,000}$ Received in a Trade or Business) transactions in which the person receives more than $^\\mathrm{\\Phi10,000}$ in cash and other monetary instruments from a hemp-related business for the purchase of goods or services. ",
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "Additional Information ",
+        "text_level": 1,
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "For questions regarding the 2018 Farm Bill and its implementing regulations, financial institutions should contact the USDA, state departments of agriculture, or tribal governments.  For questions related to FDA-regulated products, financial institutions should contact the FDA.  For questions about this guidance, financial institutions should contact FinCEN’s Resource Center at frc@fincen.gov. ",
+        "page_idx": 3
+    },
+    {
+        "type": "text",
+        "text": "The mission of the Financial Crimes Enforcement Network is to safeguard the financial system from illicit use, combat money laundering and its related crimes including terrorism, and promote national security through the strategic use of financial authorities and the collection, analysis, and dissemination of financial intelligence. ",
+        "page_idx": 3
+    }
+]

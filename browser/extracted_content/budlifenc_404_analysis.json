@@ -1,0 +1,22 @@
+📄 Extracted from page: 404 - Page Not Found
+URL: https://www.budlifenc.com/shop
+
+Extracted content:
+```json
+{
+    "title": "404 - Page Not Found",
+    "url": "https://www.budlifenc.com/shop",
+    "summary": "This page is a standard 404 'Page Not Found' error, indicating that the specific URL 'https://www.budlifenc.com/shop' does not exist on the budlifenc.com website. It provides minimal content, primarily focusing on informing the user about the error and offering a way to return to the website's homepage. The existence of a '/shop' URL suggests an attempt to access or a previous existence of an e-commerce or product section on the site.",
+    "key_points": [
+        "The page explicitly confirms a '404 - Page Not Found' error.",
+        "The requested URL was '/shop', implying the website might have or previously had a shopping or product section.",
+        "It offers a single navigation option: a link back to the homepage.",
+        "The error page is minimal and functional, lacking extensive branding or additional navigation.",
+        "It confirms the website domain is 'budlifenc.com'."
+    ],
+    "relevant_links": [
+        "/"
+    ],
+    "file_name": "budlifenc_404_analysis.json"
+}
+```

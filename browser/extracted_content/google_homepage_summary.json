@@ -1,0 +1,38 @@
+📄 Extracted from page: Google
+URL: https://www.google.com/
+
+Extracted content:
+```json
+{
+    "title": "Google",
+    "url": "https://www.google.com/",
+    "summary": "The provided page content is the Google search homepage, not a partners page. It serves as the primary interface for Google Search, offering various interactive elements such as a search bar, 'I'm Feeling...' buttons for personalized search experiences, and feedback options for 'AI Mode'. The page also provides quick links to other core Google services like Gmail, Google Images, and the Google Store. A prominent promotion for the Google Pixel 10 Pro is displayed. Additionally, the footer contains a comprehensive set of links leading to information about Google's advertising and business services, how search works, AI initiatives, privacy policies, terms of service, and various search settings.",
+    "key_points": [
+        "The page presented is the Google search homepage, not a partners page, thus the original extraction goal cannot be fulfilled directly.",
+        "It functions as the central portal for conducting Google searches.",
+        "Provides convenient access to other significant Google services including Gmail, Images, and the Google Store.",
+        "Features a promotional offer for the Google Pixel 10 Pro.",
+        "Contains a wide range of footer links to inform users about Google's operations, policies (Privacy, Terms), and various search-related settings.",
+        "Includes unique interactive elements such as 'I'm Feeling...' search suggestions and an 'AI Mode' feedback option."
+    ],
+    "relevant_links": [
+        "https://about.google/?fg=1&utm_source=google-US&utm_medium=referral&utm_campaign=hp-header",
+        "https://store.google.com/US?utm_source=hp_header&utm_medium=google_ooo&utm_campaign=GS100042&hl=en-US",
+        "https://mail.google.com/mail/&ogbl",
+        "https://www.google.com/imghp?hl=en&ogbl",
+        "https://accounts.google.com/ServiceLogin?hl=en&passive=true&continue=https://www.google.com/&ec=futura_exp_og_so_72776762_e",
+        "https://www.google.com/intl/en_us/ads/?subid=ww-ww-et-g-awa-a-g_hpafoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpafooter&fg=1",
+        "https://www.google.com/services/?subid=ww-ww-et-g-awa-a-g_hpbfoot1_1!o2&utm_source=google.com&utm_medium=referral&utm_campaign=google_hpbfooter&fg=1",
+        "https://google.com/search/howsearchworks/?fg=1",
+        "https://ai.google/societal-impact/?utm_source=googlehpfooter&utm_medium=housepromos&utm_campaign=bottom-footer",
+        "https://policies.google.com/privacy?hl=en&fg=1",
+        "https://policies.google.com/terms?hl=en&fg=1",
+        "https://www.google.com/preferences?hl=en&fg=1",
+        "https://www.google.com/advanced_search?hl=en&fg=1",
+        "https://www.google.com/history/privacyadvisor/search/unauth?utm_source=googlemenu&fg=1&cctld=com",
+        "https://www.google.com/history/optout?hl=en&fg=1",
+        "https://support.google.com/websearch/?p=ws_results_help&hl=en&fg=1"
+    ],
+    "file_name": "google_homepage_summary.json"
+}
+```

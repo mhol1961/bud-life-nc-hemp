@@ -1,0 +1,295 @@
+{
+  "_source_id": 40,
+  "sources": {
+    "Binoid CBD E-commerce Features Analysis": {
+      "https://kimola.com/reports/in-depth-binoid-cbd-customer-feedback-analysis-report-trustpilot-en-us-145256": {
+        "id": 1,
+        "publisher": "Kimola Analytics",
+        "url": "https://kimola.com/reports/in-depth-binoid-cbd-customer-feedback-analysis-report-trustpilot-en-us-145256",
+        "title": "In-depth Binoid CBD Customer Feedback Analysis Report",
+        "info": "Customer feedback analysis showing mixed reviews - product quality praised but shipping delays and customer service issues identified as major problems affecting user experience"
+      },
+      "https://www.trustpilot.com/review/binoidcbd.com": {
+        "id": 2,
+        "publisher": "Trustpilot",
+        "url": "https://www.trustpilot.com/review/binoidcbd.com",
+        "title": "Binoid CBD Reviews on Trustpilot",
+        "info": "2.6/5 TrustScore based on 998 reviews revealing shipping delays, customer service issues, product quality concerns, and website functionality problems including international shipping false advertising"
+      },
+      "https://binoid-review.ams3.digitaloceanspaces.com/shipping-and-delivery-services-offered-by-binoidcbd.html": {
+        "id": 3,
+        "publisher": "Binoid Review",
+        "url": "https://binoid-review.ams3.digitaloceanspaces.com/shipping-and-delivery-services-offered-by-binoidcbd.html",
+        "title": "Shipping and Delivery Services Offered by BinoidCBD",
+        "info": "Detailed shipping features including $50 free shipping threshold, 24-hour processing, trackable shipments, express options, and comprehensive return policies"
+      }
+    },
+    "GetBudd Product Features Analysis": {
+      "https://www.getbudd.com/": {
+        "id": 4,
+        "publisher": "BUDD CBD",
+        "url": "https://www.getbudd.com/",
+        "title": "BUDD | Best CBD On The Market - Homepage",
+        "info": "Primary research subject - comprehensive CBD e-commerce website analysis including homepage structure, navigation, product catalog, and business information"
+      },
+      "https://www.getbudd.com/product/cbd-equisite-purple-lifter/": {
+        "id": 5,
+        "publisher": "BUDD CBD",
+        "url": "https://www.getbudd.com/product/cbd-equisite-purple-lifter/",
+        "title": "CBD Exquisite Purple Lifter - Product Detail Page",
+        "info": "Product detail page analysis for CBD Exquisite Purple Lifter showing product tabs, reviews section, and basic product information structure"
+      },
+      "https://www.getbudd.com/shop/": {
+        "id": 6,
+        "publisher": "BUDD CBD",
+        "url": "https://www.getbudd.com/shop/",
+        "title": "BUDD Shop - Product Browsing Page",
+        "info": "Shop page analysis revealing 25 total products, price filtering ($0-$750 range), product grid layout, and sorting functionality"
+      },
+      "https://www.getbudd.com/?s=cbd&post_type=product": {
+        "id": 7,
+        "publisher": "BUDD CBD",
+        "url": "https://www.getbudd.com/?s=cbd&post_type=product",
+        "title": "Search Results for CBD Products",
+        "info": "Search functionality tested with CBD query returning 21 relevant products, demonstrating effective search capabilities and filtering options"
+      }
+    },
+    "Age Verification Implementation for Cannabis/Hemp E-commerce": {
+      "https://withpersona.com/blog/incorporate-age-verification-into-business": {
+        "id": 8,
+        "publisher": "Persona (withpersona.com)",
+        "url": "https://withpersona.com/blog/incorporate-age-verification-into-business",
+        "title": "Effective Age Verification Strategies for Businesses",
+        "info": "Comprehensive age verification strategies including third-party verification, government ID verification, UX best practices, conversion optimization techniques, and compliance requirements. Covers processing times (~5 seconds), regulatory compliance (KYC, GDPR, COPPA), and implementation recommendations for age-restricted products."
+      },
+      "https://veratad.com/solutions/age-verification": {
+        "id": 9,
+        "publisher": "Veratad Technologies",
+        "url": "https://veratad.com/solutions/age-verification",
+        "title": "The Best Online Age Verification System: Simple and Secure",
+        "info": "Detailed features of Veratad VX orchestration platform including custom age verification journeys, multi-source verification, flexible deployment options, compliance support (KYC, FFEIC BSA/AML, OFAC, GDPR), and pricing model. Covers identity data verification for 5+ billion citizens with <1 second processing and 100M+ individuals verified."
+      },
+      "https://www.id.me/business/groups/age-verification": {
+        "id": 10,
+        "publisher": "ID.me",
+        "url": "https://www.id.me/business/groups/age-verification",
+        "title": "Age Verification Services",
+        "info": "ID.me's age verification services for targeting specific age groups (Seniors 50+, Millennials 22-37, Adults 21+), verification methods including database checks and manual document review, fraud protection capabilities, and frictionless customer experience features including 2-click re-verification."
+      },
+      "https://ipapi.co/": {
+        "id": 11,
+        "publisher": "ipapi.co (Kloudend)",
+        "url": "https://ipapi.co/",
+        "title": "IP Address Lookup and Geolocation API",
+        "info": "Comprehensive IP geolocation API service details including free and paid plans, technical specifications (REST API, IPv4/IPv6 support, multiple output formats), pricing structure, and implementation examples. Covers 30+ returnable fields including city, country, timezone, currency, and organization data."
+      },
+      "https://www.maxmind.com/en/geoip-api-web-services": {
+        "id": 12,
+        "publisher": "MaxMind",
+        "url": "https://www.maxmind.com/en/geoip-api-web-services",
+        "title": "IP Geolocation API MaxMind GeoIP Web Services",
+        "info": "MaxMind GeoIP Web Services overview including IP geolocation capabilities, data points available (country, region, city, ZIP/postal code, anonymizer type, confidence factors), and API access hosted on secure servers."
+      },
+      "https://ftxidentity.com/blog/selling-age-restricted-products/": {
+        "id": 13,
+        "publisher": "FTx Identity",
+        "url": "https://ftxidentity.com/blog/selling-age-restricted-products/",
+        "title": "The Complete Guide to Selling Age-Restricted Products In-Store and Online",
+        "info": "Comprehensive guide to age verification compliance for age-restricted products including legal requirements, financial consequences of non-compliance, modern verification methods (POS-integrated ID scanners, biometric matching, layered verification), and FTx Identity pricing ($25/month + $0.50 per scan). Covers compliance statistics showing 49.8% of tobacco/vape shops failing ID checks and fine ranges of $500-$5,000 per incident."
+      },
+      "https://incode.com/blog/age-verification-in-the-era-of-on-demand-delivery/": {
+        "id": 14,
+        "publisher": "Incode Technologies",
+        "url": "https://incode.com/blog/age-verification-in-the-era-of-on-demand-delivery/",
+        "title": "Age Verification in the Era of On-Demand Delivery",
+        "info": "UX best practices for age verification in on-demand delivery focusing on conversion rate optimization. Details three user-friendly verification methods: non-document database verification, facial age estimation using AI, and document-based verification. Emphasizes seamless customer journey, speed, low friction, and trust building. Incode ranked #1 globally by NIST for age estimation accuracy."
+      },
+      "https://www.sciencedirect.com/science/article/abs/pii/S1054139X23000678": {
+        "id": 15,
+        "publisher": "Science Direct / Journal of Adolescent Health",
+        "url": "https://www.sciencedirect.com/science/article/abs/pii/S1054139X23000678",
+        "title": "Absence of Age Verification for Online Purchases of Cannabidiol and Delta-8",
+        "info": "Academic study revealing significant compliance failures in CBD and Delta-8 THC online sales. Shows only 37.5% of CBD websites required age verification at purchase vs 70% for Delta-8. Zero products required age verification at delivery. Study covered 20 US states representing all Census regions."
+      },
+      "https://ftxidentity.com/blog/website-age-verification/": {
+        "id": 16,
+        "publisher": "FTx Identity",
+        "url": "https://ftxidentity.com/blog/website-age-verification/",
+        "title": "Website Age Verification 101: Safeguarding Your Site and Users",
+        "info": "Technical implementation guide for website age verification specifically mentioning CBD products requiring stricter verification systems. Covers 5-step implementation process: determining verification type needed, selecting age verification software, setting up user-friendly interfaces, integrating with security systems, and regular system audits."
+      },
+      "https://hyperverge.co/blog/age-verification-api/": {
+        "id": 17,
+        "publisher": "HyperVerge",
+        "url": "https://hyperverge.co/blog/age-verification-api/",
+        "title": "Top 10 Age Verification APIs in 2025",
+        "info": "Comprehensive guide covering top 10 age verification API providers including HyperVerge, Jumio, Ondato, Veriff, Trulioo, Onfido, Token of Trust, Incode, SurePass, and Persona. Details features, pricing models, and best use cases for each provider. Covers compliance requirements, accuracy factors, integration ease, and data security considerations."
+      },
+      "https://medium.com/loftydevs-squarespace-experts/ensuring-compliance-adding-an-age-verification-pop-up-in-squarespace-3822a3cb0bea": {
+        "id": 18,
+        "publisher": "LoftyDevs (Medium)",
+        "url": "https://medium.com/loftydevs-squarespace-experts/ensuring-compliance-adding-an-age-verification-pop-up-in-squarespace-3822a3cb0bea",
+        "title": "Ensuring Compliance: Adding an Age Verification Pop-up in Squarespace",
+        "info": "Complete step-by-step guide with actual HTML, CSS, and JavaScript code snippets for implementing age verification popups. Includes working code for popup structure, styling, and verification logic that can be applied to any website beyond Squarespace."
+      },
+      "https://www.ageverif.com/": {
+        "id": 19,
+        "publisher": "AgeVerif",
+        "url": "https://www.ageverif.com/",
+        "title": "AgeVerif – Free, Fast & Easy Age Verification Integration",
+        "info": "Free age verification integration solution offering multiple verification methods including selfie verification, credit card validation, and AI-powered biometric analysis. Provides 5-minute integration with single line of code, bank-level SSL encryption, and detailed API documentation."
+      },
+      "https://www.intuitsolutions.net/blog/case-study-multi-factor-customer-verification-on-nationally-known-vape-brand/": {
+        "id": 20,
+        "publisher": "IntuitSolutions",
+        "url": "https://www.intuitsolutions.net/blog/case-study-multi-factor-customer-verification-on-nationally-known-vape-brand/",
+        "title": "Multi-Factor Customer Verification for Nationally Known Vape Brand",
+        "info": "Multi-factor customer verification case study for vape brand showing implementation of two-step login verification, age/identity verification during account creation, checkout blocking for unverified users, and photo ID upload system using Veratad's services on BigCommerce platform."
+      },
+      "https://cannabiscreative.com/blog/ada-compliance-for-cannabis-websites/": {
+        "id": 21,
+        "publisher": "Cannabis Creative",
+        "url": "https://cannabiscreative.com/blog/ada-compliance-for-cannabis-websites/",
+        "title": "ADA Compliance for Cannabis Websites",
+        "info": "Cannabis website ADA compliance guide covering accessibility requirements under WCAG 2.1, mandatory age gate implementation for cannabis sites, and accessibility features including alternative text, keyboard navigation, and perceivable content for users with disabilities."
+      }
+    },
+    "THCA E-commerce Compliance Requirements": {
+      "https://www.marijuanamoment.net/dea-says-thca-does-not-meet-the-definition-of-legal-hemp-as-congress-weighs-cannabinoid-recriminalization-in-farm-bill/": {
+        "id": 22,
+        "publisher": "Marijuana Moment",
+        "url": "https://www.marijuanamoment.net/dea-says-thca-does-not-meet-the-definition-of-legal-hemp-as-congress-weighs-cannabinoid-recriminalization-in-farm-bill/",
+        "title": "DEA Says THCA Does Not Meet The Definition Of Legal Hemp",
+        "info": "DEA's official position that THCA must be counted toward total delta-9 THC because it converts to delta-9 THC upon decarboxylation. Post-decarboxylation testing method required for compliance with 0.3% limit."
+      },
+      "https://www.hempbeveragealliance.org/new-dropdown": {
+        "id": 23,
+        "publisher": "Hemp Beverage Alliance",
+        "url": "https://www.hempbeveragealliance.org/new-dropdown",
+        "title": "Regulatory Principles for Hemp Beverages",
+        "info": "Industry recommendations for 21+ age restrictions, licensing requirements, age verification systems, and marketing restrictions for hemp-derived products."
+      },
+      "https://www.mcglinchey.com/insights/hemp-industry-2024-state-and-federal-changes/": {
+        "id": 24,
+        "publisher": "McGlinchey Stafford",
+        "url": "https://www.mcglinchey.com/insights/hemp-industry-2024-state-and-federal-changes/",
+        "title": "Hemp Industry 2024: State and Federal Changes",
+        "info": "Comprehensive analysis of state-level hemp regulations, total THC testing requirements, and restrictions on synthetic cannabinoids across multiple states."
+      },
+      "https://www.ams.usda.gov/rules-regulations/hemp/enforcement": {
+        "id": 25,
+        "publisher": "USDA Agricultural Marketing Service",
+        "url": "https://www.ams.usda.gov/rules-regulations/hemp/enforcement",
+        "title": "USDA Hemp Enforcement Discretion - Interim Final Rule",
+        "info": "Federal hemp enforcement policies, THC testing requirements, laboratory standards, and disposal protocols for non-compliant hemp products."
+      },
+      "https://hurcann.com/blogs/omgherb/where-is-thca-hash-legal-in-2025-a-state-by-state-breakdown-for-u-s-consumers": {
+        "id": 26,
+        "publisher": "Hurcann",
+        "url": "https://hurcann.com/blogs/omgherb/where-is-thca-hash-legal-in-2025-a-state-by-state-breakdown-for-u-s-consumers",
+        "title": "Where Is THCA Hash Legal in 2025: State-by-State Breakdown",
+        "info": "Detailed state-by-state analysis of THCA legality, including states where THCA is legal, restricted, or banned, plus compliance requirements."
+      },
+      "https://greenfinancialservice.com/high-risk/thca/": {
+        "id": 27,
+        "publisher": "Green Financial Service",
+        "url": "https://greenfinancialservice.com/high-risk/thca/",
+        "title": "THCA Merchant Accounts - High Risk Credit Card Processing",
+        "info": "Payment processing challenges for THCA products, high-risk classification issues, and specialized merchant account requirements."
+      },
+      "https://www.bakeboxxwholesale.com/blogs/thca-warning-label-requirements-for-2025-compliance/": {
+        "id": 28,
+        "publisher": "Bakeboxx Wholesale",
+        "url": "https://www.bakeboxxwholesale.com/blogs/thca-warning-label-requirements-for-2025-compliance/",
+        "title": "THCA Warning Label Requirements for 2025 Compliance",
+        "info": "Comprehensive mandatory labeling requirements, warning statements, state-specific compliance requirements, and consequences of non-compliance."
+      },
+      "https://www.codecraftstudios.net/blog/how-to-sell-thca-online-legal-guide-for-hemp-websites-2025/": {
+        "id": 29,
+        "publisher": "CodeCraft Studios",
+        "url": "https://www.codecraftstudios.net/blog/how-to-sell-thca-online-legal-guide-for-hemp-websites-2025/",
+        "title": "How to Sell THCA Online: Legal Guide for Hemp Websites 2025",
+        "info": "Complete e-commerce compliance guide including business structure, licensing, age verification, payment processing, and operational requirements."
+      },
+      "https://www.acslab.com/compliance/understanding-hemp-compliance-meeting-usda-testing-standards": {
+        "id": 30,
+        "publisher": "ACS Laboratory",
+        "url": "https://www.acslab.com/compliance/understanding-hemp-compliance-meeting-usda-testing-standards",
+        "title": "Understanding Hemp Compliance: Meeting USDA Testing Standards",
+        "info": "USDA testing protocols, THC calculation methods, sampling procedures, measurement uncertainty requirements, and DEA registration requirements for labs."
+      },
+      "https://pmc.ncbi.nlm.nih.gov/articles/PMC8713259/": {
+        "id": 31,
+        "publisher": "PMC (PubMed Central)",
+        "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC8713259/",
+        "title": "Health Claims About Cannabidiol Products: A Retrospective Analysis of FDA Warning Letters",
+        "info": "Comprehensive analysis of FDA health claims restrictions for CBD products, including specific violations, enforcement actions, and compliance requirements. Details common illicit therapeutic claims and pharmacological effects."
+      },
+      "https://hemphop.co/blogs/news/2024-cannabis-advertising-key-policy-updates": {
+        "id": 32,
+        "publisher": "Hemp Hop",
+        "url": "https://hemphop.co/blogs/news/2024-cannabis-advertising-key-policy-updates",
+        "title": "2024 Cannabis Advertising: Key Policy Updates",
+        "info": "2024 advertising policy updates for hemp and CBD products across major platforms (Google, Facebook, Instagram), including restrictions on product types, health claims, and targeting requirements."
+      },
+      "https://harris-sliwoski.com/cannalawblog/cannabis-businesses-need-privacy-policies/": {
+        "id": 33,
+        "publisher": "Harris Sliwoski LLP",
+        "url": "https://harris-sliwoski.com/cannalawblog/cannabis-businesses-need-privacy-policies/",
+        "title": "Cannabis Businesses Need Privacy Policies",
+        "info": "Legal requirements for privacy policies in cannabis and hemp e-commerce, including CCPA, GDPR, and California internet privacy requirements for businesses collecting personal information."
+      },
+      "https://www.insureon.com/cannabis-business-insurance/state-laws": {
+        "id": 34,
+        "publisher": "Insureon",
+        "url": "https://www.insureon.com/cannabis-business-insurance/state-laws",
+        "title": "Cannabis Business Insurance: State Laws and Requirements",
+        "info": "State-by-state cannabis business insurance requirements, including mandatory coverage amounts, surety bonds, liability limits, and bonding requirements across all U.S. jurisdictions."
+      }
+    },
+    "AI Features Analysis - Cannabis & CBD Websites": {
+      "https://buddybrand.us": {
+        "id": 35,
+        "publisher": "Buddy Brand",
+        "url": "https://buddybrand.us",
+        "title": "Buddy Brand - AI-Powered Cannabis App",
+        "info": "Primary research target with AI product identification via photos, personalized recommendation engine with percentage matching, Ask Buddy chatbot, and social review system"
+      },
+      "https://virtualbudz.com/": {
+        "id": 36,
+        "publisher": "VirtualBudz",
+        "url": "https://virtualbudz.com/",
+        "title": "VirtualBudz BudBot AI Cannabis Chatbot",
+        "info": "Comprehensive AI budtender platform with NLP, voice AI, compliance features, real-time inventory integration, and advanced recommendation engine for dispensaries"
+      },
+      "https://virtualbudz.com/ai-product-bot": {
+        "id": 37,
+        "publisher": "VirtualBudz",
+        "url": "https://virtualbudz.com/ai-product-bot",
+        "title": "AI Budtender Cannabis Bot Features",
+        "info": "Detailed technical specifications of BudBot including cannabis-specific AI training, cross-selling intelligence, discount optimization, and compliance-built responses"
+      },
+      "https://dispensarymktg.com/blog/ai-budtenders/": {
+        "id": 38,
+        "publisher": "Dispensary Marketing",
+        "url": "https://dispensarymktg.com/blog/ai-budtenders/",
+        "title": "4 Best Cannabis AI Budtenders for Dispensary Websites",
+        "info": "Comparative analysis of AI budtender solutions including Spark Budtender, StrainBrain, Terpli, and Pluggi with detailed feature comparisons and accuracy assessments"
+      },
+      "https://www.charlottesweb.com/": {
+        "id": 39,
+        "publisher": "Charlotte's Web",
+        "url": "https://www.charlottesweb.com/",
+        "title": "Charlotte's Web CBD Product Finder",
+        "info": "Interactive product recommendation quiz and custom bundle creator for personalized CBD product matching and wellness customization"
+      },
+      "https://www.leafly.com/": {
+        "id": 40,
+        "publisher": "Leafly",
+        "url": "https://www.leafly.com/",
+        "title": "Leafly Cannabis Platform",
+        "info": "Cannabis discovery platform with strain filtering and ranking systems, though limited explicit AI implementation compared to other platforms"
+      }
+    }
+  }
+}

@@ -1,0 +1,27 @@
+📄 Extracted from page: Buddy: The Cannabis App
+URL: https://www.buddybrand.us/products
+
+Extracted content:
+```json
+{
+    "title": "Buddy: The Cannabis App",
+    "url": "https://www.buddybrand.us/products",
+    "summary": "This page, designated as the 'Products' section for 'Buddy: The Cannabis App', currently displays a 'Loading products...' message. This indicates that the actual product content is not yet visible or has failed to load. The page includes standard website navigation links, copyright information for Buddy Org, Inc., and footer links for Terms of Service and contact details.",
+    "key_points": [
+        "The page is the 'Products' section for 'Buddy: The Cannabis App'.",
+        "No product information is displayed; instead, a 'Loading products...' message is present.",
+        "Navigation links to Features, Partners, Products (current page), and Blog are available.",
+        "Copyright information for Buddy Org, Inc. (2024) is displayed.",
+        "Footer includes links to Terms of Service and a contact email address."
+    ],
+    "relevant_links": [
+        "/features",
+        "/partners",
+        "/products",
+        "/buddy-blog",
+        "/terms-of-service",
+        "mailto:team@buddybrand.us"
+    ],
+    "file_name": "buddy_products_page.json"
+}
+```
