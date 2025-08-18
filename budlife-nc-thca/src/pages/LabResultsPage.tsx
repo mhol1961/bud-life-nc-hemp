@@ -271,46 +271,73 @@ function COACard({ coa }: { coa: COAData }) {
 export function LabResultsPage() {
   return (
     <div className="min-h-screen bg-gradient-to-br from-emerald-50 to-forest-50">
-      {/* Hero Section */}
-      <section className="relative py-20 overflow-hidden">
-        {/* Background Image */}
+      {/* Enhanced Hero Section with Professional Laboratory Image */}
+      <section className="relative py-24 lg:py-32 overflow-hidden">
+        {/* Background Image with Professional Overlay */}
         <div className="absolute inset-0 z-0">
           <img 
             src="/images/hero/lab_results_testing.jpg" 
-            alt="Professional Hemp Laboratory Testing"
-            className="w-full h-full object-cover"
+            alt="Professional Hemp Laboratory Testing - Lab Technician in PPE Examining Sample with Hemp Plants"
+            className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-gradient-to-r from-emerald-600/80 to-forest-700/80" />
+          {/* Multi-layered overlay for optimal text readability while preserving image detail */}
+          <div className="absolute inset-0 bg-gradient-to-b from-black/60 via-black/40 to-black/70" />
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-900/50 to-forest-800/60" />
+          {/* Additional overlay for text area */}
+          <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/60" />
         </div>
         
-        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white">
-          <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-          >
-            <div className="w-20 h-20 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6">
-              <Shield className="w-10 h-10" />
-            </div>
-            <h1 className="text-4xl lg:text-6xl font-bold mb-6">
-              Lab Results & Certificates
-            </h1>
-            <p className="text-xl lg:text-2xl mb-8 opacity-90 max-w-3xl mx-auto leading-relaxed">
-              Complete transparency through third-party lab testing. Every batch is rigorously analyzed 
-              for potency, purity, and safety to ensure you receive only the highest quality products.
-            </p>
-            <div className="flex flex-wrap gap-4 justify-center">
-              <div className="bg-white/20 px-6 py-3 rounded-full">
-                <span className="font-semibold">✓ Third-Party Tested</span>
+        {/* Professional Content Overlay */}
+        <div className="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="text-center text-white">
+            <motion.div
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
+            >
+              {/* Professional Icon with Enhanced Styling */}
+              <div className="w-24 h-24 bg-white/25 backdrop-blur-sm rounded-full flex items-center justify-center mx-auto mb-8 border border-white/30 shadow-2xl">
+                <Shield className="w-12 h-12 drop-shadow-lg" />
               </div>
-              <div className="bg-white/20 px-6 py-3 rounded-full">
-                <span className="font-semibold">✓ Full Spectrum Analysis</span>
+              
+              {/* Enhanced Typography with Better Text Shadows */}
+              <h1 className="text-4xl lg:text-7xl font-bold mb-8 leading-tight" style={{ textShadow: '2px 2px 8px rgba(0,0,0,0.8), 0 0 20px rgba(0,0,0,0.5)' }}>
+                Lab Results &<br className="hidden sm:block" /> 
+                <span className="bg-gradient-to-r from-emerald-300 to-forest-200 bg-clip-text text-transparent">Certificates</span>
+              </h1>
+              
+              <div className="max-w-4xl mx-auto">
+                <p className="text-xl lg:text-2xl mb-10 leading-relaxed font-medium" style={{ textShadow: '1px 1px 4px rgba(0,0,0,0.8)' }}>
+                  Complete transparency through third-party lab testing. Every batch is rigorously analyzed 
+                  for potency, purity, and safety to ensure you receive only the highest quality products.
+                </p>
               </div>
-              <div className="bg-white/20 px-6 py-3 rounded-full">
-                <span className="font-semibold">✓ ISO Certified Labs</span>
+              
+              {/* Enhanced Trust Badges with Professional Styling */}
+              <div className="flex flex-wrap gap-4 justify-center mb-8">
+                <div className="bg-white/25 backdrop-blur-sm border border-white/30 px-8 py-4 rounded-full shadow-xl hover:bg-white/30 transition-all duration-300">
+                  <span className="font-bold text-lg" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>✓ Third-Party Tested</span>
+                </div>
+                <div className="bg-white/25 backdrop-blur-sm border border-white/30 px-8 py-4 rounded-full shadow-xl hover:bg-white/30 transition-all duration-300">
+                  <span className="font-bold text-lg" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>✓ Full Spectrum Analysis</span>
+                </div>
+                <div className="bg-white/25 backdrop-blur-sm border border-white/30 px-8 py-4 rounded-full shadow-xl hover:bg-white/30 transition-all duration-300">
+                  <span className="font-bold text-lg" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>✓ ISO Certified Labs</span>
+                </div>
               </div>
-            </div>
-          </motion.div>
+              
+              {/* Professional Quality Statement */}
+              <div className="bg-black/40 backdrop-blur-sm rounded-2xl p-6 max-w-2xl mx-auto border border-white/20 shadow-2xl">
+                <p className="text-lg font-medium italic" style={{ textShadow: '1px 1px 2px rgba(0,0,0,0.8)' }}>
+                  "Professional testing by certified laboratory technicians ensures every product meets the highest standards of quality and safety."
+                </p>
+              </div>
+            </motion.div>
+          </div>
         </div>
+        
+        {/* Decorative Elements */}
+        <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-emerald-50 to-transparent z-5" />
       </section>
 
       {/* Testing Process */}
