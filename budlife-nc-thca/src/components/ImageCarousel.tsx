@@ -33,43 +33,64 @@ export function ImageCarousel({
 }: ImageCarouselProps) {
   const [currentIndex, setCurrentIndex] = useState(0)
   const [isPaused, setIsPaused] = useState(false)
-  const [isAutoPlaying, setIsAutoPlaying] = useState(autoPlay)
+  const [isUserInteracting, setIsUserInteracting] = useState(false)
 
-  // Enhanced auto-play with better timer management
+  // Robust auto-play with improved timer management
   useEffect(() => {
-    if (!isAutoPlaying || isPaused || items.length <= 1) return
+    // Only auto-advance if autoPlay is enabled, not paused, not user interacting, and has multiple items
+    if (!autoPlay || isPaused || isUserInteracting || items.length <= 1) {
+      return
+    }
     
     const timer = setInterval(() => {
       setCurrentIndex((prevIndex) => {
         const nextIndex = (prevIndex + 1) % items.length
-        console.log(`Auto-advancing carousel: ${prevIndex} -> ${nextIndex}`)
+        console.log(`Auto-advancing carousel: slide ${prevIndex + 1} -> slide ${nextIndex + 1}`)
         return nextIndex
       })
     }, interval)
 
-    console.log(`Carousel auto-play started with ${interval}ms interval`)
+    console.log(`Carousel auto-play active with ${interval}ms interval`)
     return () => {
       clearInterval(timer)
-      console.log('Carousel auto-play timer cleaned up')
+      console.log('Carousel auto-play timer cleared')
     }
-  }, [isAutoPlaying, isPaused, interval, items.length])
+  }, [autoPlay, isPaused, isUserInteracting, interval, items.length, currentIndex])
 
-  // Initialize auto-play
+  // Reset user interaction flag after a delay
   useEffect(() => {
-    setIsAutoPlaying(autoPlay)
-    console.log(`Carousel auto-play ${autoPlay ? 'enabled' : 'disabled'}`)
-  }, [autoPlay])
+    if (!isUserInteracting) return
+    
+    const resetTimer = setTimeout(() => {
+      setIsUserInteracting(false)
+      console.log('Resuming auto-play after user interaction')
+    }, 3000) // Resume auto-play 3 seconds after user interaction
+    
+    return () => clearTimeout(resetTimer)
+  }, [isUserInteracting])
 
   const goToSlide = (index: number) => {
     setCurrentIndex(index)
+    setIsUserInteracting(true)
+    console.log(`User navigated to slide ${index + 1}`)
   }
 
   const goToPrevious = () => {
-    setCurrentIndex((prevIndex) => (prevIndex - 1 + items.length) % items.length)
+    setCurrentIndex((prevIndex) => {
+      const newIndex = (prevIndex - 1 + items.length) % items.length
+      console.log(`User navigated to previous slide: ${newIndex + 1}`)
+      return newIndex
+    })
+    setIsUserInteracting(true)
   }
 
   const goToNext = () => {
-    setCurrentIndex((prevIndex) => (prevIndex + 1) % items.length)
+    setCurrentIndex((prevIndex) => {
+      const newIndex = (prevIndex + 1) % items.length
+      console.log(`User navigated to next slide: ${newIndex + 1}`)
+      return newIndex
+    })
+    setIsUserInteracting(true)
   }
 
   if (!items.length) return null
@@ -77,8 +98,14 @@ export function ImageCarousel({
   return (
     <div 
       className={`relative overflow-hidden ${height} ${className}`}
-      onMouseEnter={() => setIsPaused(true)}
-      onMouseLeave={() => setIsPaused(false)}
+      onMouseEnter={() => {
+        setIsPaused(true)
+        console.log('Carousel paused on mouse enter')
+      }}
+      onMouseLeave={() => {
+        setIsPaused(false)
+        console.log('Carousel resumed on mouse leave')
+      }}
     >
       {/* Carousel Items */}
       <AnimatePresence mode="wait">
