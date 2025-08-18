@@ -1,2 +1,3 @@
-2025/08/18-14:26:19.779 1a1 Creating DB /workspace/browser/user_data/Default/Local Storage/leveldb since it was missing.
-2025/08/18-14:26:19.789 1a1 Reusing MANIFEST /workspace/browser/user_data/Default/Local Storage/leveldb/MANIFEST-000001
+2025/08/18-19:50:39.393 ca5 Reusing MANIFEST /workspace/browser/user_data/Default/Local Storage/leveldb/MANIFEST-000001
+2025/08/18-19:50:39.396 ca5 Recovering log #3
+2025/08/18-19:50:39.396 ca5 Reusing old log /workspace/browser/user_data/Default/Local Storage/leveldb/000003.log 

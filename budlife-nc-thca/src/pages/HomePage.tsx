@@ -19,7 +19,7 @@ const HomePage = () => {
       title: 'Lab-Tested Excellence',
       subtitle: 'Every batch rigorously tested for purity and potency',
       description: 'Third-party COAs available for complete transparency and peace of mind.',
-      backgroundImage: '/images/facilities/lab_facility_professional_1.jpg'
+      backgroundImage: '/images/facilities/lab_testing_facility.jpg'
     },
     {
       id: 'craft-cultivation',
@@ -429,7 +429,7 @@ const HomePage = () => {
               {/* Enhanced Professional Lab Image */}
               <div className="relative rounded-2xl shadow-2xl overflow-hidden h-[500px]">
                 <img 
-                  src="/images/facilities/lab_facility_professional_1.jpg" 
+                  src="/images/facilities/lab_testing_facility.jpg" 
                   alt="Professional Hemp Testing Laboratory"
                   className="w-full h-full object-cover"
                 />
