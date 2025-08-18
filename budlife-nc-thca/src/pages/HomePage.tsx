@@ -1,88 +1,85 @@
 import React, { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
-import { ArrowRight, Leaf, Shield, Star, Award, ChevronDown, Play, Pause } from 'lucide-react'
+import { ArrowRight, Leaf, Shield, Star, Award, ChevronDown, Play, Pause, Truck, Clock, Users, CheckCircle } from 'lucide-react'
+import { ImageCarousel, ScrollingBanner } from '@/components/ImageCarousel'
 
 const HomePage = () => {
-  const [currentHeroIndex, setCurrentHeroIndex] = useState(0)
-  const [isPaused, setIsPaused] = useState(false)
-
-  const heroBackgrounds = [
+  // Hero carousel data with professional backgrounds
+  const heroSlides = [
     {
-      image: '/images/nc_hemp_farm_5.jpg',
+      id: 'premium-thca',
       title: 'Premium THCA From North Carolina',
       subtitle: 'Experience the difference that artisanal cultivation makes',
+      description: 'Hand-selected genetics, climate precision cultivation, and 30+ day curing for unmatched quality.',
+      backgroundImage: '/images/hero/nc_mountains_branding_7.jpg'
     },
     {
-      image: '/images/cannabis_leaf_logo_9.png',
+      id: 'lab-tested',
       title: 'Lab-Tested Excellence',
       subtitle: 'Every batch rigorously tested for purity and potency',
+      description: 'Third-party COAs available for complete transparency and peace of mind.',
+      backgroundImage: '/images/facilities/lab_facility_professional_1.jpg'
     },
     {
-      image: '/images/nc_hemp_farm_0.jpg',
-      title: 'Craft Cultivation',
+      id: 'craft-cultivation',
+      title: 'Craft Cultivation Mastery',
       subtitle: 'Small-batch, hand-trimmed perfection',
+      description: '15,000 sq ft indoor facility with 16-week cycles and artisanal care.',
+      backgroundImage: '/images/facilities/indoor_grow_facility_1.webp'
     },
+    {
+      id: 'organic-purity',
+      title: '100% Organic Purity',
+      subtitle: 'Certified organic, pesticide-free excellence',
+      description: 'Radical transparency through uncompromising organic cultivation methods.',
+      backgroundImage: '/images/hero/hemp_field_nc_farming_7.jpg'
+    }
   ]
 
-  useEffect(() => {
-    if (!isPaused) {
-      const interval = setInterval(() => {
-        setCurrentHeroIndex((prevIndex) => (prevIndex + 1) % heroBackgrounds.length)
-      }, 6000)
-      return () => clearInterval(interval)
-    }
-  }, [isPaused, heroBackgrounds.length])
+  // Scrolling messages for promotional banner
+  const scrollingMessages = [
+    { id: 'shipping', text: 'FREE SHIPPING on orders over $75', icon: Truck },
+    { id: 'testing', text: 'Third-party lab tested for purity', icon: Shield },
+    { id: 'organic', text: '100% Organic cultivation methods', icon: Leaf },
+    { id: 'support', text: '24/7 Customer support available', icon: Users },
+    { id: 'guarantee', text: 'Satisfaction guaranteed or money back', icon: CheckCircle },
+  ]
 
   return (
     <div className="min-h-screen">
-      {/* Dynamic Hero Section */}
-      <section className="relative min-h-screen flex items-center justify-center overflow-hidden">
-        {/* Dynamic Background Images */}
-        {heroBackgrounds.map((bg, index) => (
-          <motion.div
-            key={index}
-            className="absolute inset-0 bg-cover bg-center bg-no-repeat"
-            style={{
-              backgroundImage: `linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3)), url("${bg.image}")`,
-              zIndex: currentHeroIndex === index ? 2 : 1,
-            }}
-            initial={{ opacity: 0 }}
-            animate={{ opacity: currentHeroIndex === index ? 1 : 0 }}
-            transition={{ duration: 1.5, ease: 'easeInOut' }}
-          />
-        ))}
+      {/* Promotional Banner */}
+      <ScrollingBanner 
+        messages={scrollingMessages}
+        speed={30}
+        backgroundColor="bg-emerald-600"
+        textColor="text-white"
+        height="h-12"
+      />
 
-        {/* Overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/50 z-10" />
+      {/* Enhanced Hero Carousel */}
+      <section className="relative">
+        <ImageCarousel
+          items={heroSlides}
+          autoPlay={true}
+          interval={7000}
+          showIndicators={true}
+          showArrows={true}
+          height="h-screen"
+          className=""
+        />
         
-        <div className="relative z-20 text-center text-white px-4 max-w-7xl mx-auto">
-          <motion.div
-            key={currentHeroIndex}
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
-            className="mb-8"
-          >
-            <h1 className="text-5xl lg:text-7xl font-bold mb-6 drop-shadow-2xl leading-tight">
-              {heroBackgrounds[currentHeroIndex].title}
-            </h1>
-            
-            <p className="text-xl lg:text-2xl mb-12 opacity-90 leading-relaxed drop-shadow-lg max-w-4xl mx-auto">
-              {heroBackgrounds[currentHeroIndex].subtitle}
-            </p>
-          </motion.div>
-
-          {/* CTA Buttons */}
+        {/* Hero CTAs Overlay */}
+        <div className="absolute bottom-24 left-1/2 transform -translate-x-1/2 z-30">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.4 }}
-            className="flex flex-col sm:flex-row items-center justify-center gap-6 mb-16"
+            transition={{ duration: 0.8, delay: 1.2 }}
+            className="flex flex-col sm:flex-row items-center justify-center gap-6"
           >
             <Link
               to="/products"
-              className="group relative px-10 py-5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-emerald-500/25 flex items-center gap-3 backdrop-blur-sm"
+              className="group relative px-12 py-5 bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-lg rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-emerald-500/25 flex items-center gap-3 backdrop-blur-sm"
             >
               <span>Shop Premium Hemp</span>
               <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
@@ -90,56 +87,46 @@ const HomePage = () => {
             
             <Link
               to="/lab-results"
-              className="px-10 py-5 border-2 border-white/80 hover:border-white text-white hover:bg-white hover:text-black font-bold text-lg rounded-2xl transition-all duration-300 backdrop-blur-sm flex items-center gap-3"
+              className="px-12 py-5 border-2 border-white/80 hover:border-white text-white hover:bg-white hover:text-black font-bold text-lg rounded-2xl transition-all duration-300 backdrop-blur-sm flex items-center gap-3"
             >
               <Shield className="w-6 h-6" />
               View Lab Results
             </Link>
           </motion.div>
-
-          {/* Hero Control Buttons */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 0.8, delay: 0.8 }}
-            className="flex items-center justify-center gap-4 mb-8"
-          >
-            <button
-              onClick={() => setIsPaused(!isPaused)}
-              className="bg-white/20 hover:bg-white/30 backdrop-blur-sm rounded-full p-3 transition-colors"
-            >
-              {isPaused ? <Play className="w-5 h-5" /> : <Pause className="w-5 h-5" />}
-            </button>
-            
-            <div className="flex gap-2">
-              {heroBackgrounds.map((_, index) => (
-                <button
-                  key={index}
-                  onClick={() => setCurrentHeroIndex(index)}
-                  className={`w-3 h-3 rounded-full transition-all ${
-                    currentHeroIndex === index 
-                      ? 'bg-white scale-125' 
-                      : 'bg-white/50 hover:bg-white/75'
-                  }`}
-                />
-              ))}
-            </div>
-          </motion.div>
-
-          {/* Scroll Indicator */}
-          <motion.div 
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 1.5 }}
-            className="absolute bottom-8 left-1/2 transform -translate-x-1/2"
-          >
-            <ChevronDown className="w-8 h-8 text-white animate-bounce drop-shadow-lg" />
-          </motion.div>
         </div>
       </section>
 
-      {/* Premium Quality Showcase */}
-      <section className="py-24 bg-gradient-to-b from-white to-emerald-50">
+      {/* Trust Badges */}
+      <section className="py-16 bg-white border-b border-gray-100">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {[
+              { icon: Shield, title: 'Lab Tested', subtitle: '3rd Party Verified' },
+              { icon: Leaf, title: '100% Organic', subtitle: 'Pesticide Free' },
+              { icon: Award, title: 'Premium Quality', subtitle: 'Artisan Crafted' },
+              { icon: Truck, title: 'Fast Shipping', subtitle: 'Nationwide Delivery' }
+            ].map((badge, index) => (
+              <motion.div
+                key={badge.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: index * 0.1, duration: 0.6 }}
+                className="flex flex-col items-center"
+              >
+                <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mb-4">
+                  <badge.icon className="w-8 h-8 text-emerald-600" />
+                </div>
+                <h3 className="text-lg font-bold text-gray-900 mb-1">{badge.title}</h3>
+                <p className="text-sm text-gray-600">{badge.subtitle}</p>
+              </motion.div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Premium Quality Showcase with Enhanced Visuals */}
+      <section className="py-24 bg-gradient-to-br from-emerald-50 via-white to-forest-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -161,21 +148,24 @@ const HomePage = () => {
             {[
               {
                 icon: Shield,
-                title: 'Third-Party Tested',
-                description: 'Every batch undergoes comprehensive testing for potency, pesticides, heavy metals, and microbials.',
-                color: 'from-emerald-500 to-forest-600'
+                title: 'Radical Transparency',
+                description: 'Every batch undergoes comprehensive testing for potency, pesticides, heavy metals, and microbials. COAs publicly available.',
+                color: 'from-emerald-500 to-forest-600',
+                accentColor: 'text-emerald-600'
               },
               {
-                icon: Award,
-                title: '30+ Day Curing',
-                description: 'Extended curing process enhances flavor, potency, and overall quality for superior products.',
-                color: 'from-gold-500 to-amber-600'
+                icon: Clock,
+                title: 'Extended Curing',
+                description: '30+ day curing process enhances flavor, potency, and overall quality for superior products that stand apart.',
+                color: 'from-gold-500 to-amber-600',
+                accentColor: 'text-amber-600'
               },
               {
                 icon: Leaf,
-                title: '100% Organic',
-                description: 'Certified organic cultivation methods ensure pure, clean products free from harmful chemicals.',
-                color: 'from-forest-500 to-emerald-600'
+                title: 'Organic Excellence',
+                description: 'Certified organic cultivation methods ensure pure, clean products free from harmful chemicals and pesticides.',
+                color: 'from-forest-500 to-emerald-600',
+                accentColor: 'text-forest-600'
               }
             ].map((feature, index) => (
               <motion.div
@@ -184,9 +174,14 @@ const HomePage = () => {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.6, delay: index * 0.2 }}
-                className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-emerald-100 hover:border-emerald-200 group"
+                className="bg-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 border border-emerald-100 hover:border-emerald-200 group relative overflow-hidden"
               >
-                <div className={`w-16 h-16 bg-gradient-to-br ${feature.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300`}>
+                {/* Background Pattern */}
+                <div className="absolute top-0 right-0 w-32 h-32 opacity-5 transform rotate-12 translate-x-8 -translate-y-8">
+                  <feature.icon className="w-full h-full" />
+                </div>
+                
+                <div className={`w-16 h-16 bg-gradient-to-br ${feature.color} rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform duration-300 shadow-lg`}>
                   <feature.icon className="w-8 h-8 text-white" />
                 </div>
                 <h3 className="text-2xl font-bold mb-4 text-black-900">
@@ -195,14 +190,15 @@ const HomePage = () => {
                 <p className="text-forest-600 leading-relaxed">
                   {feature.description}
                 </p>
+                <div className={`mt-4 h-1 w-12 bg-gradient-to-r ${feature.color} rounded-full`} />
               </motion.div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* Featured Products Section - Enhanced */}
-      <section className="py-24 bg-black text-white">
+      {/* Premium Product Showcase with Enhanced Carousel */}
+      <section className="py-24 bg-gradient-to-b from-black via-gray-900 to-black text-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div 
             initial={{ opacity: 0, y: 30 }}
@@ -214,108 +210,131 @@ const HomePage = () => {
             <h2 className="text-4xl lg:text-5xl font-bold mb-6">
               Premium Strain Collection
             </h2>
-            <p className="text-xl text-cream-300 max-w-3xl mx-auto">
+            <p className="text-xl text-gray-300 max-w-3xl mx-auto">
               Hand-selected genetics, precision cultivated, and artfully cured to perfection.
             </p>
           </motion.div>
 
+          {/* Enhanced Product Cards */}
           <div className="grid lg:grid-cols-2 gap-12 max-w-6xl mx-auto">
-            {/* Jealousy Strain - Enhanced */}
+            {/* Jealousy Strain - Enhanced with Animation */}
             <motion.div 
               initial={{ opacity: 0, x: -50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8 }}
               className="group relative overflow-hidden rounded-3xl shadow-2xl hover:shadow-purple-500/20 transition-all duration-500"
             >
-              <div className="relative h-96 overflow-hidden">
+              <div className="relative h-96 overflow-hidden bg-gradient-to-br from-purple-900 via-purple-800 to-black">
                 <img 
                   src="/images/jealousy_flower.png" 
                   alt="Jealousy Strain THCA Flower"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 mix-blend-overlay opacity-80"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-                <div className="absolute top-6 right-6 bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                  AAA Indoor
+                {/* Animated overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-purple-900/50 to-transparent opacity-90" />
+                <div className="absolute inset-0 bg-purple-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="absolute top-6 right-6 bg-purple-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg backdrop-blur-sm">
+                  AAA Indoor • 24.8% THCA
                 </div>
+                
                 <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <h3 className="text-4xl font-bold mb-3 text-white drop-shadow-lg">Jealousy</h3>
-                  <p className="text-cream-200 text-lg mb-6 leading-relaxed">
-                    Premium hybrid with stunning purple hues and complex terpene profile. 
-                    A connoisseur's choice for exceptional potency and flavor.
-                  </p>
-                  
-                  <div className="flex gap-4 mb-6">
-                    <div className="bg-black/60 backdrop-blur-sm rounded-xl p-4 flex-1 border border-purple-500/30">
-                      <div className="text-purple-300 font-bold text-sm mb-1">3.5G</div>
-                      <div className="text-white text-2xl font-bold">$35</div>
-                    </div>
-                    <div className="bg-black/60 backdrop-blur-sm rounded-xl p-4 flex-1 border border-purple-500/30">
-                      <div className="text-purple-300 font-bold text-sm mb-1">7G</div>
-                      <div className="text-white text-2xl font-bold">$65</div>
-                    </div>
-                  </div>
-
-                  <Link
-                    to="/products/jealousy"
-                    className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3 shadow-xl"
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3, duration: 0.6 }}
                   >
-                    Explore Jealousy
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
+                    <h3 className="text-4xl font-bold mb-3 text-white drop-shadow-lg">Jealousy</h3>
+                    <p className="text-gray-200 text-lg mb-6 leading-relaxed">
+                      Premium hybrid showcasing stunning purple hues and complex terpene profile. 
+                      A connoisseur's choice for exceptional potency and flavor complexity.
+                    </p>
+                    
+                    <div className="flex gap-4 mb-6">
+                      <div className="bg-black/60 backdrop-blur-sm rounded-xl p-4 flex-1 border border-purple-500/30 hover:border-purple-400/50 transition-colors">
+                        <div className="text-purple-300 font-bold text-sm mb-1">3.5G</div>
+                        <div className="text-white text-2xl font-bold">$35</div>
+                      </div>
+                      <div className="bg-black/60 backdrop-blur-sm rounded-xl p-4 flex-1 border border-purple-500/30 hover:border-purple-400/50 transition-colors">
+                        <div className="text-purple-300 font-bold text-sm mb-1">7G</div>
+                        <div className="text-white text-2xl font-bold">$65</div>
+                      </div>
+                    </div>
+
+                    <Link
+                      to="/products/jealousy"
+                      className="w-full bg-gradient-to-r from-purple-600 to-purple-700 hover:from-purple-500 hover:to-purple-600 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3 shadow-xl backdrop-blur-sm"
+                    >
+                      Explore Jealousy
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
 
-            {/* Gushers Strain - Enhanced */}
+            {/* Gushers Strain - Enhanced with Animation */}
             <motion.div 
               initial={{ opacity: 0, x: 50 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.6 }}
+              transition={{ duration: 0.8 }}
               className="group relative overflow-hidden rounded-3xl shadow-2xl hover:shadow-emerald-500/20 transition-all duration-500"
             >
-              <div className="relative h-96 overflow-hidden">
+              <div className="relative h-96 overflow-hidden bg-gradient-to-br from-emerald-900 via-emerald-800 to-black">
                 <img 
                   src="/images/gushers_flower.png" 
                   alt="Gushers Strain THCA Flower"
-                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700"
+                  className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-700 mix-blend-overlay opacity-80"
                 />
-                <div className="absolute inset-0 bg-gradient-to-t from-black via-black/50 to-transparent" />
-                <div className="absolute top-6 right-6 bg-emerald-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg">
-                  Top Shelf
+                {/* Animated overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black via-emerald-900/50 to-transparent opacity-90" />
+                <div className="absolute inset-0 bg-emerald-500/10 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+                
+                <div className="absolute top-6 right-6 bg-emerald-600 text-white px-4 py-2 rounded-full text-sm font-bold shadow-lg backdrop-blur-sm">
+                  Top Shelf • 22.4% THCA
                 </div>
+                
                 <div className="absolute bottom-0 left-0 right-0 p-8">
-                  <h3 className="text-4xl font-bold mb-3 text-white drop-shadow-lg">Gushers</h3>
-                  <p className="text-cream-200 text-lg mb-6 leading-relaxed">
-                    Sweet, fruity perfection with dense, trichome-covered buds. 
-                    Customer favorite for its incredible flavor and smooth experience.
-                  </p>
-                  
-                  <div className="flex gap-4 mb-6">
-                    <div className="bg-black/60 backdrop-blur-sm rounded-xl p-4 flex-1 border border-emerald-500/30">
-                      <div className="text-emerald-300 font-bold text-sm mb-1">3.5G</div>
-                      <div className="text-white text-2xl font-bold">$30</div>
-                    </div>
-                    <div className="bg-black/60 backdrop-blur-sm rounded-xl p-4 flex-1 border border-emerald-500/30">
-                      <div className="text-emerald-300 font-bold text-sm mb-1">7G</div>
-                      <div className="text-white text-2xl font-bold">$55</div>
-                    </div>
-                  </div>
-
-                  <Link
-                    to="/products/gushers"
-                    className="w-full bg-gradient-to-r from-emerald-600 to-forest-600 hover:from-emerald-500 hover:to-forest-500 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3 shadow-xl"
+                  <motion.div
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: 0.3, duration: 0.6 }}
                   >
-                    Explore Gushers
-                    <ArrowRight className="w-5 h-5" />
-                  </Link>
+                    <h3 className="text-4xl font-bold mb-3 text-white drop-shadow-lg">Gushers</h3>
+                    <p className="text-gray-200 text-lg mb-6 leading-relaxed">
+                      Sweet, fruity perfection with dense, trichome-covered buds. 
+                      Customer favorite for incredible flavor profile and smooth experience.
+                    </p>
+                    
+                    <div className="flex gap-4 mb-6">
+                      <div className="bg-black/60 backdrop-blur-sm rounded-xl p-4 flex-1 border border-emerald-500/30 hover:border-emerald-400/50 transition-colors">
+                        <div className="text-emerald-300 font-bold text-sm mb-1">3.5G</div>
+                        <div className="text-white text-2xl font-bold">$30</div>
+                      </div>
+                      <div className="bg-black/60 backdrop-blur-sm rounded-xl p-4 flex-1 border border-emerald-500/30 hover:border-emerald-400/50 transition-colors">
+                        <div className="text-emerald-300 font-bold text-sm mb-1">7G</div>
+                        <div className="text-white text-2xl font-bold">$55</div>
+                      </div>
+                    </div>
+
+                    <Link
+                      to="/products/gushers"
+                      className="w-full bg-gradient-to-r from-emerald-600 to-forest-600 hover:from-emerald-500 hover:to-forest-500 text-white font-bold py-4 px-8 rounded-2xl transition-all duration-300 transform hover:scale-105 flex items-center justify-center gap-3 shadow-xl backdrop-blur-sm"
+                    >
+                      Explore Gushers
+                      <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+                    </Link>
+                  </motion.div>
                 </div>
               </div>
             </motion.div>
           </div>
 
-          {/* View All Products CTA */}
+          {/* Enhanced CTA */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -327,14 +346,14 @@ const HomePage = () => {
               to="/products"
               className="inline-flex items-center gap-3 bg-gradient-to-r from-gold-500 to-amber-600 hover:from-gold-400 hover:to-amber-500 text-black font-bold px-12 py-6 rounded-2xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-gold-500/25 text-xl"
             >
-              <span>View All Premium Products</span>
+              <span>Explore Full Collection</span>
               <ArrowRight className="w-6 h-6" />
             </Link>
           </motion.div>
         </div>
       </section>
 
-      {/* Trust & Transparency */}
+      {/* Enhanced Trust & Transparency with Professional Image */}
       <section className="py-24 bg-gradient-to-br from-emerald-50 to-forest-50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid lg:grid-cols-2 gap-16 items-center">
@@ -374,12 +393,25 @@ const HomePage = () => {
                     </p>
                   </div>
                 </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <Award className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-black-900">Certified Quality</h3>
+                    <p className="text-forest-600 leading-relaxed">
+                      Organic certification, ISO-compliant lab testing, and satisfaction guarantee 
+                      back every product we create.
+                    </p>
+                  </div>
+                </div>
               </div>
               
               <div className="mt-10">
                 <Link
                   to="/about"
-                  className="bg-black text-white hover:bg-black-800 px-8 py-4 rounded-xl font-semibold transition-colors inline-flex items-center gap-3"
+                  className="bg-black text-white hover:bg-gray-800 px-8 py-4 rounded-xl font-semibold transition-colors inline-flex items-center gap-3 shadow-lg"
                 >
                   Learn Our Story
                   <ArrowRight className="w-5 h-5" />
@@ -394,18 +426,63 @@ const HomePage = () => {
               transition={{ duration: 0.6 }}
               className="relative"
             >
-              <img 
-                src="/images/lab_images_6.jpg" 
-                alt="Lab testing and quality assurance"
-                className="rounded-2xl shadow-2xl w-full h-[500px] object-cover"
-              />
-              <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent rounded-2xl" />
+              {/* Enhanced Professional Lab Image */}
+              <div className="relative rounded-2xl shadow-2xl overflow-hidden h-[500px]">
+                <img 
+                  src="/images/facilities/lab_facility_professional_7.jpg" 
+                  alt="Professional Hemp Testing Laboratory"
+                  className="w-full h-full object-cover"
+                />
+                {/* Professional overlay */}
+                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-black/20" />
+                
+                {/* Professional content overlay */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center text-white p-8">
+                    <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
+                      <Shield className="w-12 h-12" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4 drop-shadow-lg">State-of-the-Art Testing</h3>
+                    <p className="text-lg opacity-90 leading-relaxed drop-shadow-md">
+                      Every batch tested in ISO-certified laboratories for complete quality assurance
+                    </p>
+                  </div>
+                </div>
+                
+                {/* Animated particles effect */}
+                <div className="absolute inset-0">
+                  {[...Array(20)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="absolute w-2 h-2 bg-white/20 rounded-full animate-pulse"
+                      style={{
+                        left: `${Math.random() * 100}%`,
+                        top: `${Math.random() * 100}%`,
+                        animationDelay: `${Math.random() * 2}s`,
+                        animationDuration: `${2 + Math.random() * 2}s`
+                      }}
+                    />
+                  ))}
+                </div>
+              </div>
+              
+              {/* Overlay info card */}
               <div className="absolute bottom-6 left-6 right-6">
-                <div className="bg-white/95 backdrop-blur-sm rounded-xl p-6">
+                <div className="bg-white/95 backdrop-blur-sm rounded-xl p-6 shadow-xl">
                   <h3 className="text-xl font-bold mb-2 text-black-900">Quality Guaranteed</h3>
                   <p className="text-forest-700">
                     Every product is backed by our satisfaction guarantee and comprehensive lab testing.
                   </p>
+                  <div className="flex items-center gap-4 mt-4 text-sm">
+                    <span className="flex items-center gap-1 text-emerald-600">
+                      <CheckCircle className="w-4 h-4" />
+                      ISO Certified
+                    </span>
+                    <span className="flex items-center gap-1 text-emerald-600">
+                      <CheckCircle className="w-4 h-4" />
+                      Third-Party Tested
+                    </span>
+                  </div>
                 </div>
               </div>
             </motion.div>
@@ -413,9 +490,15 @@ const HomePage = () => {
         </div>
       </section>
 
-      {/* Final CTA */}
-      <section className="py-24 bg-gradient-to-r from-black via-black-800 to-forest-900 text-white">
-        <div className="max-w-4xl mx-auto text-center px-4">
+      {/* Final CTA with Enhanced Animation */}
+      <section className="py-24 bg-gradient-to-r from-black via-gray-900 to-black text-white relative overflow-hidden">
+        {/* Animated background pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse" />
+          <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-purple-500 rounded-full mix-blend-multiply filter blur-xl animate-pulse" style={{animationDelay: '2s'}} />
+        </div>
+        
+        <div className="max-w-4xl mx-auto text-center px-4 relative z-10">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -425,17 +508,18 @@ const HomePage = () => {
             <h2 className="text-4xl lg:text-5xl font-bold mb-8">
               Experience the Bud Life NC Difference
             </h2>
-            <p className="text-xl text-cream-200 mb-12 max-w-3xl mx-auto leading-relaxed">
+            <p className="text-xl text-gray-300 mb-12 max-w-3xl mx-auto leading-relaxed">
               Join thousands who've discovered what premium THCA should be. 
               Quality you can see, purity you can trust, results you can feel.
             </p>
             <div className="flex flex-col sm:flex-row gap-6 justify-center">
               <Link
                 to="/products"
-                className="bg-gradient-to-r from-emerald-500 to-forest-600 hover:from-emerald-400 hover:to-forest-500 text-white px-12 py-6 rounded-2xl font-bold text-xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-emerald-500/25 inline-flex items-center justify-center gap-3"
+                className="group bg-gradient-to-r from-emerald-500 to-forest-600 hover:from-emerald-400 hover:to-forest-500 text-white px-12 py-6 rounded-2xl font-bold text-xl transition-all duration-300 transform hover:scale-105 shadow-2xl hover:shadow-emerald-500/25 inline-flex items-center justify-center gap-3 relative overflow-hidden"
               >
+                <div className="absolute inset-0 bg-gradient-to-r from-white/0 via-white/20 to-white/0 -skew-x-12 group-hover:translate-x-full transition-transform duration-700 ease-out" />
                 Shop Premium Hemp
-                <ArrowRight className="w-6 h-6" />
+                <ArrowRight className="w-6 h-6 group-hover:translate-x-1 transition-transform" />
               </Link>
               
               <Link

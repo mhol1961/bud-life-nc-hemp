@@ -252,4 +252,14 @@
       transition-duration: 0.01ms !important;
     }
   }
+
+  /* Marquee Animation */
+  @keyframes marquee {
+    0% {
+      transform: translateX(0%);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
 }

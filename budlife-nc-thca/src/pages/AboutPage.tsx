@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-import { Leaf, Shield, Award, Users, MapPin, Phone, Mail, ArrowRight, Microscope, TreePine, Heart } from 'lucide-react'
+import { Leaf, Shield, Award, Users, MapPin, Phone, Mail, ArrowRight, Microscope, TreePine, Heart, Clock } from 'lucide-react'
 import { motion } from 'framer-motion'
 
 export function AboutPage() {
@@ -226,7 +226,7 @@ export function AboutPage() {
         </div>
       </section>
 
-      {/* Curing Process */}
+      {/* Curing Process - Enhanced Visual */}
       <section className="py-20 bg-white">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
@@ -236,11 +236,63 @@ export function AboutPage() {
               viewport={{ once: true }}
               className="order-2 lg:order-1"
             >
-              <img 
-                src="/images/lab_images_6.jpg" 
-                alt="Hemp curing process"
-                className="rounded-2xl shadow-2xl w-full h-[400px] object-cover"
-              />
+              {/* Enhanced Curing Process Visualization */}
+              <div className="relative rounded-2xl shadow-2xl overflow-hidden h-[400px] bg-gradient-to-br from-amber-600 via-orange-700 to-red-800">
+                {/* Professional curing facility visualization */}
+                <div className="absolute inset-0 flex items-center justify-center">
+                  <div className="text-center text-white p-8">
+                    <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
+                      <Award className="w-12 h-12" />
+                    </div>
+                    <h3 className="text-2xl font-bold mb-4">Professional Curing Facility</h3>
+                    <p className="text-lg opacity-90 leading-relaxed">
+                      Climate-controlled environment for optimal cannabinoid and terpene preservation
+                    </p>
+                  </div>
+                </div>
+                
+                {/* Animated drying elements */}
+                <div className="absolute inset-0">
+                  {[...Array(12)].map((_, i) => (
+                    <div
+                      key={i}
+                      className="absolute w-4 h-6 bg-green-400/30 rounded-lg transform rotate-12"
+                      style={{
+                        left: `${15 + (i % 4) * 20}%`,
+                        top: `${20 + Math.floor(i / 4) * 25}%`,
+                        animationDelay: `${i * 0.2}s`
+                      }}
+                    />
+                  ))}
+                </div>
+                
+                {/* Temperature and humidity indicators */}
+                <div className="absolute top-4 left-4 bg-black/50 backdrop-blur-sm rounded-lg p-3 text-white text-sm">
+                  <div className="flex items-center gap-2 mb-1">
+                    <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse" />
+                    <span>Temperature: 65°F</span>
+                  </div>
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse" />
+                    <span>Humidity: 55%</span>
+                  </div>
+                </div>
+                
+                {/* Process timeline */}
+                <div className="absolute bottom-4 left-4 right-4 bg-black/50 backdrop-blur-sm rounded-lg p-4 text-white">
+                  <div className="flex justify-between items-center text-xs">
+                    <span>Week 1</span>
+                    <span>Week 2</span>
+                    <span>Week 3</span>
+                    <span>Week 4+</span>
+                  </div>
+                  <div className="w-full bg-white/20 rounded-full h-2 mt-2">
+                    <div className="bg-gradient-to-r from-green-400 to-amber-400 h-2 rounded-full w-3/4 relative">
+                      <div className="absolute right-0 top-1/2 transform -translate-y-1/2 w-3 h-3 bg-amber-400 rounded-full animate-pulse" />
+                    </div>
+                  </div>
+                </div>
+              </div>
             </motion.div>
             
             <motion.div
@@ -254,18 +306,44 @@ export function AboutPage() {
                 <span className="text-emerald-600">30+ Day Curing</span>
               </h2>
               <div className="space-y-6">
-                <p className="text-lg text-forest-600 leading-relaxed">
-                  Our extended 16-week growth cycles allow plants to fully develop their cannabinoid and terpene profiles, 
-                  resulting in more potent and flavorful products.
-                </p>
-                <p className="text-lg text-forest-600 leading-relaxed">
-                  Following harvest, we implement a minimum 30-day curing process in controlled environments. 
-                  This patient approach preserves the delicate compounds while enhancing flavor, aroma, and overall quality.
-                </p>
-                <p className="text-lg text-forest-600 leading-relaxed">
-                  The result? Premium hemp flower with exceptional cannabinoid retention and terpene expression 
-                  that sets our products apart in the market.
-                </p>
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-emerald-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <Clock className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-black-900">Extended Growth Cycles</h3>
+                    <p className="text-lg text-forest-600 leading-relaxed">
+                      Our 16-week growth cycles allow plants to fully develop their cannabinoid and terpene profiles, 
+                      resulting in more potent and flavorful products with exceptional complexity.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-amber-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <Award className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-black-900">Precision Curing Process</h3>
+                    <p className="text-lg text-forest-600 leading-relaxed">
+                      Following harvest, we implement a minimum 30-day curing process in controlled environments. 
+                      This patient approach preserves delicate compounds while enhancing flavor and aroma.
+                    </p>
+                  </div>
+                </div>
+                
+                <div className="flex items-start gap-4">
+                  <div className="w-12 h-12 bg-forest-600 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
+                    <Leaf className="w-6 h-6 text-white" />
+                  </div>
+                  <div>
+                    <h3 className="text-xl font-semibold mb-2 text-black-900">Superior Results</h3>
+                    <p className="text-lg text-forest-600 leading-relaxed">
+                      The result? Premium hemp flower with exceptional cannabinoid retention and terpene expression 
+                      that sets our products apart in the market. Quality you can taste and feel.
+                    </p>
+                  </div>
+                </div>
               </div>
             </motion.div>
           </div>

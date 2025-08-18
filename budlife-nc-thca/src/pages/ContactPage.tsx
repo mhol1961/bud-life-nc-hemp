@@ -86,28 +86,45 @@ export function ContactPage() {
 
   return (
     <div className="min-h-screen">
-      {/* Hero Section */}
-      <section className="premium-gradient py-20">
-        <div className="container-premium">
+      {/* Hero Section - Enhanced */}
+      <section className="relative py-20 bg-gradient-to-br from-emerald-600 via-forest-700 to-black text-white overflow-hidden">
+        {/* Animated background pattern */}
+        <div className="absolute inset-0 opacity-10">
+          <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse" />
+          <div className="absolute top-3/4 right-1/4 w-96 h-96 bg-forest-400 rounded-full mix-blend-multiply filter blur-xl animate-pulse" style={{animationDelay: '2s'}} />
+        </div>
+        
+        <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <motion.div
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             className="max-w-4xl mx-auto text-center"
           >
-            <h1 className="text-4xl lg:text-5xl font-bold text-stone-900 mb-6">
-              Get in <span className="text-gradient">Touch</span>
+            <h1 className="text-4xl lg:text-6xl font-bold mb-6">
+              Get in <span className="text-gold-400">Touch</span>
             </h1>
-            <p className="text-xl lg:text-2xl text-stone-600 leading-relaxed">
+            <p className="text-xl lg:text-2xl opacity-90 leading-relaxed mb-8">
               Have questions about our products? Need assistance with your order? 
               We're here to help you on your wellness journey.
             </p>
+            <div className="flex flex-wrap gap-4 justify-center">
+              <div className="bg-white/20 px-6 py-3 rounded-full backdrop-blur-sm">
+                <span className="font-semibold">✓ 24/7 Customer Support</span>
+              </div>
+              <div className="bg-white/20 px-6 py-3 rounded-full backdrop-blur-sm">
+                <span className="font-semibold">✓ Expert Product Guidance</span>
+              </div>
+              <div className="bg-white/20 px-6 py-3 rounded-full backdrop-blur-sm">
+                <span className="font-semibold">✓ Personalized Wellness Plans</span>
+              </div>
+            </div>
           </motion.div>
         </div>
       </section>
 
       {/* Contact Info Grid */}
       <section className="py-20 bg-white">
-        <div className="container-premium">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8 mb-16">
             {contactInfo.map((info, index) => (
               <motion.div
@@ -118,16 +135,16 @@ export function ContactPage() {
                 transition={{ delay: index * 0.1 }}
                 className="text-center"
               >
-                <div className="w-16 h-16 mx-auto mb-4 sage-gradient rounded-full flex items-center justify-center">
+                <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-emerald-500 to-forest-600 rounded-full flex items-center justify-center">
                   <info.icon className="w-8 h-8 text-white" />
                 </div>
-                <h3 className="text-lg font-semibold text-stone-900 mb-2">
+                <h3 className="text-lg font-semibold text-gray-900 mb-2">
                   {info.title}
                 </h3>
-                <div className="text-stone-700 font-medium mb-2 whitespace-pre-line">
+                <div className="text-gray-700 font-medium mb-2 whitespace-pre-line">
                   {info.details}
                 </div>
-                <p className="text-sm text-stone-500">
+                <p className="text-sm text-gray-500">
                   {info.description}
                 </p>
               </motion.div>
@@ -137,21 +154,21 @@ export function ContactPage() {
       </section>
 
       {/* Contact Form & FAQ */}
-      <section className="py-20 premium-gradient">
-        <div className="container-premium">
+      <section className="py-20 bg-gradient-to-br from-emerald-50 to-forest-50">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
             {/* Contact Form */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="card-premium p-8"
+              className="bg-white rounded-2xl p-8 shadow-xl border border-emerald-100"
             >
               <div className="mb-8">
-                <h2 className="text-2xl font-bold text-stone-900 mb-4">
+                <h2 className="text-2xl font-bold text-gray-900 mb-4">
                   Send us a Message
                 </h2>
-                <p className="text-stone-600">
+                <p className="text-gray-600">
                   Fill out the form below and we'll get back to you as soon as possible.
                 </p>
               </div>
@@ -159,7 +176,7 @@ export function ContactPage() {
               <form onSubmit={handleSubmit} className="space-y-6">
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label htmlFor="name" className="block text-sm font-medium text-stone-700 mb-2">
+                    <label htmlFor="name" className="block text-sm font-medium text-gray-700 mb-2">
                       Full Name *
                     </label>
                     <input
@@ -169,7 +186,7 @@ export function ContactPage() {
                       required
                       value={formData.name}
                       onChange={handleChange}
-                      className="input-premium w-full"
+                      className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-emerald-500 focus:border-emerald-500"
                       placeholder="Your full name"
                     />
                   </div>
