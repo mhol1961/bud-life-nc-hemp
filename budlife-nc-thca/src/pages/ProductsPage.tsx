@@ -1,373 +1,415 @@
-import React, { useState, useEffect } from 'react'
-import { ProductCard } from '@/components/ProductCard'
-import { supabase } from '@/lib/supabase'
-import type { Product } from '@/lib/supabase'
-import type { FilterOptions } from '@/lib/types'
-import { Filter, Search, X } from 'lucide-react'
-import { motion, AnimatePresence } from 'framer-motion'
+import React, { useState } from 'react'
+import { Link } from 'react-router-dom'
+import { motion } from 'framer-motion'
+import { 
+  Star, Filter, Grid3X3, List, Search, ArrowRight, 
+  Shield, Leaf, Award, Heart, ShoppingCart
+} from 'lucide-react'
+import { useCartStore } from '@/hooks/useCart'
 import toast from 'react-hot-toast'
 
+type Product = {
+  id: string
+  name: string
+  slug: string
+  description: string
+  image: string
+  category: string
+  strain: string
+  thcContent: number
+  cbdContent: number
+  price: number
+  comparePrice?: number
+  rating: number
+  reviewCount: number
+  featured: boolean
+  inStock: boolean
+}
+
+const products: Product[] = [
+  {
+    id: 'jealousy-strain',
+    name: 'Jealousy',
+    slug: 'jealousy',
+    description: 'A potent hybrid with stunning purple hues and an incredible terpene profile. Perfect for experienced users seeking premium quality.',
+    image: '/images/jealousy_flower.png',
+    category: 'THCA Flower',
+    strain: 'Hybrid',
+    thcContent: 24.8,
+    cbdContent: 0.8,
+    price: 35,
+    comparePrice: 45,
+    rating: 4.9,
+    reviewCount: 127,
+    featured: true,
+    inStock: true
+  },
+  {
+    id: 'gushers-strain',
+    name: 'Gushers',
+    slug: 'gushers',
+    description: 'Sweet and fruity with dense, frosty buds. A customer favorite known for its exceptional flavor and smooth experience.',
+    image: '/images/gushers_flower.png',
+    category: 'THCA Flower',
+    strain: 'Hybrid',
+    thcContent: 22.4,
+    cbdContent: 1.2,
+    price: 30,
+    comparePrice: 40,
+    rating: 4.8,
+    reviewCount: 94,
+    featured: true,
+    inStock: true
+  }
+]
+
 export function ProductsPage() {
-  const [products, setProducts] = useState<Product[]>([])
-  const [filteredProducts, setFilteredProducts] = useState<Product[]>([])
-  const [loading, setLoading] = useState(true)
-  const [filters, setFilters] = useState<FilterOptions>({})
-  const [showFilters, setShowFilters] = useState(false)
-  const [searchQuery, setSearchQuery] = useState('')
+  const [searchTerm, setSearchTerm] = useState('')
+  const [selectedCategory, setSelectedCategory] = useState('all')
+  const [sortBy, setSortBy] = useState('featured')
+  const [viewMode, setViewMode] = useState<'grid' | 'list'>('grid')
+  const [showWishlist, setShowWishlist] = useState<{ [key: string]: boolean }>({})
+  const { addItem } = useCartStore()
 
-  // Fetch products from database
-  const fetchProducts = async () => {
-    try {
-      setLoading(true)
-      const { data, error } = await supabase
-        .from('products')
-        .select('*')
-        .eq('status', 'active')
-        .order('sort_order', { ascending: true })
-        .order('created_at', { ascending: false })
-
-      if (error) {
-        throw error
+  const filteredProducts = products
+    .filter(product => {
+      if (searchTerm && !product.name.toLowerCase().includes(searchTerm.toLowerCase())) {
+        return false
       }
+      if (selectedCategory !== 'all' && product.category.toLowerCase() !== selectedCategory) {
+        return false
+      }
+      return true
+    })
+    .sort((a, b) => {
+      switch (sortBy) {
+        case 'price-low':
+          return a.price - b.price
+        case 'price-high':
+          return b.price - a.price
+        case 'rating':
+          return b.rating - a.rating
+        case 'name':
+          return a.name.localeCompare(b.name)
+        default:
+          return b.featured ? 1 : -1
+      }
+    })
 
-      setProducts(data || [])
-      setFilteredProducts(data || [])
-    } catch (error) {
-      console.error('Error fetching products:', error)
-      toast.error('Failed to load products')
-    } finally {
-      setLoading(false)
-    }
+  const handleQuickAdd = (product: Product) => {
+    addItem({
+      product_id: product.id,
+      product_name: `${product.name} - 3.5G`,
+      product_slug: product.slug,
+      price: product.price,
+      compare_at_price: product.comparePrice,
+      quantity: 1,
+      category: product.category,
+      thc_content: product.thcContent,
+      cbd_content: product.cbdContent,
+      strain_type: product.strain,
+      max_quantity: 10,
+      product_image_url: product.image
+    })
+
+    toast.success(`Added ${product.name} to cart!`)
   }
 
-  // Apply filters to products
-  const applyFilters = () => {
-    let filtered = [...products]
-
-    // Search filter
-    if (searchQuery.trim()) {
-      const query = searchQuery.toLowerCase().trim()
-      filtered = filtered.filter(product => 
-        product.name.toLowerCase().includes(query) ||
-        product.short_description?.toLowerCase().includes(query) ||
-        product.category?.toLowerCase().includes(query) ||
-        product.strain_type?.toLowerCase().includes(query)
-      )
-    }
-
-    // Category filter
-    if (filters.category) {
-      filtered = filtered.filter(product => product.category === filters.category)
-    }
-
-    // Strain type filter
-    if (filters.strain_type) {
-      filtered = filtered.filter(product => product.strain_type === filters.strain_type)
-    }
-
-    // Price range filter
-    if (filters.price_min !== undefined) {
-      filtered = filtered.filter(product => product.price >= filters.price_min!)
-    }
-    if (filters.price_max !== undefined) {
-      filtered = filtered.filter(product => product.price <= filters.price_max!)
-    }
-
-    // THC content filter
-    if (filters.thc_min !== undefined) {
-      filtered = filtered.filter(product => (product.thc_content || 0) >= filters.thc_min!)
-    }
-    if (filters.thc_max !== undefined) {
-      filtered = filtered.filter(product => (product.thc_content || 0) <= filters.thc_max!)
-    }
-
-    // CBD content filter
-    if (filters.cbd_min !== undefined) {
-      filtered = filtered.filter(product => (product.cbd_content || 0) >= filters.cbd_min!)
-    }
-    if (filters.cbd_max !== undefined) {
-      filtered = filtered.filter(product => (product.cbd_content || 0) <= filters.cbd_max!)
-    }
-
-    // Featured filter
-    if (filters.featured_only) {
-      filtered = filtered.filter(product => product.featured)
-    }
-
-    // In stock filter
-    if (filters.in_stock_only) {
-      filtered = filtered.filter(product => product.quantity > 0 || product.allow_backorder)
-    }
-
-    // Sorting
-    if (filters.sort_by) {
-      filtered.sort((a, b) => {
-        const order = filters.sort_order === 'desc' ? -1 : 1
-        
-        switch (filters.sort_by) {
-          case 'name':
-            return order * a.name.localeCompare(b.name)
-          case 'price':
-            return order * (a.price - b.price)
-          case 'created_at':
-            return order * (new Date(a.created_at).getTime() - new Date(b.created_at).getTime())
-          case 'featured':
-            return order * ((b.featured ? 1 : 0) - (a.featured ? 1 : 0))
-          default:
-            return 0
-        }
-      })
-    }
-
-    setFilteredProducts(filtered)
-  }
-
-  // Clear all filters
-  const clearFilters = () => {
-    setFilters({})
-    setSearchQuery('')
-    setFilteredProducts(products)
-  }
-
-  // Get unique categories and strain types for filter options
-  const categories = Array.from(new Set(products.map(p => p.category).filter(Boolean)))
-  const strainTypes = Array.from(new Set(products.map(p => p.strain_type).filter(Boolean)))
-
-  useEffect(() => {
-    fetchProducts()
-  }, [])
-
-  useEffect(() => {
-    applyFilters()
-  }, [products, filters, searchQuery])
-
-  if (loading) {
-    return (
-      <div className="min-h-screen bg-stone-50 py-20">
-        <div className="container-premium">
-          <div className="text-center">
-            <div className="inline-block w-8 h-8 border-4 border-sage-200 border-t-sage-600 rounded-full animate-spin"></div>
-            <p className="mt-4 text-stone-600">Loading premium products...</p>
-          </div>
-        </div>
-      </div>
-    )
+  const toggleWishlist = (productId: string) => {
+    setShowWishlist(prev => ({
+      ...prev,
+      [productId]: !prev[productId]
+    }))
+    toast.success(showWishlist[productId] ? 'Removed from wishlist' : 'Added to wishlist')
   }
 
   return (
-    <div className="min-h-screen bg-stone-50">
+    <div className="min-h-screen bg-black text-cream">
       {/* Hero Section */}
-      <section className="premium-gradient py-16">
-        <div className="container-premium">
-          <div className="text-center mb-8">
-            <h1 className="text-4xl lg:text-5xl font-bold text-stone-900 mb-4">
-              Premium THCA Products
+      <section className="bg-gradient-to-br from-black via-black-800 to-forest-900 py-20">
+        <div className="container-premium text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8 }}
+          >
+            <h1 className="text-5xl lg:text-7xl font-bold mb-6 bg-gradient-to-r from-emerald-400 via-gold-400 to-emerald-400 bg-clip-text text-transparent">
+              Premium THCA Collection
             </h1>
-            <p className="text-xl text-stone-600 max-w-3xl mx-auto">
-              Discover our complete collection of lab-tested, premium-quality 
-              hemp-derived THCA products crafted for your wellness journey.
+            <p className="text-xl lg:text-2xl text-cream-300 mb-8 max-w-3xl mx-auto leading-relaxed">
+              Discover our carefully curated selection of premium THCA flower, each batch hand-selected and lab-tested for exceptional quality.
             </p>
+            <div className="flex items-center justify-center space-x-6">
+              <div className="flex items-center space-x-2 text-emerald-400">
+                <Shield className="w-5 h-5" />
+                <span className="font-medium">Lab Tested</span>
+              </div>
+              <div className="w-1 h-6 bg-cream-600"></div>
+              <div className="flex items-center space-x-2 text-emerald-400">
+                <Leaf className="w-5 h-5" />
+                <span className="font-medium">NC Grown</span>
+              </div>
+              <div className="w-1 h-6 bg-cream-600"></div>
+              <div className="flex items-center space-x-2 text-emerald-400">
+                <Award className="w-5 h-5" />
+                <span className="font-medium">Premium Quality</span>
+              </div>
+            </div>
+          </motion.div>
+        </div>
+      </section>
+
+      {/* Filters & Controls */}
+      <section className="py-8 bg-black-800 border-b border-forest-700">
+        <div className="container-premium">
+          <div className="flex flex-col lg:flex-row items-center justify-between space-y-4 lg:space-y-0">
+            {/* Search */}
+            <div className="relative w-full lg:w-96">
+              <Search className="absolute left-4 top-1/2 transform -translate-y-1/2 w-5 h-5 text-cream-400" />
+              <input
+                type="text"
+                placeholder="Search products..."
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
+                className="input pl-12 w-full"
+              />
+            </div>
+
+            <div className="flex items-center space-x-4">
+              {/* Category Filter */}
+              <select
+                value={selectedCategory}
+                onChange={(e) => setSelectedCategory(e.target.value)}
+                className="input w-48"
+              >
+                <option value="all">All Categories</option>
+                <option value="thca flower">THCA Flower</option>
+                <option value="edibles">Edibles</option>
+                <option value="concentrates">Concentrates</option>
+              </select>
+
+              {/* Sort */}
+              <select
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value)}
+                className="input w-48"
+              >
+                <option value="featured">Featured</option>
+                <option value="name">Name A-Z</option>
+                <option value="price-low">Price: Low to High</option>
+                <option value="price-high">Price: High to Low</option>
+                <option value="rating">Highest Rated</option>
+              </select>
+
+              {/* View Mode */}
+              <div className="flex items-center space-x-1 bg-black-700 rounded-xl p-1">
+                <button
+                  onClick={() => setViewMode('grid')}
+                  className={`p-2 rounded-lg transition-colors ${
+                    viewMode === 'grid'
+                      ? 'bg-emerald-500 text-white'
+                      : 'text-cream-300 hover:text-emerald-300'
+                  }`}
+                >
+                  <Grid3X3 className="w-4 h-4" />
+                </button>
+                <button
+                  onClick={() => setViewMode('list')}
+                  className={`p-2 rounded-lg transition-colors ${
+                    viewMode === 'list'
+                      ? 'bg-emerald-500 text-white'
+                      : 'text-cream-300 hover:text-emerald-300'
+                  }`}
+                >
+                  <List className="w-4 h-4" />
+                </button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
 
-      <div className="container-premium py-12">
-        {/* Search and Filter Controls */}
-        <div className="flex flex-col lg:flex-row lg:items-center lg:justify-between mb-8 space-y-4 lg:space-y-0">
-          <div className="flex items-center space-x-4">
-            {/* Search */}
-            <div className="relative flex-1 lg:w-80">
-              <Search className="absolute left-3 top-1/2 transform -translate-y-1/2 w-5 h-5 text-stone-400" />
-              <input
-                type="text"
-                placeholder="Search products..."
-                value={searchQuery}
-                onChange={(e) => setSearchQuery(e.target.value)}
-                className="input-premium pl-10 w-full"
-              />
+      {/* Products Grid */}
+      <section className="py-16">
+        <div className="container-premium">
+          {filteredProducts.length === 0 ? (
+            <div className="text-center py-16">
+              <div className="text-6xl mb-4">🌿</div>
+              <h3 className="text-2xl font-bold text-cream-100 mb-2">No products found</h3>
+              <p className="text-cream-300">Try adjusting your search or filter criteria.</p>
             </div>
-
-            {/* Filter Toggle */}
-            <button
-              onClick={() => setShowFilters(!showFilters)}
-              className="btn-secondary flex items-center space-x-2"
-            >
-              <Filter className="w-4 h-4" />
-              <span>Filters</span>
-            </button>
-          </div>
-
-          {/* Sort */}
-          <div className="flex items-center space-x-4">
-            <label className="text-sm font-medium text-stone-700">
-              Sort by:
-            </label>
-            <select
-              value={`${filters.sort_by || 'featured'}-${filters.sort_order || 'desc'}`}
-              onChange={(e) => {
-                const [sortBy, sortOrder] = e.target.value.split('-')
-                setFilters(prev => ({
-                  ...prev,
-                  sort_by: sortBy as FilterOptions['sort_by'],
-                  sort_order: sortOrder as FilterOptions['sort_order']
-                }))
-              }}
-              className="input-premium"
-            >
-              <option value="featured-desc">Featured First</option>
-              <option value="name-asc">Name (A-Z)</option>
-              <option value="name-desc">Name (Z-A)</option>
-              <option value="price-asc">Price (Low to High)</option>
-              <option value="price-desc">Price (High to Low)</option>
-              <option value="created_at-desc">Newest First</option>
-            </select>
-          </div>
-        </div>
-
-        {/* Filter Panel */}
-        <AnimatePresence>
-          {showFilters && (
-            <motion.div
-              initial={{ opacity: 0, height: 0 }}
-              animate={{ opacity: 1, height: 'auto' }}
-              exit={{ opacity: 0, height: 0 }}
-              className="card-premium p-6 mb-8"
-            >
-              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-                {/* Category Filter */}
-                <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-2">
-                    Category
-                  </label>
-                  <select
-                    value={filters.category || ''}
-                    onChange={(e) => setFilters(prev => ({ ...prev, category: e.target.value || undefined }))}
-                    className="input-premium w-full"
-                  >
-                    <option value="">All Categories</option>
-                    {categories.map(category => (
-                      <option key={category} value={category}>
-                        {category?.charAt(0).toUpperCase() + category?.slice(1)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Strain Type Filter */}
-                <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-2">
-                    Strain Type
-                  </label>
-                  <select
-                    value={filters.strain_type || ''}
-                    onChange={(e) => setFilters(prev => ({ ...prev, strain_type: e.target.value || undefined }))}
-                    className="input-premium w-full"
-                  >
-                    <option value="">All Types</option>
-                    {strainTypes.map(type => (
-                      <option key={type} value={type}>
-                        {type?.charAt(0).toUpperCase() + type?.slice(1)}
-                      </option>
-                    ))}
-                  </select>
-                </div>
-
-                {/* Price Range */}
-                <div>
-                  <label className="block text-sm font-medium text-stone-700 mb-2">
-                    Price Range
-                  </label>
-                  <div className="flex space-x-2">
-                    <input
-                      type="number"
-                      placeholder="Min"
-                      value={filters.price_min || ''}
-                      onChange={(e) => setFilters(prev => ({ ...prev, price_min: e.target.value ? Number(e.target.value) : undefined }))}
-                      className="input-premium w-full"
-                      min="0"
-                    />
-                    <input
-                      type="number"
-                      placeholder="Max"
-                      value={filters.price_max || ''}
-                      onChange={(e) => setFilters(prev => ({ ...prev, price_max: e.target.value ? Number(e.target.value) : undefined }))}
-                      className="input-premium w-full"
-                      min="0"
-                    />
-                  </div>
-                </div>
-
-                {/* Filter Options */}
-                <div className="space-y-3">
-                  <label className="flex items-center">
-                    <input
-                      type="checkbox"
-                      checked={filters.featured_only || false}
-                      onChange={(e) => setFilters(prev => ({ ...prev, featured_only: e.target.checked || undefined }))}
-                      className="mr-2"
-                    />
-                    <span className="text-sm text-stone-700">Featured Only</span>
-                  </label>
-                  <label className="flex items-center">
-                    <input
-                      type="checkbox"
-                      checked={filters.in_stock_only || false}
-                      onChange={(e) => setFilters(prev => ({ ...prev, in_stock_only: e.target.checked || undefined }))}
-                      className="mr-2"
-                    />
-                    <span className="text-sm text-stone-700">In Stock Only</span>
-                  </label>
-                </div>
+          ) : (
+            <>
+              <div className="flex items-center justify-between mb-8">
+                <h2 className="text-2xl font-bold text-cream-100">
+                  {filteredProducts.length} Product{filteredProducts.length !== 1 ? 's' : ''}
+                </h2>
               </div>
 
-              {/* Clear Filters */}
-              <div className="mt-6 pt-6 border-t border-stone-200 flex justify-end">
-                <button
-                  onClick={clearFilters}
-                  className="btn-secondary flex items-center space-x-2"
-                >
-                  <X className="w-4 h-4" />
-                  <span>Clear All Filters</span>
-                </button>
+              <div className={`grid gap-8 ${
+                viewMode === 'grid' 
+                  ? 'md:grid-cols-2 lg:grid-cols-2' 
+                  : 'grid-cols-1'
+              }`}>
+                {filteredProducts.map((product, index) => (
+                  <motion.div
+                    key={product.id}
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.6, delay: index * 0.1 }}
+                    className={`group relative bg-gradient-to-br from-black-800 to-black-700 border border-forest-700 rounded-3xl overflow-hidden hover:border-emerald-500 transition-all duration-500 hover:shadow-glow-lg ${
+                      viewMode === 'list' ? 'flex' : ''
+                    }`}
+                  >
+                    {/* Product Image */}
+                    <div className={`relative overflow-hidden ${
+                      viewMode === 'list' ? 'w-1/3' : ''
+                    }`}>
+                      <Link to={`/products/${product.slug}`}>
+                        <img
+                          src={product.image}
+                          alt={product.name}
+                          className={`object-cover group-hover:scale-110 transition-transform duration-700 ${
+                            viewMode === 'list' ? 'w-full h-full' : 'w-full h-80'
+                          }`}
+                        />
+                      </Link>
+                      <div className="absolute inset-0 bg-gradient-to-t from-black via-transparent to-transparent opacity-40"></div>
+                      
+                      {/* Badges */}
+                      <div className="absolute top-4 left-4 flex flex-col space-y-2">
+                        {product.featured && (
+                          <span className="bg-gradient-to-r from-gold-500 to-gold-600 text-black px-3 py-1 rounded-full text-sm font-semibold">
+                            Premium
+                          </span>
+                        )}
+                        <span className="bg-emerald-600 text-white px-3 py-1 rounded-full text-sm font-semibold">
+                          {product.strain}
+                        </span>
+                      </div>
+
+                      {/* Actions */}
+                      <div className="absolute top-4 right-4 flex flex-col space-y-2 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                        <button 
+                          onClick={() => toggleWishlist(product.id)}
+                          className={`p-3 rounded-xl backdrop-blur-md transition-all duration-300 ${
+                            showWishlist[product.id]
+                              ? 'bg-emerald-500/30 text-emerald-400 border border-emerald-500/50'
+                              : 'bg-black/50 text-cream-300 border border-cream/20 hover:bg-emerald-500/20 hover:text-emerald-400'
+                          }`}
+                        >
+                          <Heart className={`w-4 h-4 ${showWishlist[product.id] ? 'fill-current' : ''}`} />
+                        </button>
+                        <button 
+                          onClick={() => handleQuickAdd(product)}
+                          className="p-3 bg-black/50 text-cream-300 border border-cream/20 rounded-xl backdrop-blur-md hover:bg-emerald-500/20 hover:text-emerald-400 transition-all duration-300"
+                        >
+                          <ShoppingCart className="w-4 h-4" />
+                        </button>
+                      </div>
+
+                      {/* THC Content Badge */}
+                      <div className="absolute bottom-4 left-4 bg-black/70 backdrop-blur-md text-white px-3 py-1 rounded-full text-sm font-semibold border border-cream/20">
+                        {product.thcContent}% THCA
+                      </div>
+                    </div>
+
+                    {/* Product Info */}
+                    <div className={`p-8 ${viewMode === 'list' ? 'w-2/3 flex flex-col justify-between' : ''}`}>
+                      <div>
+                        <div className="flex items-center justify-between mb-2">
+                          <span className="text-emerald-400 font-medium text-sm uppercase tracking-wider">
+                            {product.category}
+                          </span>
+                          <div className="flex items-center space-x-1">
+                            <Star className="w-4 h-4 text-gold-400 fill-current" />
+                            <span className="text-cream-300 text-sm font-medium">{product.rating}</span>
+                            <span className="text-cream-500 text-sm">({product.reviewCount})</span>
+                          </div>
+                        </div>
+
+                        <Link to={`/products/${product.slug}`}>
+                          <h3 className="text-3xl font-bold text-cream-100 mb-3 group-hover:text-emerald-300 transition-colors">
+                            {product.name}
+                          </h3>
+                        </Link>
+
+                        <p className="text-cream-200 leading-relaxed mb-6">
+                          {product.description}
+                        </p>
+                      </div>
+
+                      {/* Price & Actions */}
+                      <div className="space-y-4">
+                        <div className="flex items-center justify-between">
+                          <div className="flex items-center space-x-3">
+                            <span className="text-3xl font-bold text-cream-100">
+                              ${product.price}
+                            </span>
+                            {product.comparePrice && (
+                              <span className="text-cream-500 line-through text-xl">
+                                ${product.comparePrice}
+                              </span>
+                            )}
+                            {product.comparePrice && (
+                              <span className="bg-gold-500/20 text-gold-400 px-2 py-1 rounded-full text-sm font-medium border border-gold-500/30">
+                                Save ${product.comparePrice - product.price}
+                              </span>
+                            )}
+                          </div>
+                        </div>
+
+                        <div className="flex space-x-3">
+                          <Link
+                            to={`/products/${product.slug}`}
+                            className="flex-1 btn-primary flex items-center justify-center space-x-2"
+                          >
+                            <span>View Details</span>
+                            <ArrowRight className="w-4 h-4" />
+                          </Link>
+                          <button 
+                            onClick={() => handleQuickAdd(product)}
+                            className="btn-secondary px-4"
+                          >
+                            <ShoppingCart className="w-4 h-4" />
+                          </button>
+                        </div>
+                      </div>
+                    </div>
+                  </motion.div>
+                ))}
               </div>
-            </motion.div>
+            </>
           )}
-        </AnimatePresence>
-
-        {/* Results Count */}
-        <div className="flex items-center justify-between mb-8">
-          <p className="text-stone-600">
-            Showing {filteredProducts.length} of {products.length} products
-          </p>
         </div>
+      </section>
 
-        {/* Products Grid */}
-        {filteredProducts.length > 0 ? (
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-8">
-            {filteredProducts.map((product) => (
-              <ProductCard key={product.id} product={product} />
-            ))}
-          </div>
-        ) : (
-          <div className="text-center py-16">
-            <div className="w-16 h-16 mx-auto mb-4 bg-stone-100 rounded-full flex items-center justify-center">
-              <Search className="w-8 h-8 text-stone-400" />
-            </div>
-            <h3 className="text-lg font-medium text-stone-900 mb-2">
-              No products found
-            </h3>
-            <p className="text-stone-600 mb-6">
-              Try adjusting your filters or search query to find what you're looking for.
+      {/* CTA Section */}
+      <section className="py-20 bg-gradient-to-r from-emerald-900 via-forest-800 to-emerald-900">
+        <div className="container-premium text-center">
+          <motion.div
+            initial={{ opacity: 0, y: 30 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.6 }}
+          >
+            <h2 className="text-4xl font-bold mb-6 text-cream-100">
+              Questions About Our Products?
+            </h2>
+            <p className="text-xl text-cream-200 mb-8 max-w-2xl mx-auto">
+              Our expert team is here to help you find the perfect THCA product for your needs.
             </p>
-            <button
-              onClick={clearFilters}
-              className="btn-primary"
+            <Link
+              to="/contact"
+              className="inline-flex items-center gap-3 btn-primary text-lg px-8 py-4"
             >
-              Clear All Filters
-            </button>
-          </div>
-        )}
-      </div>
+              <span>Contact Us</span>
+              <ArrowRight className="w-5 h-5" />
+            </Link>
+          </motion.div>
+        </div>
+      </section>
     </div>
   )
 }

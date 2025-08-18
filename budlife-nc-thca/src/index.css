@@ -1,183 +1,255 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Lexend:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Lexend:wght@300;400;500;600;700;800;900&family=Playfair+Display:wght@400;500;600;700;800;900&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 20 14.3% 4.1%;
-    --card: 0 0% 100%;
-    --card-foreground: 20 14.3% 4.1%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 20 14.3% 4.1%;
-    --primary: 142 71% 45%;
-    --primary-foreground: 355.7 100% 97.3%;
-    --secondary: 60 4.8% 95.9%;
-    --secondary-foreground: 24 9.8% 10%;
-    --muted: 60 4.8% 95.9%;
-    --muted-foreground: 25 5.3% 44.7%;
-    --accent: 60 4.8% 95.9%;
-    --accent-foreground: 24 9.8% 10%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 20% 98%;
-    --border: 20 5.9% 90%;
-    --input: 20 5.9% 90%;
-    --ring: 142 71% 45%;
+    --background: 0 0% 0%;
+    --foreground: 45 15% 90%;
+    --card: 0 0% 10%;
+    --card-foreground: 45 15% 90%;
+    --popover: 0 0% 10%;
+    --popover-foreground: 45 15% 90%;
+    --primary: 158 64% 52%;
+    --primary-foreground: 0 0% 0%;
+    --secondary: 0 0% 15%;
+    --secondary-foreground: 45 15% 90%;
+    --muted: 0 0% 15%;
+    --muted-foreground: 45 8% 60%;
+    --accent: 158 64% 52%;
+    --accent-foreground: 0 0% 0%;
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 158 32% 25%;
+    --input: 158 32% 25%;
+    --ring: 158 64% 52%;
     --radius: 0.75rem;
   }
 
-  .dark {
-    --background: 20 14.3% 4.1%;
-    --foreground: 60 9.1% 97.8%;
-    --card: 20 14.3% 4.1%;
-    --card-foreground: 60 9.1% 97.8%;
-    --popover: 20 14.3% 4.1%;
-    --popover-foreground: 60 9.1% 97.8%;
-    --primary: 142 71% 45%;
-    --primary-foreground: 355.7 100% 97.3%;
-    --secondary: 12 6.5% 15.1%;
-    --secondary-foreground: 60 9.1% 97.8%;
-    --muted: 12 6.5% 15.1%;
-    --muted-foreground: 24 5.4% 63.9%;
-    --accent: 12 6.5% 15.1%;
-    --accent-foreground: 60 9.1% 97.8%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 60 9.1% 97.8%;
-    --border: 12 6.5% 15.1%;
-    --input: 12 6.5% 15.1%;
-    --ring: 142 71% 45%;
-  }
-}
-
-@layer base {
   * {
     @apply border-border;
   }
+
   body {
-    @apply bg-background text-foreground;
-    font-feature-settings: 'rlig' 1, 'calt' 1;
+    @apply bg-black text-cream font-sans antialiased;
+    background-attachment: fixed;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  /* Custom scrollbar */
+  ::-webkit-scrollbar {
+    width: 8px;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-black-800;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-forest-600 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-emerald-500;
   }
 }
 
-/* Premium custom styles */
 @layer components {
-  .glass-effect {
-    @apply bg-white/80 backdrop-blur-md border border-white/20;
+  /* Button Styles */
+  .btn {
+    @apply inline-flex items-center justify-center rounded-xl px-6 py-3 font-medium transition-all duration-300 focus:outline-none focus:ring-2 focus:ring-offset-2 disabled:opacity-50 disabled:pointer-events-none;
   }
-  
-  .premium-gradient {
-    background: linear-gradient(135deg, #f9f9f8 0%, #f4f6f4 100%);
-  }
-  
-  .sage-gradient {
-    background: linear-gradient(135deg, #638c63 0%, #4d704d 100%);
-  }
-  
-  .text-gradient {
-    background: linear-gradient(135deg, #638c63 0%, #4d704d 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-  }
-  
-  .hover-lift {
-    @apply transition-all duration-300 hover:-translate-y-1 hover:shadow-soft-lg;
-  }
-  
+
   .btn-primary {
-    @apply bg-sage-600 hover:bg-sage-700 text-white font-medium px-8 py-3 rounded-lg transition-all duration-300 hover:shadow-glow;
+    @apply bg-gradient-to-r from-emerald-600 to-forest-600 hover:from-emerald-500 hover:to-forest-500 text-white shadow-lg hover:shadow-glow-lg transform hover:scale-105 focus:ring-emerald-400;
   }
-  
+
   .btn-secondary {
-    @apply bg-stone-100 hover:bg-stone-200 text-stone-900 font-medium px-8 py-3 rounded-lg transition-all duration-300 border border-stone-200;
+    @apply bg-black-800 text-cream-100 border border-forest-600 hover:bg-forest-700 hover:border-emerald-500 focus:ring-forest-400;
   }
-  
-  .card-premium {
-    @apply bg-white rounded-xl shadow-soft border border-stone-100 hover:shadow-soft-lg transition-all duration-300;
+
+  .btn-ghost {
+    @apply text-cream-200 hover:text-emerald-300 hover:bg-cream/5 focus:ring-cream/20;
   }
-  
-  .input-premium {
-    @apply bg-white border border-stone-200 rounded-lg px-4 py-3 focus:border-sage-500 focus:ring-2 focus:ring-sage-100 transition-all duration-200;
+
+  .btn-outline {
+    @apply border border-emerald-500 text-emerald-400 hover:bg-emerald-500 hover:text-white focus:ring-emerald-400;
   }
-  
-  .section-padding {
-    @apply px-4 sm:px-6 lg:px-8;
+
+  /* Card Styles */
+  .card {
+    @apply bg-black-800 border border-forest-700 rounded-2xl shadow-dark;
   }
-  
+
+  .card-hover {
+    @apply hover:border-emerald-500 hover:shadow-glow-lg transition-all duration-500;
+  }
+
+  /* Input Styles */
+  .input {
+    @apply flex h-12 w-full rounded-xl border border-forest-600 bg-black-700 px-4 py-2 text-cream-100 placeholder:text-cream-400 focus:border-emerald-500 focus:outline-none focus:ring-2 focus:ring-emerald-400/20 disabled:cursor-not-allowed disabled:opacity-50;
+  }
+
+  .input-group {
+    @apply space-y-2;
+  }
+
+  .label {
+    @apply text-sm font-medium text-cream-200;
+  }
+
+  /* Premium Container */
   .container-premium {
-    @apply max-w-7xl mx-auto section-padding;
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
   }
-}
 
-/* Age verification modal styles */
-.age-verification-overlay {
-  position: fixed;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background: rgba(0, 0, 0, 0.95);
-  z-index: 9999;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.age-verification-content {
-  background: white;
-  border-radius: 16px;
-  padding: 2rem;
-  max-width: 480px;
-  width: 90%;
-  text-align: center;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
-}
-
-/* Smooth scrolling */
-html {
-  scroll-behavior: smooth;
-}
-
-/* Hide scrollbar but allow scrolling */
-.hide-scrollbar {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.hide-scrollbar::-webkit-scrollbar {
-  display: none;
-}
-
-/* Loading spinner */
-.spinner {
-  border: 2px solid #f3f4f6;
-  border-top: 2px solid #638c63;
-  border-radius: 50%;
-  width: 20px;
-  height: 20px;
-  animation: spin 1s linear infinite;
-}
-
-@keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
-}
-
-/* Product image aspect ratio */
-.product-image-aspect {
-  aspect-ratio: 1 / 1;
-  object-fit: cover;
-}
-
-/* Responsive typography */
-@media (max-width: 640px) {
-  .responsive-heading {
-    font-size: clamp(1.5rem, 5vw, 3rem);
+  /* Text Gradients */
+  .text-gradient {
+    @apply bg-gradient-to-r from-emerald-400 via-gold-400 to-emerald-400 bg-clip-text text-transparent;
   }
-}
 
-/* Focus styles for accessibility */
-.focus-visible {
-  @apply focus:outline-none focus:ring-2 focus:ring-sage-500 focus:ring-offset-2;
+  .text-gradient-gold {
+    @apply bg-gradient-to-r from-gold-400 to-gold-600 bg-clip-text text-transparent;
+  }
+
+  .text-gradient-emerald {
+    @apply bg-gradient-to-r from-emerald-400 to-forest-400 bg-clip-text text-transparent;
+  }
+
+  /* Background Gradients */
+  .bg-premium {
+    @apply bg-gradient-to-br from-black via-black-800 to-forest-900;
+  }
+
+  .bg-premium-light {
+    @apply bg-gradient-to-br from-black-800 via-black-700 to-forest-800;
+  }
+
+  /* Glass Effects */
+  .glass {
+    @apply bg-black/30 backdrop-blur-md border border-white/10;
+  }
+
+  .glass-card {
+    @apply bg-black/20 backdrop-blur-lg border border-emerald-500/20 rounded-2xl;
+  }
+
+  /* Product Card */
+  .product-card {
+    @apply bg-gradient-to-br from-black-800 to-black-700 border border-forest-700 rounded-2xl p-6 transition-all duration-500 hover:border-emerald-500 hover:shadow-glow-lg group;
+  }
+
+  /* Animation Classes */
+  .animate-float-delayed {
+    animation: float 6s ease-in-out infinite 2s;
+  }
+
+  .animate-float-delayed-4s {
+    animation: float 6s ease-in-out infinite 4s;
+  }
+
+  /* Cannabis Leaf Pattern */
+  .cannabis-pattern {
+    background-image: url("data:image/svg+xml,%3Csvg width='40' height='40' viewBox='0 0 40 40' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='%2350C878' fill-opacity='0.03'%3E%3Cpath d='M20 20c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10zm10 0c0-5.5-4.5-10-10-10s-10 4.5-10 10 4.5 10 10 10 10-4.5 10-10z'/%3E%3C/g%3E%3C/svg%3E");
+  }
+
+  /* Loading States */
+  .spinner {
+    @apply inline-block w-4 h-4 border-2 border-current border-r-transparent rounded-full animate-spin;
+  }
+
+  /* Typography */
+  .heading-xl {
+    @apply text-5xl lg:text-7xl font-bold leading-tight;
+  }
+
+  .heading-lg {
+    @apply text-4xl lg:text-5xl font-bold leading-tight;
+  }
+
+  .heading-md {
+    @apply text-3xl lg:text-4xl font-bold leading-tight;
+  }
+
+  .body-lg {
+    @apply text-xl lg:text-2xl leading-relaxed;
+  }
+
+  .body-md {
+    @apply text-lg leading-relaxed;
+  }
+
+  /* Status Indicators */
+  .status-success {
+    @apply bg-emerald-500/20 text-emerald-400 border border-emerald-500/30;
+  }
+
+  .status-warning {
+    @apply bg-gold-500/20 text-gold-400 border border-gold-500/30;
+  }
+
+  .status-error {
+    @apply bg-red-500/20 text-red-400 border border-red-500/30;
+  }
+
+  .status-info {
+    @apply bg-blue-500/20 text-blue-400 border border-blue-500/30;
+  }
+
+  /* Age Gate Styles */
+  .age-verification-overlay {
+    @apply fixed inset-0 z-50 flex items-center justify-center bg-black/90 backdrop-blur-sm;
+  }
+
+  .age-verification-content {
+    @apply relative max-w-md w-full mx-4 bg-black-800 border border-forest-600 rounded-2xl shadow-dark-lg overflow-hidden;
+  }
+
+  /* Responsive Design Helpers */
+  @media (max-width: 640px) {
+    .mobile-padding {
+      @apply px-4;
+    }
+    
+    .mobile-text-sm {
+      @apply text-sm;
+    }
+  }
+
+  /* Print Styles */
+  @media print {
+    .no-print {
+      display: none !important;
+    }
+  }
+
+  /* High Contrast Mode Support */
+  @media (prefers-contrast: high) {
+    .card {
+      @apply border-2;
+    }
+    
+    .btn {
+      @apply border-2;
+    }
+  }
+
+  /* Reduced Motion Support */
+  @media (prefers-reduced-motion: reduce) {
+    .animate-float,
+    .animate-glow,
+    .animate-shimmer {
+      animation: none;
+    }
+    
+    * {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
 }

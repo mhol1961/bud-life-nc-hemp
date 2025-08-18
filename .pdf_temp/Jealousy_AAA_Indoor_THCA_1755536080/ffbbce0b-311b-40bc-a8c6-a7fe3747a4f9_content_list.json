@@ -1,0 +1,38 @@
+[
+    {
+        "type": "text",
+        "text": "REPORT PREPARED FOR: ",
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "PROJECT# LAB ID RECEIVED DATE REPORT DATE ",
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "SAMPLE NAME: ",
+        "page_idx": 0
+    },
+    {
+        "type": "image",
+        "img_path": "images/jwof8g.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 0
+    },
+    {
+        "type": "image",
+        "img_path": "images/fwbcou.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 0
+    },
+    {
+        "type": "image",
+        "img_path": "images/a1irxe.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 0
+    }
+]

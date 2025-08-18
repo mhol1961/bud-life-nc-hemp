@@ -1,0 +1,43 @@
+[
+    {
+        "type": "text",
+        "text": "REPORT PREPARED FOR: ",
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "PROJECT# LAB ID REPORT DATE ",
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "SAMPLE NAME: DATE RECEIVED: ",
+        "page_idx": 0
+    },
+    {
+        "type": "image",
+        "img_path": "images/ax4jwd.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 0
+    },
+    {
+        "type": "image",
+        "img_path": "images/6wm2cu.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 0
+    },
+    {
+        "type": "text",
+        "text": "By HPLC-VWD   \nTotal THC = (0.877 x  THCA) + Δ9-THC Analyzed By: Date Analyzed:   \nTotal CBD = (0.877 x  CBDA) + CBD Analysis Batch:   \nTotal CBG = (0.877 x  CBGA) + CBG   \n$\\mathrm{ND}=$ Not Detected ",
+        "page_idx": 0
+    },
+    {
+        "type": "image",
+        "img_path": "images/1cbwym.jpg",
+        "img_caption": [],
+        "img_footnote": [],
+        "page_idx": 0
+    }
+]
