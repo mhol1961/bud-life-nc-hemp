@@ -31,143 +31,6 @@ const BlogPostPage = () => {
   const [loading, setLoading] = useState(true)
   const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([])
 
-  // Fallback blog post with full content when database is not accessible
-  const fallbackBlogPost: BlogPost = {
-    id: '660e8400-e29b-41d4-a716-446655440000',
-    title: 'From Seed to Sale: Our Cultivation Journey',
-    slug: 'from-seed-to-sale-our-cultivation-journey',
-    excerpt: 'Discover the fundamentals of THCA hemp, from cultivation and testing to legal compliance. Learn what makes premium hemp products safe, effective, and legal.',
-    content: `# Understanding THCA Hemp: A Comprehensive Guide to Quality and Compliance
-
-Hemp cultivation has evolved significantly over the past decade, with THCA (Tetrahydrocannabinolic acid) hemp emerging as a crucial component of the legal cannabis market. As more consumers and businesses explore hemp-derived products, understanding the science, cultivation, and quality standards becomes essential.
-
-## What is THCA Hemp?
-
-THCA is the acidic precursor to THC found naturally in raw cannabis and hemp plants. Unlike THC, THCA is non-psychoactive in its natural state, making it legally compliant under current federal hemp regulations when kept below 0.3% total THC content.
-
-The key distinction lies in how THCA transforms. When exposed to heat through smoking, vaping, or cooking (a process called decarboxylation), THCA converts to THC. This natural process allows hemp flower to provide therapeutic benefits while remaining within legal boundaries.
-
-## Cultivation Excellence
-
-### Indoor Growing Advantages
-
-Professional indoor cultivation facilities offer several advantages for THCA hemp production:
-
-- **Environmental Control**: Precise temperature, humidity, and lighting control ensure consistent quality
-- **Pest Management**: Controlled environments reduce the need for pesticides and herbicides  
-- **Year-Round Production**: Climate-independent growing cycles maximize yield and consistency
-- **Quality Assurance**: Controlled conditions support predictable cannabinoid profiles
-
-### North Carolina Hemp Farming
-
-North Carolina's climate and soil conditions create an ideal environment for outdoor hemp cultivation. Our state's agricultural heritage, combined with modern farming techniques, produces some of the nation's finest hemp flower.
-
-The mountains of western North Carolina provide:
-- Optimal elevation and drainage
-- Natural temperature variation
-- Rich, well-draining soils
-- Clean air and water sources
-
-## Quality Assurance Through Testing
-
-### Laboratory Standards
-
-Professional hemp operations rely on comprehensive testing protocols to ensure product safety and compliance:
-
-**Potency Testing**: Accurate measurement of cannabinoid profiles, including THCA, CBD, and total THC content
-
-**Safety Testing**: Screening for pesticides, heavy metals, residual solvents, and microbial contaminants
-
-**Terpene Analysis**: Identification of aromatic compounds that contribute to flavor and potential effects
-
-### Certificate of Analysis (COA)
-
-Every batch of quality hemp should include a COA from an accredited third-party laboratory. This document provides:
-- Detailed cannabinoid breakdown
-- Safety test results
-- Batch identification information
-- Testing date and laboratory information
-
-## Legal Compliance and Regulations
-
-### Federal Requirements
-
-The 2018 Farm Bill legalized hemp containing less than 0.3% total THC on a dry weight basis. Key compliance factors include:
-
-- **Testing Requirements**: Regular testing throughout cultivation and processing
-- **Record Keeping**: Detailed documentation of all processes and test results
-- **Transportation**: Proper documentation for interstate commerce
-- **Licensing**: Appropriate state licensing for cultivation and processing
-
-### State Regulations
-
-Individual states may impose additional requirements beyond federal standards. North Carolina's hemp program includes:
-- Licensed cultivator requirements
-- Regular inspections and compliance checks
-- Approved testing laboratories
-- Transportation and processing regulations
-
-## Choosing Quality Hemp Products
-
-### What to Look For
-
-When selecting THCA hemp products, consider these quality indicators:
-
-**Third-Party Testing**: Always verify current COA availability
-
-**Cultivation Methods**: Look for sustainable, professional growing practices
-
-**Processing Standards**: Proper curing and processing maintain cannabinoid integrity
-
-**Brand Transparency**: Reputable companies provide detailed product information
-
-### Storage and Handling
-
-Proper storage maintains product quality and compliance:
-- Store in cool, dry conditions
-- Protect from direct sunlight
-- Use airtight containers
-- Monitor for moisture and mold
-
-## The Future of Hemp
-
-The hemp industry continues to evolve with advancing research, improved cultivation techniques, and developing regulations. Key trends include:
-
-### Research and Development
-- Enhanced understanding of cannabinoid interactions
-- Improved cultivation and processing methods
-- Development of new product formulations
-
-### Market Growth
-- Expanding consumer awareness and acceptance
-- Increased availability and product variety
-- Growing integration with traditional agriculture
-
-### Regulatory Evolution
-- Potential updates to federal and state regulations
-- Standardization of testing and quality requirements
-- Enhanced interstate commerce facilitation
-
-## Conclusion
-
-THCA hemp represents a significant advancement in legal cannabis cultivation and consumption. Through proper cultivation, rigorous testing, and regulatory compliance, quality hemp products can provide consumers with safe, effective options while supporting agricultural communities.
-
-Understanding these fundamentals helps consumers make informed decisions and supports the continued growth of this important agricultural sector. As research continues and regulations evolve, THCA hemp will likely play an increasingly important role in both agriculture and wellness.
-
-Whether you're a consumer, cultivator, or industry professional, staying informed about hemp quality standards, testing requirements, and legal compliance ensures participation in this growing market remains both beneficial and responsible.`,
-    author: 'Bud Life NC Team',
-    category: 'hemp-education',
-    category_name: 'Hemp Education',
-    tags: ['Hemp Education', 'THCA', 'Quality Assurance', 'Compliance'],
-    featured_image_url: '/images/blog/hemp-education-hero.jpg',
-    published_at: '2025-08-20T01:44:42Z',
-    read_time: 12,
-    view_count: 156,
-    is_featured: true,
-    seo_title: 'From Seed to Sale: Our Cultivation Journey | Bud Life NC',
-    seo_description: 'Comprehensive guide to THCA hemp covering cultivation, testing, legal compliance, and quality standards. Learn what makes premium hemp products safe and effective.'
-  }
-
   useEffect(() => {
     const fetchBlogPost = async () => {
       if (!postSlug) {
@@ -175,11 +38,58 @@ Whether you're a consumer, cultivator, or industry professional, staying informe
         return
       }
 
-      // Always use fallback since database is not accessible
-      // This ensures any blog article link works properly
-      setPost(fallbackBlogPost)
-      setRelatedPosts([])
-      setLoading(false)
+      try {
+        setLoading(true)
+        
+        // Fetch single blog post from edge function
+        const { data, error } = await supabase.functions.invoke(`get-blog-post/${postSlug}`, {
+          method: 'GET'
+        })
+
+        if (error || !data?.data?.post) {
+          console.error('Error fetching blog post:', error)
+          
+          // Try to initialize blog data if it doesn't exist
+          try {
+            const initResponse = await fetch('https://ooaolhxjtaljsqwfnyov.supabase.co/functions/v1/init-blog-data', {
+              method: 'POST',
+              headers: {
+                'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9vYW9saHhqdGFsanNxd2ZueW92Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUxOTU5MTgsImV4cCI6MjA3MDc3MTkxOH0.uRc1Dnhune9h5KknKZkNQZ1ojVIjzgVuLS3oUEvHxB0`,
+                'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9vYW9saHhqdGFsanNxd2ZueW92Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUxOTU5MTgsImV4cCI6MjA3MDc3MTkxOH0.uRc1Dnhune9h5KknKZkNQZ1ojVIjzgVuLS3oUEvHxB0'
+              }
+            })
+            
+            if (initResponse.ok) {
+              console.log('Blog data initialized, retrying post fetch...')
+              // Retry fetching the specific post after initialization
+              const retryResponse = await supabase.functions.invoke(`get-blog-post/${postSlug}`, {
+                method: 'GET'
+              })
+              
+              if (retryResponse.data?.data?.post) {
+                setPost(retryResponse.data.data.post)
+                setRelatedPosts(retryResponse.data.data.relatedPosts || [])
+                return
+              }
+            }
+          } catch (initError) {
+            console.error('Error initializing blog data:', initError)
+          }
+          
+          setPost(null)
+          return
+        }
+
+        if (data?.data) {
+          setPost(data.data.post || null)
+          setRelatedPosts(data.data.relatedPosts || [])
+        }
+      } catch (error) {
+        console.error('Error in fetchBlogPost:', error)
+        setPost(null)
+      } finally {
+        setLoading(false)
+      }
     }
 
     fetchBlogPost()

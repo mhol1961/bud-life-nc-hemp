@@ -53,26 +53,6 @@ const BlogPage = () => {
   const [featuredPost, setFeaturedPost] = useState<BlogPost | null>(null)
   const [pagination, setPagination] = useState<PaginationInfo | null>(null)
 
-  // Fallback blog post when database is not accessible
-  const fallbackBlogPost: BlogPost = {
-    id: '660e8400-e29b-41d4-a716-446655440000',
-    title: 'From Seed to Sale: Our Cultivation Journey',
-    slug: 'from-seed-to-sale-our-cultivation-journey',
-    excerpt: 'Discover the fundamentals of THCA hemp, from cultivation and testing to legal compliance. Learn what makes premium hemp products safe, effective, and legal.',
-    content: '',
-    author: 'Bud Life NC Team',
-    category: 'hemp-education',
-    category_name: 'Hemp Education',
-    tags: ['Hemp Education', 'THCA', 'Quality Assurance', 'Compliance'],
-    featured_image_url: '/images/blog/hemp-blog-thumbnail.jpg',
-    published_at: '2025-08-20T01:44:42Z',
-    read_time: 12,
-    view_count: 156,
-    is_featured: true,
-    seo_title: 'From Seed to Sale: Our Cultivation Journey | Bud Life NC',
-    seo_description: 'Comprehensive guide to THCA hemp covering cultivation, testing, legal compliance, and quality standards. Learn what makes premium hemp products safe and effective.'
-  }
-
   // Default categories for hemp/THCA educational content with icons
   const defaultCategories: Category[] = [
     {
@@ -161,17 +141,35 @@ const BlogPage = () => {
         method: 'GET'
       })
 
-      if (error || !data?.data?.posts?.length) {
-        console.error('Error fetching blog posts or no posts found:', error)
-        // Use fallback blog post when database is not accessible
-        setPosts([fallbackBlogPost])
-        setFeaturedPost(fallbackBlogPost)
-        setPagination({
-          page: 1,
-          limit: 20,
-          total: 1,
-          totalPages: 1
-        })
+      if (error) {
+        console.error('Error fetching blog posts:', error)
+        // Initialize the blog data if it doesn't exist
+        try {
+          const initResponse = await fetch('https://ooaolhxjtaljsqwfnyov.supabase.co/functions/v1/init-blog-data', {
+            method: 'POST',
+            headers: {
+              'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9vYW9saHhqdGFsanNxd2ZueW92Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUxOTU5MTgsImV4cCI6MjA3MDc3MTkxOH0.uRc1Dnhune9h5KknKZkNQZ1ojVIjzgVuLS3oUEvHxB0`,
+              'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9vYW9saHhqdGFsanNxd2ZueW92Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUxOTU5MTgsImV4cCI6MjA3MDc3MTkxOH0.uRc1Dnhune9h5KknKZkNQZ1ojVIjzgVuLS3oUEvHxB0'
+            }
+          })
+          
+          if (initResponse.ok) {
+            console.log('Blog data initialized, retrying fetch...')
+            // Retry fetching posts after initialization
+            const retryResponse = await supabase.functions.invoke('get-blog-posts', {
+              method: 'GET'
+            })
+            if (retryResponse.data?.data) {
+              setPosts(retryResponse.data.data.posts || [])
+              setPagination(retryResponse.data.data.pagination)
+              const featured = retryResponse.data.data.posts?.find((post: BlogPost) => post.is_featured)
+              setFeaturedPost(featured || retryResponse.data.data.posts?.[0] || null)
+              return
+            }
+          }
+        } catch (initError) {
+          console.error('Error initializing blog data:', initError)
+        }
         return
       }
 
@@ -185,15 +183,6 @@ const BlogPage = () => {
       }
     } catch (error) {
       console.error('Error in fetchBlogPosts:', error)
-      // Use fallback blog post when there's an error
-      setPosts([fallbackBlogPost])
-      setFeaturedPost(fallbackBlogPost)
-      setPagination({
-        page: 1,
-        limit: 20,
-        total: 1,
-        totalPages: 1
-      })
     } finally {
       setLoading(false)
     }
