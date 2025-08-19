@@ -48,3 +48,17 @@ export default tseslint.config({
   },
 })
 ```
+# Bud Life NC Hemp - Premium THCA E-commerce Website
+
+A modern, full-stack e-commerce platform for Bud Life NC Hemp Co, featuring:
+
+- Premium hemp/THCA product showcase
+- Interactive admin dashboard
+- Supabase backend integration
+- Blog/Learn content management system
+- FAQ system
+- Age verification
+- Payment processing integration
+- Responsive design with Tailwind CSS
+
+Built with React, Next.js, and Supabase.
