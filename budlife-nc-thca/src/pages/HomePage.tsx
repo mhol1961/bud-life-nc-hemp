@@ -429,8 +429,8 @@ const HomePage = () => {
               {/* Enhanced Professional Lab Image */}
               <div className="relative rounded-2xl shadow-2xl overflow-hidden h-[500px]">
                 <img 
-                  src="/images/facilities/lab_testing_facility.jpg" 
-                  alt="Professional Hemp Testing Laboratory"
+                  src="/images/hero/indoor_led_cultivation.jpg" 
+                  alt="Professional Indoor Hemp Cultivation Facility"
                   className="w-full h-full object-cover"
                 />
                 {/* Professional overlay */}
@@ -442,9 +442,9 @@ const HomePage = () => {
                     <div className="w-24 h-24 bg-white/20 rounded-full flex items-center justify-center mx-auto mb-6 backdrop-blur-sm">
                       <Shield className="w-12 h-12" />
                     </div>
-                    <h3 className="text-2xl font-bold mb-4 drop-shadow-lg">State-of-the-Art Testing</h3>
+                    <h3 className="text-2xl font-bold mb-4 drop-shadow-lg">Premium Indoor Cultivation</h3>
                     <p className="text-lg opacity-90 leading-relaxed drop-shadow-md">
-                      Every batch tested in ISO-certified laboratories for complete quality assurance
+                      Climate-controlled growing environment ensures consistent quality and optimal cannabinoid development
                     </p>
                   </div>
                 </div>
