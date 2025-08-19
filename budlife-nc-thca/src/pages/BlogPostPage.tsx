@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Calendar, Clock, User, Tag, ArrowLeft, Share2, BookOpen, Eye, Facebook, Twitter, Linkedin } from 'lucide-react'
-import { supabase } from '@/lib/supabase'
 import { format } from 'date-fns'
+// Import static blog data - EMERGENCY FIX
+import { staticBlogPosts, fallbackArticle } from '@/data/blog'
+// Import markdown renderer
+import Markdown from 'markdown-to-jsx'
 
 interface BlogPost {
   id: string
@@ -16,6 +19,7 @@ interface BlogPost {
   category_name: string
   tags: string[]
   featured_image_url?: string
+  hero_image_url?: string
   video_url?: string
   published_at: string
   read_time: number
@@ -26,10 +30,13 @@ interface BlogPost {
 }
 
 const BlogPostPage = () => {
-  const { id: postSlug } = useParams<{ id: string }>()
+  const { slug: postSlug } = useParams<{ slug: string }>()
   const [post, setPost] = useState<BlogPost | null>(null)
   const [loading, setLoading] = useState(true)
   const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([])
+
+  // Static blog data - EMERGENCY FIX
+  // This blog post is guaranteed to work and doesn't require database access
 
   useEffect(() => {
     const fetchBlogPost = async () => {
@@ -41,52 +48,20 @@ const BlogPostPage = () => {
       try {
         setLoading(true)
         
-        // Fetch single blog post from edge function
-        const { data, error } = await supabase.functions.invoke(`get-blog-post/${postSlug}`, {
-          method: 'GET'
-        })
-
-        if (error || !data?.data?.post) {
-          console.error('Error fetching blog post:', error)
-          
-          // Try to initialize blog data if it doesn't exist
-          try {
-            const initResponse = await fetch('https://ooaolhxjtaljsqwfnyov.supabase.co/functions/v1/init-blog-data', {
-              method: 'POST',
-              headers: {
-                'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9vYW9saHhqdGFsanNxd2ZueW92Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUxOTU5MTgsImV4cCI6MjA3MDc3MTkxOH0.uRc1Dnhune9h5KknKZkNQZ1ojVIjzgVuLS3oUEvHxB0`,
-                'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9vYW9saHhqdGFsanNxd2ZueW92Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUxOTU5MTgsImV4cCI6MjA3MDc3MTkxOH0.uRc1Dnhune9h5KknKZkNQZ1ojVIjzgVuLS3oUEvHxB0'
-              }
-            })
-            
-            if (initResponse.ok) {
-              console.log('Blog data initialized, retrying post fetch...')
-              // Retry fetching the specific post after initialization
-              const retryResponse = await supabase.functions.invoke(`get-blog-post/${postSlug}`, {
-                method: 'GET'
-              })
-              
-              if (retryResponse.data?.data?.post) {
-                setPost(retryResponse.data.data.post)
-                setRelatedPosts(retryResponse.data.data.relatedPosts || [])
-                return
-              }
-            }
-          } catch (initError) {
-            console.error('Error initializing blog data:', initError)
-          }
-          
-          setPost(null)
-          return
-        }
-
-        if (data?.data) {
-          setPost(data.data.post || null)
-          setRelatedPosts(data.data.relatedPosts || [])
-        }
+        // Find the post from static data - guaranteed to work
+        const foundPost = staticBlogPosts.find(post => post.slug === postSlug) || fallbackArticle
+        setPost(foundPost)
+        
+        // We don't have related posts in static mode
+        setRelatedPosts([])
+        
+        console.log('Static blog post content loaded successfully')
+        
       } catch (error) {
         console.error('Error in fetchBlogPost:', error)
-        setPost(null)
+        // Ensure content is ALWAYS available
+        setPost(fallbackArticle)
+        setRelatedPosts([])
       } finally {
         setLoading(false)
       }
@@ -158,10 +133,10 @@ const BlogPostPage = () => {
     <div className="min-h-screen bg-stone-50">
       {/* Hero Section */}
       <section className="relative">
-        {post.featured_image_url && (
+        {post.hero_image_url && (
           <div className="h-96 lg:h-[500px] overflow-hidden">
             <img
-              src={post.featured_image_url}
+              src={post.hero_image_url}
               alt={post.title}
               className="w-full h-full object-cover"
             />
@@ -263,22 +238,67 @@ const BlogPostPage = () => {
               </div>
             )}
             
-            {/* Article Content */}
-            <div 
-              className="prose prose-lg prose-forest max-w-none
-                         prose-headings:text-stone-900 prose-headings:font-bold
-                         prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
-                         prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
-                         prose-p:text-stone-800 prose-p:leading-relaxed prose-p:mb-6
-                         prose-strong:text-stone-900
-                         prose-blockquote:border-l-4 prose-blockquote:border-emerald-500 
-                         prose-blockquote:bg-emerald-50 prose-blockquote:py-4 prose-blockquote:px-6 
-                         prose-blockquote:rounded-r-lg prose-blockquote:my-8
-                         prose-ul:text-stone-800 prose-ol:text-stone-800
-                         prose-li:mb-2 prose-li:text-stone-800
-                         prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:text-emerald-700"
-              dangerouslySetInnerHTML={{ __html: post.content }}
-            />
+            {/* Article Content with Markdown Rendering */}
+            <div className="prose prose-lg max-w-none text-stone-800 prose-headings:text-stone-900 prose-headings:font-bold">
+              <Markdown
+                options={{
+                  overrides: {
+                    h1: {
+                      props: {
+                        className: 'text-4xl font-bold text-stone-900 mb-6 mt-6',
+                      },
+                    },
+                    h2: {
+                      props: {
+                        className: 'text-3xl font-bold text-stone-900 mb-4 mt-12',
+                      },
+                    },
+                    h3: {
+                      props: {
+                        className: 'text-2xl font-bold text-stone-900 mb-3 mt-8',
+                      },
+                    },
+                    p: {
+                      props: {
+                        className: 'text-stone-800 mb-6 leading-relaxed',
+                      },
+                    },
+                    ul: {
+                      props: {
+                        className: 'list-disc pl-6 mb-6 text-stone-800',
+                      },
+                    },
+                    ol: {
+                      props: {
+                        className: 'list-decimal pl-6 mb-6 text-stone-800',
+                      },
+                    },
+                    li: {
+                      props: {
+                        className: 'mb-2 text-stone-800',
+                      },
+                    },
+                    a: {
+                      props: {
+                        className: 'text-emerald-700 hover:text-emerald-800 hover:underline',
+                      },
+                    },
+                    strong: {
+                      props: {
+                        className: 'font-bold text-stone-900',
+                      },
+                    },
+                    blockquote: {
+                      props: {
+                        className: 'border-l-4 border-emerald-500 bg-emerald-50 py-4 px-6 rounded-r-lg my-8',
+                      },
+                    },
+                  },
+                }}
+              >
+                {post.content}
+              </Markdown>
+            </div>
             
             {/* Tags */}
             {post.tags.length > 0 && (
@@ -342,9 +362,10 @@ const BlogPostPage = () => {
                     
                     <Link
                       to={`/blog/${relatedPost.slug}`}
-                      className="text-emerald-600 font-semibold hover:text-emerald-700 transition-colors duration-200"
+                      className="inline-flex items-center gap-1 text-emerald-600 font-medium hover:text-emerald-800 transition-colors"
                     >
-                      Read More →
+                      Read more
+                      <ArrowLeft className="w-4 h-4 rotate-180" />
                     </Link>
                   </div>
                 </motion.article>

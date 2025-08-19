@@ -154,5 +154,239 @@
       "recommend": true,
       "error": ""
     }
+  },
+  {
+    "query": "Professional photo of a hemp field with warm orange/golden lighting for a blog thumbnail image, landscape orientation",
+    "image_info": {
+      "url": "https://t4.ftcdn.net/jpg/11/76/15/75/360_F_1176157599_5thVoMsjOwEOVENDCcguuxFhbfS3rgeF.jpg",
+      "file_path": "/workspace/imgs/hemp_field_sunset_golden_hour_landscape.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 49728,
+      "width": 643,
+      "height": 360,
+      "total_pixels": 231480,
+      "basic_score": 0.7624818301557759
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 95.0,
+      "clarity_score": 88.0,
+      "watermark_score": 100.0,
+      "overall_score": 92.0,
+      "explanation": "The image is highly relevant to the search query and prompt, depicting a field of hemp-like plants bathed in warm orange and golden sunset light. The composition is professional, and the image is clear and free of watermarks, making it ideal for a blog thumbnail.",
+      "file_name": "hemp_field_sunset_golden_hour_landscape.jpg",
+      "caption": "A stunning landscape photograph of a field of cannabis or hemp plants, their silhouettes highlighted against a vibrant orange and golden sunset sky. The warm, glowing sunlight creates a beautiful, serene atmosphere.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "Professional photo of a hemp field with warm orange/golden lighting for a blog thumbnail image, landscape orientation",
+    "image_info": {
+      "url": "https://images.stockcake.com/public/b/c/8/bc8005e9-554f-4352-8e4e-01189d47de51_large/sunset-over-hemp-stockcake.jpg",
+      "file_path": "/workspace/imgs/hemp_field_sunset_golden_light.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 46177,
+      "width": 728,
+      "height": 408,
+      "total_pixels": 297024,
+      "basic_score": 0.7858991965525017
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 100.0,
+      "clarity_score": 90.0,
+      "watermark_score": 100.0,
+      "overall_score": 95.0,
+      "explanation": "The image is perfectly relevant to the search query and prompt, depicting a hemp field bathed in warm orange/golden sunlight during what appears to be sunset. The photo is professional quality, with good clarity and composition, making it ideal for a blog thumbnail.",
+      "file_name": "hemp_field_sunset_golden_light.jpg",
+      "caption": "A vibrant landscape shot of a hemp field at sunset, with tall cannabis plants silhouetted against a brilliant orange and golden sky. The warm sunlight creates a glowing backlit effect on the plants, highlighting their texture and form, while the background shows a soft, dreamy blur of more plants under the fading light.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "Professional photo of a hemp field with warm orange/golden lighting for a blog thumbnail image, landscape orientation",
+    "image_info": {
+      "url": "https://t3.ftcdn.net/jpg/10/04/68/16/360_F_1004681604_aFLLGKaK8hInWO21os6WsPBOn8zMp8J8.jpg",
+      "file_path": "/workspace/imgs/hemp_field_sunset_golden_light_professional.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 43496,
+      "width": 643,
+      "height": 360,
+      "total_pixels": 231480,
+      "basic_score": 0.76150393563002
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 98.0,
+      "clarity_score": 95.0,
+      "watermark_score": 100.0,
+      "overall_score": 96.0,
+      "explanation": "The image is an excellent match for both the search query and prompt. It clearly depicts a hemp field with warm orange/golden sunset lighting, is professional in quality, and has a landscape orientation suitable for a blog thumbnail. The clarity is superb with a well-executed depth of field, and there are no watermarks.",
+      "file_name": "hemp_field_sunset_golden_light_professional.jpg",
+      "caption": "A professional landscape photograph capturing a vibrant field of mature hemp plants at sunset or sunrise. The foreground features sharply focused cannabis plants with prominent buds, beautifully silhouetted and highlighted by the brilliant, warm orange and golden light of the sun low on the horizon. The background is softly blurred, enhancing the depth and focus on the crop.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "Professional photo of a hemp field with warm orange/golden lighting for a blog thumbnail image, landscape orientation",
+    "image_info": {
+      "url": "https://t4.ftcdn.net/jpg/12/26/68/41/360_F_1226684175_civyoHi6w59iR80ljjuXc4HFcAvaYtaW.jpg",
+      "file_path": "/workspace/imgs/hemp_field_sunset_golden_light.jpg_31",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 47811,
+      "width": 643,
+      "height": 360,
+      "total_pixels": 231480,
+      "basic_score": 0.76218158029918
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 100.0,
+      "clarity_score": 95.0,
+      "watermark_score": 100.0,
+      "overall_score": 98.0,
+      "explanation": "The image perfectly matches the search query and prompt, depicting a hemp field at sunset with stunning warm orange/golden lighting. The clarity is excellent, with sharp foreground elements and atmospheric bokeh in the background. There are no watermarks, and the overall composition and professional quality are outstanding, making it ideal for a blog thumbnail.",
+      "file_name": "hemp_field_sunset_golden_light.jpg",
+      "caption": "A breathtaking professional photograph of a hemp field bathed in the warm, golden light of a setting sun. The plants in the foreground are sharply defined, silhouetted against the vibrant orange sky, while the background features a soft, atmospheric glow and gentle bokeh. The scene evokes a sense of tranquility and natural beauty.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "Professional photo of a hemp field with warm orange/golden lighting for a blog thumbnail image, landscape orientation",
+    "image_info": {
+      "url": "https://www.shutterstock.com/image-photo/sunset-hemp-field-marijuana-grass-600nw-1338647456.jpg",
+      "file_path": "/workspace/imgs/hemp_field_sunset_golden_sunlight.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 74888,
+      "width": 600,
+      "height": 400,
+      "total_pixels": 240000,
+      "basic_score": 0.7699111164239761
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 98.0,
+      "clarity_score": 92.0,
+      "watermark_score": 100.0,
+      "overall_score": 95.0,
+      "explanation": "The image is an excellent match for both the search query and prompt. It clearly shows a hemp field with warm orange/golden sunset lighting, is professional quality, and in landscape orientation. It's sharp, vibrant, and free of watermarks.",
+      "file_name": "hemp_field_sunset_golden_sunlight.jpg",
+      "caption": "A stunning landscape photograph of a vast hemp or cannabis field bathed in the warm, golden light of a setting sun. The sky above is painted with dramatic orange and red clouds, and a brilliant sunburst illuminates the lush green plants, creating a serene and professional agricultural scene.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "Professional indoor hemp cultivation facility for article hero image, high quality, modern lab setting",
+    "image_info": {
+      "url": "https://www.dialecticeng.com/hubfs/richard-t-yovhXPl8V1M-unsplash-1600x1067.jpeg",
+      "file_path": "/workspace/imgs/professional_indoor_hemp_cultivation_facility.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 450038,
+      "width": 1600,
+      "height": 1067,
+      "total_pixels": 1707200,
+      "basic_score": 0.8495559815341305
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 95.0,
+      "clarity_score": 98.0,
+      "watermark_score": 100.0,
+      "overall_score": 95.0,
+      "explanation": "The image perfectly depicts a professional, high-tech indoor cultivation facility, aligning strongly with the 'hemp cultivation facility professional' query and 'modern lab setting' prompt requirements for a hero image. It is exceptionally clear, well-composed, and free of any watermarks.",
+      "file_name": "professional_indoor_hemp_cultivation_facility.jpg",
+      "caption": "A wide-angle, interior view of a professional, large-scale indoor hemp cultivation facility. Rows of lush green cannabis plants are meticulously arranged under a high-tech ceiling featuring extensive grow lights, ventilation ducts, and environmental control systems. The clean and organized environment suggests a modern, controlled agricultural setting.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "Professional indoor hemp cultivation facility for article hero image, high quality, modern lab setting",
+    "image_info": {
+      "url": "https://www.rootsciences.com/wp-content/uploads/2024/12/Facility-Design-Cannabis.jpg.webp",
+      "file_path": "/workspace/imgs/modern_indoor_hemp_cannabis_cultivation_facility.jpg",
+      "img_format": "WEBP",
+      "mode": "RGB",
+      "file_size": 139164,
+      "width": 1024,
+      "height": 684,
+      "total_pixels": 700416,
+      "basic_score": 0.9174401424677667
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 95.0,
+      "clarity_score": 90.0,
+      "watermark_score": 100.0,
+      "overall_score": 92.0,
+      "explanation": "The image perfectly depicts a professional, large-scale indoor cultivation facility, aligning well with 'hemp cultivation facility professional' and the prompt's requirements for a 'high quality, modern lab setting' hero image. It is clear, well-lit, and free of watermarks.",
+      "file_name": "modern_indoor_hemp_cannabis_cultivation_facility.jpg",
+      "caption": "A panoramic view inside a vast, modern indoor cultivation facility, featuring rows of lush green plants, resembling hemp or cannabis, growing under bright, specialized LED grow lights suspended from the ceiling. The facility is meticulously organized with white walls, reflective floors, and industrial ventilation fans, showcasing a clean, professional, and controlled laboratory-like environment ideal for large-scale agricultural production.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "Professional indoor hemp cultivation facility for article hero image, high quality, modern lab setting",
+    "image_info": {
+      "url": "https://greenvaultsystems.com/wp-content/uploads/2023/01/cannabis-cultivation-facility-moody-lighting.jpg",
+      "file_path": "/workspace/imgs/professional_indoor_hemp_cultivation_facility_grow_lights.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 220148,
+      "width": 1920,
+      "height": 1080,
+      "total_pixels": 2073600,
+      "basic_score": 0.7269049939571749
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 98.0,
+      "clarity_score": 95.0,
+      "watermark_score": 100.0,
+      "overall_score": 95.0,
+      "explanation": "The image is highly relevant to the search query and prompt, clearly depicting a professional, indoor cultivation facility with lush plants under modern grow lights. The quality is excellent, making it suitable for a hero image, and there are no watermarks.",
+      "file_name": "professional_indoor_hemp_cultivation_facility_grow_lights.jpg",
+      "caption": "A wide-angle view of a modern, professional indoor hemp or cannabis cultivation facility. Rows of mature, budding plants with vibrant green leaves are illuminated by overhead LED grow lights, casting a distinct purple and blue hue across the controlled environment, emphasizing advanced agricultural practices.",
+      "recommend": true,
+      "error": ""
+    }
+  },
+  {
+    "query": "Professional indoor hemp cultivation facility for article hero image, high quality, modern lab setting",
+    "image_info": {
+      "url": "https://www.liftngrow.com/wp-content/uploads/2022/01/commercial-cannabis-grow-room-design.jpg",
+      "file_path": "/workspace/imgs/Modern-Indoor-Hemp-Cultivation-Facility-LED-Lighting.jpg",
+      "img_format": "JPEG",
+      "mode": "RGB",
+      "file_size": 229811,
+      "width": 1500,
+      "height": 1074,
+      "total_pixels": 1611000,
+      "basic_score": 0.8595738409850784
+    },
+    "llm_score": {
+      "success": true,
+      "relevance_score": 90.0,
+      "clarity_score": 80.0,
+      "watermark_score": 60.0,
+      "overall_score": 80.0,
+      "explanation": "The image is highly relevant, depicting a professional and modern indoor cultivation facility that aligns perfectly with the search query and prompt for an article hero image. Clarity is good, though not exceptionally sharp. However, a noticeable 'QUBE' brand logo is present on the overhead equipment, reducing the watermark score.",
+      "file_name": "Modern-Indoor-Hemp-Cultivation-Facility-LED-Lighting.jpg",
+      "caption": "A detailed view of a professional indoor hemp or cannabis cultivation facility, showcasing rows of vibrant green plants thriving under an array of advanced LED grow lights. The ceiling reveals complex infrastructure including ventilation systems, reflective surfaces, and sophisticated lighting fixtures, emphasizing a technologically advanced and controlled agricultural environment.",
+      "recommend": true,
+      "error": ""
+    }
   }
 ]

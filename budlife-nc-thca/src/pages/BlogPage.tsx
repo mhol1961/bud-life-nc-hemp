@@ -3,8 +3,9 @@ import { motion } from 'framer-motion'
 import { Link, useSearchParams } from 'react-router-dom'
 import { Calendar, Clock, User, Tag, Search, Play, BookOpen, Video, FileText, TrendingUp, Filter, Eye, Scale, Heart, TestTube, Leaf } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
-import { supabase } from '@/lib/supabase'
 import { format } from 'date-fns'
+// Import static blog data - EMERGENCY FIX
+import { staticBlogPosts } from '@/data/blog'
 
 interface BlogPost {
   id: string
@@ -52,6 +53,9 @@ const BlogPage = () => {
   const [selectedCategory, setSelectedCategory] = useState<string>('all')
   const [featuredPost, setFeaturedPost] = useState<BlogPost | null>(null)
   const [pagination, setPagination] = useState<PaginationInfo | null>(null)
+
+  // Static blog data - EMERGENCY FIX
+  // These blog posts are guaranteed to work and don't require database access
 
   // Default categories for hemp/THCA educational content with icons
   const defaultCategories: Category[] = [
@@ -125,64 +129,23 @@ const BlogPage = () => {
     try {
       setLoading(true)
       
-      // Build query parameters
-      const params = new URLSearchParams()
-      if (selectedCategory !== 'all') {
-        params.append('category', selectedCategory)
-      }
-      if (searchQuery) {
-        params.append('search', searchQuery)
-      }
-      params.append('page', '1')
-      params.append('limit', '20')
-
-      // Fetch posts from edge function
-      const { data, error } = await supabase.functions.invoke('get-blog-posts', {
-        method: 'GET'
+      // Set static content from our data file - guaranteed to work
+      setPosts(staticBlogPosts)
+      setFeaturedPost(staticBlogPosts[0])
+      setPagination({
+        page: 1,
+        limit: 20,
+        total: staticBlogPosts.length,
+        totalPages: 1
       })
-
-      if (error) {
-        console.error('Error fetching blog posts:', error)
-        // Initialize the blog data if it doesn't exist
-        try {
-          const initResponse = await fetch('https://ooaolhxjtaljsqwfnyov.supabase.co/functions/v1/init-blog-data', {
-            method: 'POST',
-            headers: {
-              'Authorization': `Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9vYW9saHhqdGFsanNxd2ZueW92Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUxOTU5MTgsImV4cCI6MjA3MDc3MTkxOH0.uRc1Dnhune9h5KknKZkNQZ1ojVIjzgVuLS3oUEvHxB0`,
-              'apikey': 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im9vYW9saHhqdGFsanNxd2ZueW92Iiwicm9sZSI6ImFub24iLCJpYXQiOjE3NTUxOTU5MTgsImV4cCI6MjA3MDc3MTkxOH0.uRc1Dnhune9h5KknKZkNQZ1ojVIjzgVuLS3oUEvHxB0'
-            }
-          })
-          
-          if (initResponse.ok) {
-            console.log('Blog data initialized, retrying fetch...')
-            // Retry fetching posts after initialization
-            const retryResponse = await supabase.functions.invoke('get-blog-posts', {
-              method: 'GET'
-            })
-            if (retryResponse.data?.data) {
-              setPosts(retryResponse.data.data.posts || [])
-              setPagination(retryResponse.data.data.pagination)
-              const featured = retryResponse.data.data.posts?.find((post: BlogPost) => post.is_featured)
-              setFeaturedPost(featured || retryResponse.data.data.posts?.[0] || null)
-              return
-            }
-          }
-        } catch (initError) {
-          console.error('Error initializing blog data:', initError)
-        }
-        return
-      }
-
-      if (data?.data) {
-        setPosts(data.data.posts || [])
-        setPagination(data.data.pagination)
-        
-        // Set featured post
-        const featured = data.data.posts?.find((post: BlogPost) => post.is_featured)
-        setFeaturedPost(featured || data.data.posts?.[0] || null)
-      }
+      
+      console.log('Static blog content loaded successfully')
+      
     } catch (error) {
       console.error('Error in fetchBlogPosts:', error)
+      // Ensure content is ALWAYS available
+      setPosts(staticBlogPosts)
+      setFeaturedPost(staticBlogPosts[0])
     } finally {
       setLoading(false)
     }
