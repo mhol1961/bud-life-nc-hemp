@@ -2,17 +2,20 @@ import React, { useState, useEffect } from 'react'
 import { useParams, Link } from 'react-router-dom'
 import { motion } from 'framer-motion'
 import { Calendar, Clock, User, Tag, ArrowLeft, Share2, BookOpen, Eye, Facebook, Twitter, Linkedin } from 'lucide-react'
+import { supabase } from '@/lib/supabase'
 import { format } from 'date-fns'
 
 interface BlogPost {
   id: string
   title: string
+  slug: string
   excerpt: string
   content: string
   author: string
   category: string
+  category_name: string
   tags: string[]
-  featured_image?: string
+  featured_image_url?: string
   video_url?: string
   published_at: string
   read_time: number
@@ -23,93 +26,46 @@ interface BlogPost {
 }
 
 const BlogPostPage = () => {
-  const { id } = useParams<{ id: string }>()
+  const { id: postSlug } = useParams<{ id: string }>()
   const [post, setPost] = useState<BlogPost | null>(null)
   const [loading, setLoading] = useState(true)
   const [relatedPosts, setRelatedPosts] = useState<BlogPost[]>([])
 
-  // Sample posts data (same as in BlogPage)
-  const samplePosts: BlogPost[] = [
-    {
-      id: '1',
-      title: 'Understanding THCA: The Complete Beginner\'s Guide',
-      excerpt: 'Discover what THCA is, how it differs from THC, and why it\'s revolutionizing the hemp industry. A comprehensive guide for newcomers.',
-      content: `
-        <h2>What is THCA?</h2>
-        <p>THCA (Tetrahydrocannabinolic Acid) is rapidly becoming one of the most talked-about compounds in the hemp industry. Unlike its more famous cousin THC, THCA is non-psychoactive in its raw form, making it legal under the 2018 Farm Bill when derived from hemp containing less than 0.3% delta-9 THC.</p>
-        
-        <h3>The Science Behind THCA</h3>
-        <p>THCA is the acidic precursor to THC. In living cannabis plants, cannabinoids exist primarily in their acidic forms. Through a process called decarboxylation - which occurs when the plant material is heated through smoking, vaping, or cooking - THCA loses its carboxyl group and transforms into the psychoactive compound THC.</p>
-        
-        <blockquote>
-          <p>"THCA represents a fascinating intersection of chemistry and legislation, offering consumers a legal pathway to access cannabis-like effects while remaining compliant with federal law."</p>
-          <cite>- Dr. Sarah Mitchell, Cannabis Researcher</cite>
-        </blockquote>
-        
-        <h3>THCA vs. THC: Key Differences</h3>
-        <ul>
-          <li><strong>Psychoactivity:</strong> THCA is non-psychoactive until heated, while THC produces immediate psychoactive effects</li>
-          <li><strong>Legal Status:</strong> THCA derived from compliant hemp is federally legal; THC remains federally controlled</li>
-          <li><strong>Stability:</strong> THCA is more stable and less prone to degradation than THC</li>
-          <li><strong>Bioavailability:</strong> Raw THCA has different absorption characteristics compared to activated THC</li>
-        </ul>
-        
-        <h3>Potential Benefits and Research</h3>
-        <p>While research is still in its early stages, preliminary studies and anecdotal reports suggest THCA may offer various potential benefits. However, it's important to note that these statements have not been evaluated by the FDA, and our products are not intended to diagnose, treat, cure, or prevent any disease.</p>
-        
-        <h3>How to Use THCA Products</h3>
-        <p>THCA flower can be consumed in several ways:</p>
-        <ol>
-          <li><strong>Raw Consumption:</strong> Some users consume raw THCA flower in smoothies or salads to avoid decarboxylation</li>
-          <li><strong>Smoking or Vaping:</strong> Heat activation converts THCA to THC, producing traditional cannabis-like effects</li>
-          <li><strong>Cooking:</strong> Incorporating into recipes with proper decarboxylation techniques</li>
-        </ol>
-        
-        <h3>Quality and Compliance</h3>
-        <p>At Bud Life NC, every batch of THCA flower undergoes rigorous third-party testing to ensure:</p>
-        <ul>
-          <li>Potency verification and cannabinoid profiling</li>
-          <li>Pesticide and heavy metal screening</li>
-          <li>Microbial contamination testing</li>
-          <li>Compliance with federal delta-9 THC limits</li>
-        </ul>
-        
-        <p>Understanding THCA opens up new possibilities for hemp consumers seeking potent, legal alternatives to traditional cannabis. As always, start with small amounts and consult with healthcare professionals before incorporating any new wellness products into your routine.</p>
-      `,
-      author: 'Dr. Sarah Mitchell',
-      category: 'hemp-basics',
-      tags: ['THCA', 'beginner', 'education', 'hemp'],
-      featured_image: '/images/thca-guide-hero.jpg',
-      published_at: '2025-08-15T10:00:00Z',
-      read_time: 8,
-      view_count: 1247,
-      is_featured: true,
-      seo_title: 'Complete THCA Guide for Beginners | Bud Life NC',
-      seo_description: 'Learn everything about THCA with our comprehensive beginner guide. Understand effects, legality, and benefits of THCA hemp products.'
-    },
-    // Add other sample posts here...
-  ]
-
   useEffect(() => {
-    if (id) {
-      // In a real implementation, fetch from Supabase
-      const foundPost = samplePosts.find(p => p.id === id)
-      setPost(foundPost || null)
-      
-      // Get related posts (same category, excluding current post)
-      if (foundPost) {
-        const related = samplePosts
-          .filter(p => p.id !== id && p.category === foundPost.category)
-          .slice(0, 3)
-        setRelatedPosts(related)
-        
-        // Update view count (in real implementation, this would be a database update)
-        // incrementViewCount(id)
+    const fetchBlogPost = async () => {
+      if (!postSlug) {
+        setLoading(false)
+        return
       }
-      
-      setLoading(false)
+
+      try {
+        setLoading(true)
+        
+        // Fetch single blog post from edge function
+        const { data, error } = await supabase.functions.invoke(`get-blog-post/${postSlug}`, {
+          method: 'GET'
+        })
+
+        if (error) {
+          console.error('Error fetching blog post:', error)
+          setPost(null)
+          return
+        }
+
+        if (data?.data) {
+          setPost(data.data.post || null)
+          setRelatedPosts(data.data.relatedPosts || [])
+        }
+      } catch (error) {
+        console.error('Error in fetchBlogPost:', error)
+        setPost(null)
+      } finally {
+        setLoading(false)
+      }
     }
-  }, [id])
+
+    fetchBlogPost()
+  }, [postSlug])
 
   useEffect(() => {
     // Update page title and meta description
@@ -174,14 +130,14 @@ const BlogPostPage = () => {
     <div className="min-h-screen bg-stone-50">
       {/* Hero Section */}
       <section className="relative">
-        {post.featured_image && (
+        {post.featured_image_url && (
           <div className="h-96 lg:h-[500px] overflow-hidden">
             <img
-              src={post.featured_image}
+              src={post.featured_image_url}
               alt={post.title}
               className="w-full h-full object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/40 to-transparent" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/60 to-black/30" />
           </div>
         )}
         
@@ -202,7 +158,7 @@ const BlogPostPage = () => {
             >
               <div className="flex items-center gap-4 mb-4">
                 <span className="bg-emerald-600 text-white px-4 py-2 rounded-full text-sm font-semibold capitalize">
-                  {post.category.replace('-', ' ')}
+                  {post.category_name}
                 </span>
                 <span className="text-white/80 flex items-center gap-1">
                   <Eye className="w-4 h-4" />
@@ -282,16 +238,16 @@ const BlogPostPage = () => {
             {/* Article Content */}
             <div 
               className="prose prose-lg prose-forest max-w-none
-                         prose-headings:text-forest-900 prose-headings:font-bold
+                         prose-headings:text-stone-900 prose-headings:font-bold
                          prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
                          prose-h3:text-2xl prose-h3:mt-8 prose-h3:mb-4
-                         prose-p:text-forest-700 prose-p:leading-relaxed prose-p:mb-6
-                         prose-strong:text-forest-900
+                         prose-p:text-stone-800 prose-p:leading-relaxed prose-p:mb-6
+                         prose-strong:text-stone-900
                          prose-blockquote:border-l-4 prose-blockquote:border-emerald-500 
                          prose-blockquote:bg-emerald-50 prose-blockquote:py-4 prose-blockquote:px-6 
                          prose-blockquote:rounded-r-lg prose-blockquote:my-8
-                         prose-ul:text-forest-700 prose-ol:text-forest-700
-                         prose-li:mb-2
+                         prose-ul:text-stone-800 prose-ol:text-stone-800
+                         prose-li:mb-2 prose-li:text-stone-800
                          prose-a:text-emerald-600 prose-a:no-underline hover:prose-a:text-emerald-700"
               dangerouslySetInnerHTML={{ __html: post.content }}
             />
@@ -334,9 +290,9 @@ const BlogPostPage = () => {
                   className="bg-stone-50 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 overflow-hidden group"
                 >
                   <div className="relative h-48 overflow-hidden">
-                    {relatedPost.featured_image ? (
+                    {relatedPost.featured_image_url ? (
                       <img
-                        src={relatedPost.featured_image}
+                        src={relatedPost.featured_image_url}
                         alt={relatedPost.title}
                         className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
                       />
@@ -348,16 +304,16 @@ const BlogPostPage = () => {
                   </div>
                   
                   <div className="p-6">
-                    <h3 className="text-xl font-bold text-forest-900 mb-2 line-clamp-2 group-hover:text-emerald-700 transition-colors">
+                    <h3 className="text-xl font-bold text-stone-900 mb-2 line-clamp-2 group-hover:text-emerald-700 transition-colors">
                       {relatedPost.title}
                     </h3>
                     
-                    <p className="text-forest-600 mb-4 line-clamp-3">
+                    <p className="text-stone-700 mb-4 line-clamp-3">
                       {relatedPost.excerpt}
                     </p>
                     
                     <Link
-                      to={`/blog/${relatedPost.id}`}
+                      to={`/blog/${relatedPost.slug}`}
                       className="text-emerald-600 font-semibold hover:text-emerald-700 transition-colors duration-200"
                     >
                       Read More →

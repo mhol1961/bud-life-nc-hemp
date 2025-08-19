@@ -1,0 +1,23 @@
+CREATE TABLE blog_posts (
+    id UUID DEFAULT gen_random_uuid() PRIMARY KEY,
+    title VARCHAR(255) NOT NULL,
+    slug VARCHAR(255) NOT NULL UNIQUE,
+    excerpt TEXT,
+    content TEXT NOT NULL,
+    author VARCHAR(100) NOT NULL,
+    category_id UUID NOT NULL,
+    featured_image_url TEXT,
+    video_url TEXT,
+    published_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text,
+    now()) NOT NULL,
+    read_time INTEGER DEFAULT 5,
+    view_count INTEGER DEFAULT 0,
+    is_featured BOOLEAN DEFAULT false,
+    is_published BOOLEAN DEFAULT true,
+    seo_title VARCHAR(255),
+    seo_description TEXT,
+    created_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text,
+    now()) NOT NULL,
+    updated_at TIMESTAMP WITH TIME ZONE DEFAULT timezone('utc'::text,
+    now()) NOT NULL
+);
