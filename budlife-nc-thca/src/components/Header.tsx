@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { Link, useLocation, useNavigate } from 'react-router-dom'
-import { ShoppingBag, User, Menu, X, Search, Heart, Shield } from 'lucide-react'
+import { ShoppingBag, User, Menu, X, Search, Heart, Shield, BookOpen, HelpCircle } from 'lucide-react'
 import { useAuth } from '@/contexts/AuthContext'
 import { useCartStore } from '@/hooks/useCart'
 import { motion, AnimatePresence } from 'framer-motion'
@@ -16,6 +16,8 @@ export function Header() {
   const navigationItems = [
     { name: 'Products', href: '/products', featured: true },
     { name: 'Flower', href: '/products?category=flower' },
+    { name: 'Blog', href: '/blog', icon: BookOpen },
+    { name: 'FAQs', href: '/faqs', icon: HelpCircle },
     { name: 'Lab Results', href: '/lab-results', icon: Shield },
     { name: 'About', href: '/about' },
     { name: 'Contact', href: '/contact' },

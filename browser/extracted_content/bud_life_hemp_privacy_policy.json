@@ -1,0 +1,23 @@
+📄 Extracted from page: Privacy Policy | Bud Life Hemp
+URL: https://www.budlifenc.com/privacy-policy
+
+Extracted content:
+```json
+{
+  "title": "Privacy Policy | Bud Life Hemp",
+  "url": "https://www.budlifenc.com/privacy-policy",
+  "summary": "The provided content from the Bud Life Hemp 'Privacy Policy' page primarily indicates the use of third-party services for certain functionalities rather than detailing Bud Life Hemp's specific privacy policy, data collection, or cookie practices. It highlights age verification requirements, the presence of an email signup form, and the use of reCAPTCHA and Square for security and transactions.",
+  "key_points": [
+    "Age verification is a mandatory step, requiring users to confirm they are at least 21 years old upon entering the website and again during checkout.",
+    "The website utilizes Google reCAPTCHA for security purposes (likely bot prevention) on forms, which links to Google's own Privacy Policy and Terms of Service.",
+    "An email sign-up form is present, suggesting the collection of email addresses for marketing or updates, likely managed through Weebly's marketing platform.",
+    "Checkout processes are secured by Square, indicating that payment and related transaction data handling are managed by Square's secure platform.",
+    "No explicit details about Bud Life Hemp's specific data collection types (beyond age and email), how data is used, stored, shared, or its cookie policy are provided in the extracted content."
+  ],
+  "relevant_links": [
+    "https://policies.google.com/privacy",
+    "https://policies.google.com/terms"
+  ],
+  "file_name": "bud_life_hemp_privacy_policy.json"
+}
+```

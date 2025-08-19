@@ -1,0 +1,23 @@
+📄 Extracted from page: Terms and Conditions | Bud Life Hemp
+URL: https://www.budlifenc.com/terms-and-conditions
+
+Extracted content:
+```json
+{
+  "title": "Terms and Conditions | Bud Life Hemp",
+  "url": "https://www.budlifenc.com/terms-and-conditions",
+  "summary": "The primary content displayed on this 'Terms and Conditions' page is an age verification gate. It states that by entering the website, users agree they are 21 years of age or older. It explicitly asks those under 21 to exit and warns that age will be verified again upon checkout. No other general terms and conditions, product disclaimers, shipping, or return policies are present in the provided page content.",
+  "key_points": [
+    "Users must be at least 21 years old to enter the website.",
+    "By entering the website, users agree to the 21+ age requirement.",
+    "Individuals under 21 years of age are requested to exit the website.",
+    "Age verification will be conducted again at the time of checkout."
+  ],
+  "relevant_links": [
+    "/privacy-policy",
+    "/shipping-and-legality",
+    "/faq"
+  ],
+  "file_name": "budlifenc_terms_conditions.json"
+}
+```

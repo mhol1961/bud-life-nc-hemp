@@ -39,10 +39,10 @@ const HomePage = () => {
 
   // Scrolling messages for promotional banner
   const scrollingMessages = [
-    { id: 'shipping', text: 'FREE SHIPPING on orders over $75', icon: Truck },
+    { id: 'shipping', text: 'FREE SHIPPING on orders over $125', icon: Truck },
     { id: 'testing', text: 'Third-party lab tested for purity', icon: Shield },
     { id: 'organic', text: '100% Organic cultivation methods', icon: Leaf },
-    { id: 'support', text: '24/7 Customer support available', icon: Users },
+    { id: 'quality', text: 'Lab-Tested Quality guaranteed', icon: Shield },
     { id: 'guarantee', text: 'Satisfaction guaranteed or money back', icon: CheckCircle },
   ]
 

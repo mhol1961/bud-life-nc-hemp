@@ -1,0 +1,76 @@
+📄 Extracted from page: About | Bud Life Hemp
+URL: https://www.budlifenc.com/about
+
+Extracted content:
+```json
+{
+  "title": "About | Bud Life Hemp",
+  "url": "https://www.budlifenc.com/about",
+  "summary": "Bud Life Hemp, founded in 2021 by master cultivators and wellness advocates, aims to revolutionize the hemp industry through uncompromising quality and radical transparency. They cultivate pure, potent hemp, including THCA products, in a state-of-the-art 15,000 sq ft indoor facility located in California. Their methods are 100% organic, pesticide-free, and meticulously controlled from seed to slow cure. Quality is ensured through hand-selected genetics, individual plant care, small-batch processing, and third-party lab testing for purity, potency, and compliance. They emphasize trust, transparency, and customer satisfaction, viewing their customers as part of a community dedicated to wellness. The site also provides educational context regarding THCA and the 2018 Farm Bill.",
+  "key_points": [
+    {
+      "category": "Company Overview",
+      "details": [
+        "Founded in 2021 by a team of master cultivators and wellness advocates.",
+        "Mission: To revolutionize the hemp industry through uncompromising quality and radical transparency.",
+        "Based in California, where products are proudly cultivated (Locally Grown)."
+      ]
+    },
+    {
+      "category": "Hemp/THCA Products",
+      "details": [
+        "Focus on pure, potent hemp.",
+        "Offers THCA products, addressing the 'loophole' in the 2018 Farm Bill.",
+        "Products are intended for wellness and transformative power, used daily by the founders."
+      ]
+    },
+    {
+      "category": "Cultivation Methods",
+      "details": [
+        "Utilizes a state-of-the-art 15,000 sq ft indoor cultivation facility.",
+        "Controlled environment: Every variable (seed to harvest) is controlled, with climate precision (temperature and humidity within 1% tolerance).",
+        "Organic methods: 100% organic growing methods, certified organic, using organic super-soil enriched with beneficial microbes; no pesticides.",
+        "Hand care: Every plant is individually tended throughout its 16-week journey.",
+        "Slow cure: 30+ day curing process in climate-controlled rooms.",
+        "Small batch: Limited runs to ensure peak freshness and quality."
+      ]
+    },
+    {
+      "category": "Quality Standards",
+      "details": [
+        "Guided by three principles: Purity (100% organic), Potency (hand-selected genetics, optimally cultivated), and Proof (third-party tested).",
+        "Lab Verified: Independent testing for potency, purity, and compliance on every batch, with results available for verification (COA Lab Results link).",
+        "No shortcuts in cultivation or processing."
+      ]
+    },
+    {
+      "category": "Business Practices",
+      "details": [
+        "Commitment to 'Growing Trust Through Transparency'.",
+        "Offers a 'Satisfaction Guaranteed' policy: \"Not happy? We'll make it right. Your trust is our top priority.\"",
+        "Emphasizes a 'From Our Family to Yours' approach, fostering a community committed to wellness and transparency.",
+        "Requires age verification (21+ years old) for website entry and checkout."
+      ]
+    },
+    {
+      "category": "Educational Information",
+      "details": [
+        "Provides information on the 'loophole' in the 2018 Farm Bill regarding THCA, linking to a YouTube video with an attorney's explanation."
+      ]
+    }
+  ],
+  "relevant_links": [
+    "/",
+    "/about",
+    "/faq",
+    "/coa-lab-results",
+    "/contact-us",
+    "/s/shop",
+    "/terms-and-conditions",
+    "/privacy-policy",
+    "/shipping-and-legality",
+    "https://www.youtube.com/watch?v=3fzIBECJ23c"
+  ],
+  "file_name": "bud_life_hemp_about.json"
+}
+```

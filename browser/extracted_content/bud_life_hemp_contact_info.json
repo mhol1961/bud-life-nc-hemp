@@ -1,0 +1,32 @@
+📄 Extracted from page: Contact Us | Bud Life Hemp
+URL: https://www.budlifenc.com/contact-us
+
+Extracted content:
+```json
+{
+  "title": "Contact Us | Bud Life Hemp",
+  "url": "https://www.budlifenc.com/contact-us",
+  "summary": "The Contact Us page for Bud Life Hemp provides various methods for customers to reach out, including an email address and links to their social media profiles. It features a general contact form (implied) and directs users to related information such as FAQ, Privacy Policy, Terms and Conditions, and Shipping & Legality. The site also enforces an age verification policy, requiring users to be 21 years or older.",
+  "key_points": [
+    "**Email Contact:** Customers can reach Bud Life Hemp via email at hello@budlifenc.com.",
+    "**Social Media Presence:** The company maintains an active presence on Facebook, Instagram, and TikTok under the handle @budlifeguys.",
+    "**Online Contact Form:** A contact form is available on the page for general inquiries.",
+    "**Support Resources:** Links to a comprehensive FAQ section, Privacy Policy, Terms and Conditions, and Shipping & Legality details are provided for additional customer support and information.",
+    "**Age Verification Policy:** A strict age policy requires all users to be 21 years or older to access the website and make purchases, with age verification occurring upon entry and again at checkout.",
+    "**Business Hours:** No specific business hours are listed on this page."
+  ],
+  "relevant_links": [
+    "mailto:hello@budlifenc.com",
+    "https://www.facebook.com/budlifeguys",
+    "https://www.instagram.com/budlifeguys",
+    "https://www.tiktok.com/@budlifeguys",
+    "/faq",
+    "/privacy-policy",
+    "/terms-and-conditions",
+    "/shipping-and-legality",
+    "https://policies.google.com/privacy",
+    "https://policies.google.com/terms"
+  ],
+  "file_name": "bud_life_hemp_contact_info.json"
+}
+```

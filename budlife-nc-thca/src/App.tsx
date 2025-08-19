@@ -16,6 +16,9 @@ import { RegisterPage } from '@/pages/auth/RegisterPage'
 import { AccountPage } from '@/pages/AccountPage'
 import { AboutPage } from '@/pages/AboutPage'
 import { LabResultsPage } from '@/pages/LabResultsPage'
+import FAQsPage from '@/pages/FAQsPage'
+import BlogPage from '@/pages/BlogPage'
+import BlogPostPage from '@/pages/BlogPostPage'
 import { AdminLayout } from '@/components/AdminLayout'
 import { AdminDashboard } from '@/pages/admin/AdminDashboard'
 import { ProductsManagement } from '@/pages/admin/ProductsManagement'
@@ -54,6 +57,9 @@ function AppContent() {
           <Route path="/" element={<HomePage />} />
           <Route path="/products" element={<ProductsPage />} />
           <Route path="/products/:slug" element={<ProductDetailPage />} />
+          <Route path="/blog" element={<BlogPage />} />
+          <Route path="/blog/:id" element={<BlogPostPage />} />
+          <Route path="/faqs" element={<FAQsPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/account" element={<AccountPage />} />

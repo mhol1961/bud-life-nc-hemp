@@ -1,0 +1,24 @@
+📄 Extracted from page: Can These Products Be Shipped In The Mail? : Crysp
+URL: https://crysp.freshdesk.com/support/solutions/articles/154000159929-can-these-products-be-shipped-in-the-mail-
+
+Extracted content:
+```json
+{
+  "title": "Can These Products Be Shipped In The Mail? : Crysp",
+  "url": "https://crysp.freshdesk.com/support/solutions/articles/154000159929-can-these-products-be-shipped-in-the-mail-",
+  "summary": "The Crysp FAQ page addresses the question \"Can These Products Be Shipped In The Mail?\" by stating \"Yes it is legal to ship through regular mail.\" Despite the extraction goal focusing on legal information, federal regulations, USPS policies, or specific restrictions related to THCA or hemp products (implied by the page's context and search terms), the article itself provides no further details, legal citations, or specific policies. It only offers a general affirmative answer.",
+  "key_points": [
+    "It is stated that shipping products through regular mail is legal.",
+    "The page does not provide any specific legal information, federal regulations, USPS policies, or detailed restrictions.",
+    "No specific mention of THCA or hemp product shipping regulations is included in the answer, although these products are implied by the site's context and popular search terms."
+  ],
+  "relevant_links": [
+    "/support/solutions/articles/154000159932-how-do-i-change-my-shipping-address-",
+    "/support/solutions/articles/154000159931-how-quickly-will-you-ship-my-products-",
+    "/support/solutions/articles/154000159927-do-you-ship-to-my-state-or-country-",
+    "/support/solutions/articles/154000159926-how-do-i-receive-customer-support-",
+    "/support/solutions/articles/154000159920-how-can-i-track-my-order-"
+  ],
+  "file_name": "crysp_shipping_legality_faq.json"
+}
+```

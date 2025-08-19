@@ -1,2 +1,3 @@
-2025/08/18-17:37:56.884 142 Creating DB /workspace/browser/user_data/Default/WebStorage/3/IndexedDB/indexeddb.leveldb since it was missing.
-2025/08/18-17:37:56.888 142 Reusing MANIFEST /workspace/browser/user_data/Default/WebStorage/3/IndexedDB/indexeddb.leveldb/MANIFEST-000001
+2025/08/19-12:45:53.043 2f9 Reusing MANIFEST /workspace/browser/user_data/Default/WebStorage/3/IndexedDB/indexeddb.leveldb/MANIFEST-000001
+2025/08/19-12:45:53.043 2f9 Recovering log #3
+2025/08/19-12:45:53.043 2f9 Reusing old log /workspace/browser/user_data/Default/WebStorage/3/IndexedDB/indexeddb.leveldb/000003.log 

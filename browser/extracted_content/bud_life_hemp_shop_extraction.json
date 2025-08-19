@@ -1,0 +1,33 @@
+📄 Extracted from page: Bud Life Hemp
+URL: https://www.budlifenc.com/s/shop
+
+Extracted content:
+```json
+{
+  "title": "Bud Life Hemp",
+  "url": "https://www.budlifenc.com/s/shop",
+  "summary": "The Bud Life Hemp 'Shop All' page indicates that products are not yet available for sale. While two potential strain names, 'Jealousy' and 'Gushers,' are listed, no specific product information such as THCA content levels, pricing, detailed product descriptions, or dosage information is provided. The site also includes an age verification gate, requiring visitors to confirm they are 21 years or older.",
+  "key_points": [
+    "Products are currently unavailable for purchase on this page, with a message stating 'Items aren't available for sale yet'.",
+    "Two strain names, 'Jealousy' and 'Gushers', are mentioned, but without any associated product details.",
+    "No THCA content levels, pricing, product descriptions, or dosage information is present due to product unavailability.",
+    "The website enforces an age gate, requiring users to be at least 21 years old."
+  ],
+  "relevant_links": [
+    "/",
+    "/about",
+    "/faq",
+    "/coa-lab-results",
+    "/contact-us",
+    "/s/shop",
+    "/terms-and-conditions",
+    "/privacy-policy",
+    "/shipping-and-legality",
+    "mailto:hello@budlifenc.com",
+    "https://www.facebook.com/budlifeguys",
+    "https://www.instagram.com/budlifeguys",
+    "https://www.tiktok.com/@budlifeguys"
+  ],
+  "file_name": "bud_life_hemp_shop_extraction.json"
+}
+```
