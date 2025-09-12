@@ -22,20 +22,32 @@ function App() {
   const [ageVerified, setAgeVerified] = React.useState<boolean>(false)
   const [showAgeVerification, setShowAgeVerification] = React.useState<boolean>(false)
   const [ageVerificationSession, setAgeVerificationSession] = React.useState<string | null>(null)
+  const [isStorefrontRoute, setIsStorefrontRoute] = React.useState<boolean>(false)
 
   useEffect(() => {
-    // Check if user has already been age verified in this session
-    const verified = sessionStorage.getItem('ageVerified') === 'true'
-    const session = sessionStorage.getItem('ageVerificationSession')
-    
-    if (verified && session) {
-      setAgeVerified(true)
-      setAgeVerificationSession(session)
-      setShowAgeVerification(false)
+    // Determine if current route is a storefront route that needs age verification
+    const currentPath = window.location.pathname
+    const isStorefront = currentPath.startsWith('/store') || currentPath.startsWith('/checkout')
+    setIsStorefrontRoute(isStorefront)
+
+    if (isStorefront) {
+      // Only check age verification for storefront routes
+      const verified = sessionStorage.getItem('ageVerified') === 'true'
+      const session = sessionStorage.getItem('ageVerificationSession')
+      
+      if (verified && session) {
+        setAgeVerified(true)
+        setAgeVerificationSession(session)
+        setShowAgeVerification(false)
+      } else {
+        // Show age verification popup for storefront visitors
+        setShowAgeVerification(true)
+        setAgeVerified(false)
+      }
     } else {
-      // Show age verification popup for all new visitors
-      setShowAgeVerification(true)
-      setAgeVerified(false)
+      // Admin routes bypass age verification entirely
+      setAgeVerified(true)
+      setShowAgeVerification(false)
     }
   }, [])
 
@@ -53,9 +65,12 @@ function App() {
     // Only allow closing if user is verified or explicitly refuses
     if (ageVerified) {
       setShowAgeVerification(false)
-    } else {
-      // Redirect away from the site if they close without verifying
+    } else if (isStorefrontRoute) {
+      // Redirect away from the site only for storefront routes
       window.location.href = 'https://google.com'
+    } else {
+      // Admin routes can be closed without redirect
+      setShowAgeVerification(false)
     }
   }
 
@@ -98,8 +113,8 @@ function App() {
           } />
         </Routes>
 
-        {/* Age Verification Modal */}
-        {showAgeVerification && !ageVerified && (
+        {/* Age Verification Modal - Only for storefront routes */}
+        {showAgeVerification && !ageVerified && isStorefrontRoute && (
           <AgeVerificationModal
             isOpen={showAgeVerification}
             onClose={handleCloseAgeVerification}
